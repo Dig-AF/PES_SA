@@ -17,7 +17,7 @@ namespace ConsoleApplication
             string errors = "";
             bool test;
 
-            input = @"C:\GitHub\test\IBM_SAR_Tgt4_ChildDiags_SubordDefs.xml";
+            input = @"C:\GitHub\test\SBXX V1.1.xml";
             test = NEAR.PES_SA.SA2PES(File.ReadAllBytes(input),ref output, ref errors);
             if (!test)
                 System.IO.File.WriteAllText(@"C:\GitHub\test\error.csv", errors);

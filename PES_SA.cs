@@ -3917,102 +3917,133 @@ namespace NEAR
 
             results =
                     from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                    where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "System Exchange (DM2rx)"
                     where (string)result.Parent.Attribute("SAPrpName") == "Source"
                     from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
                     where (string)result3.Parent.Attribute("SAPrpName") == "Target"
                     where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Parent.Parent.Attribute("SAObjId")
-                    where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "System Exchange (DM2rx)"
+                    from result5 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                    where (string)result5.Parent.Attribute("SAPrpName") == "System Resource Flow"
+                    where (string)result5.Parent.Parent.Attribute("SAObjId") == (string)result.Parent.Parent.Attribute("SAObjId")
 
                     select new Thing
                     {
-                        type = "temp",
+                        type = "System Exchange (DM2rx)",
                         id = (string)result.Parent.Parent.Attribute("SAObjId"),
                         name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
-                        value = "$none$",
+                        value = (string)result5.Attribute("SALinkIdentity"),
                         place1 = (string)result.Attribute("SALinkIdentity"),
                         place2 = (string)result3.Attribute("SALinkIdentity"),
                         foundation = "$none$",
-                        value_type = "$none$"
+                        value_type = "$flow$"
                     };
 
-            values_dic = tuple_types.Where(x => x.type == "activityPerformedByPerformer").ToDictionary(x => x.id, x => x);
+            values_dic = results.ToDictionary(x=>x.id,x=>x);
 
-            foreach (Thing thing in results)
-            {
-                values = new List<Thing>();
-                values2 = new List<Thing>();
-                mandatory_list  = new List<Thing>();
+            results =
+                   from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                   where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "System Exchange (DM2rx)"
+                   where (string)result.Parent.Attribute("SAPrpName") == "Source"
+                   from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                   where (string)result3.Parent.Attribute("SAPrpName") == "Target"
+                   where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Parent.Parent.Attribute("SAObjId")
 
-                values_dic.TryGetValue(thing.place1, out value);
+                   select new Thing
+                   {
+                       type = "System Exchange (DM2rx)",
+                       id = (string)result.Parent.Parent.Attribute("SAObjId"),
+                       name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
+                       value = "$none$",
+                       place1 = (string)result.Attribute("SALinkIdentity"),
+                       place2 = (string)result3.Attribute("SALinkIdentity"),
+                       foundation = "$none$",
+                       value_type = "$none$"
+                   };
 
-                values.Add(new Thing
-                {
-                    type = "activityProducesResource",
-                    id = thing.place1 + "_1",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = thing.id,
-                    place2 = value.place2,
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+             foreach (Thing thing in results)
+             {
+                 if(!values_dic.TryGetValue(thing.id,out value))
+                     errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: System Resource Flow\r\n");
+             }
 
-                mandatory_list.Add(value);
-                mandatory_list.Add(things_dic[value.place1]);
-                mandatory_list.Add(things_dic[value.place2]);
+            //values_dic = tuple_types.Where(x => x.type == "activityPerformedByPerformer").ToDictionary(x => x.id, x => x);
 
-                values2.Add(new Thing
-                {
-                    type = "Data",
-                    id = thing.id,
-                    name = "Resource",
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
+            //foreach (Thing thing in results)
+            //{
+            //    values = new List<Thing>();
+            //    values2 = new List<Thing>();
+            //    mandatory_list  = new List<Thing>();
 
-                things_dic.Add(thing.id, new Thing
-                {
-                    type = "Data",
-                    id = thing.id,
-                    name = "Resource",
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
+            //    values_dic.TryGetValue(thing.place1, out value);
+
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityProducesResource",
+            //        id = thing.place1 + "_1",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = thing.id,
+            //        place2 = value.place2,
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
+
+            //    mandatory_list.Add(value);
+            //    mandatory_list.Add(things_dic[value.place1]);
+            //    mandatory_list.Add(things_dic[value.place2]);
+
+            //    values2.Add(new Thing
+            //    {
+            //        type = "Data",
+            //        id = thing.id,
+            //        name = "Resource",
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
+
+            //    things_dic.Add(thing.id, new Thing
+            //    {
+            //        type = "Data",
+            //        id = thing.id,
+            //        name = "Resource",
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
 
 
-                values_dic.TryGetValue(thing.place2, out value);
+            //    values_dic.TryGetValue(thing.place2, out value);
 
-                values.Add(new Thing
-                {
-                    type = "activityConsumesResource",
-                    id = thing.id + "_2",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = value.place2,
-                    place2 = thing.id,
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityConsumesResource",
+            //        id = thing.id + "_2",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = value.place2,
+            //        place2 = thing.id,
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
 
-                mandatory_list.Add(value);
-                mandatory_list.Add(things_dic[value.place1]);
-                mandatory_list.Add(things_dic[value.place2]);
-                mandatory_list.AddRange(values);
-                mandatory_list.AddRange(values2);
+            //    mandatory_list.Add(value);
+            //    mandatory_list.Add(things_dic[value.place1]);
+            //    mandatory_list.Add(things_dic[value.place2]);
+            //    mandatory_list.AddRange(values);
+            //    mandatory_list.AddRange(values2);
 
-                needline_mandatory_views.Add(thing.id, mandatory_list);
-            }
+            //    needline_mandatory_views.Add(thing.id, mandatory_list);
+            //}
 
-            things = things.Concat(values2);
+            //things = things.Concat(values2);
 
-            tuple_types = tuple_types.Concat(values);
+            //tuple_types = tuple_types.Concat(values);
 
             //System Data Flow (DM2rx)
 

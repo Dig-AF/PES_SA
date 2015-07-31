@@ -13,10 +13,14 @@ namespace NEAR
         static string[][] Element_Lookup = new string[][] { 
                             new string[] { "Activity", "Activity (DM2)", "IndividualType", "1154", "1326", "default" }, 
                             new string[] { "Activity", "Operational Activity", "IndividualType", "", "", "extra" },
+                            new string[] { "Activity", "Data Store (DM2x)", "IndividualType", "", "", "extra" },
                             new string[] { "Activity", "Project Milestone (DM2x)", "IndividualType", "", "", "extra" },
                             new string[] { "Activity", "System Milestone (DM2x)", "IndividualType", "", "", "extra" },
                             new string[] { "Capability", "Capability (DM2)", "IndividualType", "1155", "1327", "default" },
                             new string[] { "Performer", "Performer (DM2)", "IndividualType", "1178", "1367", "default" },
+
+                            new string[] { "Performer", "Participant", "IndividualType", "779", "610", "extra" },
+
                             new string[] { "Activity", "System Function (DM2x)", "IndividualType", "1207", "1384", "extra" },
                             new string[] { "Activity", "Service Function (DM2x)", "IndividualType", "1207", "1395", "extra" },
                             new string[] { "Activity", "Event (DM2x)", "IndividualType", "1207", "1463", "extra" },
@@ -145,6 +149,7 @@ namespace NEAR
                             new string[] {"OV-6b", "OV-06b State Transition Alternative (DM2)", "287", "extra"},
                             new string[] {"OV-6c", "OV-06c Performers Event-Trace (DM2)", "340", "extra"},
                             new string[] {"OV-6c", "OV-06c Activities Event-Trace (DM2)", "288", "default"},
+                            new string[] {"OV-6c", "OV-06c/SV-11c/SvcV-11c BPMN Event Trace Description (DM2x)", "142", "default"},
                             new string[] {"PV-1", "PV-01 Project Portfolio Relationships (DM2)", "342", "default"},
                             new string[] {"PV-1", "PV-01 Project Portfolio Relationships At Time (DM2)", "343", "extra"},
                             new string[] {"PV-2", "PV-02 Project Timelines (DM2)", "346", "default"},
@@ -1198,6 +1203,7 @@ namespace NEAR
             Dictionary<string, Thing> things_dic;
             Dictionary<string, Thing> values_dic;
             Dictionary<string, Thing> values_dic2;
+            Dictionary<string, Thing> bpmn_lookup;
             Dictionary<string, List<Thing>> doc_blocks_views = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> description_views = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> OV1_pic_views = new Dictionary<string, List<Thing>>();
@@ -4068,7 +4074,7 @@ namespace NEAR
                         value = (string)result3.Attribute("SALinkIdentity"),
                         place1 = (string)result.Attribute("SALinkIdentity"),
                         place2 = (string)result2.Attribute("SALinkIdentity"),
-                        //foundation = (string)result4.Attribute("SAObjId"),
+                        foundation = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result3.Attribute("SALinkIdentity"),
                         value_type = "$resources$"
                     };
 
@@ -4086,185 +4092,194 @@ namespace NEAR
                 {
                     if (value2.type != "Data")
                     {
-                        values2.Add(new Thing
-                        {
-                            type = "Data",
-                            id = thing.id + "_7",
-                            name = thing.name,
-                            value = "$none$",
-                            place1 = "$none$",
-                            place2 = "$none$",
-                            foundation = "IndividualType",
-                            value_type = "$none$"
-                        });
+                        errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory System Data Flow Element: Data\r\n");
+                        continue;
+                        //values2.Add(new Thing
+                        //{
+                        //    type = "Data",
+                        //    id = thing.id + "_7",
+                        //    name = thing.name,
+                        //    value = "$none$",
+                        //    place1 = "$none$",
+                        //    place2 = "$none$",
+                        //    foundation = "IndividualType",
+                        //    value_type = "$none$"
+                        //});
 
-                        things_dic.Add(thing.id + "_7", new Thing
-                        {
-                            type = "Data",
-                            id = thing.id + "_7",
-                            name = thing.name,
-                            value = "$none$",
-                            place1 = "$none$",
-                            place2 = "$none$",
-                            foundation = "IndividualType",
-                            value_type = "$none$"
-                        });
+                        //things_dic.Add(thing.id + "_7", new Thing
+                        //{
+                        //    type = "Data",
+                        //    id = thing.id + "_7",
+                        //    name = thing.name,
+                        //    value = "$none$",
+                        //    place1 = "$none$",
+                        //    place2 = "$none$",
+                        //    foundation = "IndividualType",
+                        //    value_type = "$none$"
+                        //});
 
-                        needs_data = true;
+                        //needs_data = true;
                     }
                     else
                     {
                         mandatory_list.Add(value2);
+
+                        things_dic.TryGetValue(thing.place1, out value);
+
+                        if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place1, out value2))
+                        {
+                            errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory System Data Flow Element: System Function\r\n");
+                            continue;
+                            //values2.Add(new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_1",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //things_dic.Add(thing.id + "_1", new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_1",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityProducesResource",
+                            //    id = thing.id + "_3",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = thing.id + "_1",
+                            //    place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityPerformedByPerformer",
+                            //    id = thing.id + "_5",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = thing.place1,
+                            //    place2 = thing.id + "_1",
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+
+                        }
+                        else
+                        {
+                            values.Add(new Thing
+                            {
+                                type = "activityProducesResource",
+                                id = thing.foundation + "_3",
+                                name = thing.name,
+                                value = "$none$",
+                                place1 = thing.place1,
+                                place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                                foundation = "CoupleType",
+                                value_type = "$none$"
+                            });
+                        }
+
+                        things_dic.TryGetValue(thing.place2, out value);
+
+                        if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place2, out value2))
+                        {
+                            errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory System Data Flow Element: System Function\r\n");
+                            continue;
+                            //values2.Add(new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_2",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //things_dic.Add(thing.id + "_2", new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_2",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityConsumesResource",
+                            //    id = thing.id + "_4",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                            //    place2 = thing.id + "_2",
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityPerformedByPerformer",
+                            //    id = thing.id + "_6",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = thing.place2,
+                            //    place2 = thing.id + "_2",
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+                        }
+                        else
+                        {
+                            values.Add(new Thing
+                            {
+                                type = "activityConsumesResource",
+                                id = thing.foundation + "_4",
+                                name = thing.name,
+                                value = "$none$",
+                                place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                                place2 = thing.place2,
+                                foundation = "CoupleType",
+                                value_type = "$none$"
+                            });
+                        }
+
+                        mandatory_list.AddRange(values);
+                        if (values2.Count>0)
+                            mandatory_list.AddRange(values2);
+
+                        results_dic = new Dictionary<string, List<Thing>>();
+                        results_dic.Add(thing.id, mandatory_list);
+                        MergeDictionaries(needline_mandatory_views,results_dic);
+
+                        if (values2.Count > 0)
+                            things = things.Concat(values2);
+
+                        tuple_types = tuple_types.Concat(values);
+            
                     }
-                }
-
-                things_dic.TryGetValue(thing.place1, out value);
-
-                if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place1, out value2))
-                {
-                    values2.Add(new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_1",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    things_dic.Add(thing.id + "_1", new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_1",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityProducesResource",
-                        id = thing.id + "_3",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.id + "_1",
-                        place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityPerformedByPerformer",
-                        id = thing.id + "_5",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.place1,
-                        place2 = thing.id + "_1",
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
 
                 }
-                else
-                {
-                    values.Add(new Thing
-                    {
-                        type = "activityProducesResource",
-                        id = thing.id + "_3",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.place1,
-                        place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-                }
-
-                things_dic.TryGetValue(thing.place2, out value);
-
-                if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place2, out value2))
-                {
-                    values2.Add(new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_2",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    things_dic.Add(thing.id + "_2", new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_2",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityConsumesResource",
-                        id = thing.id + "_4",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        place2 = thing.id + "_2",
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityPerformedByPerformer",
-                        id = thing.id + "_6",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.place2,
-                        place2 = thing.id + "_2",
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-                }
-                else
-                {
-                    values.Add(new Thing
-                    {
-                        type = "activityConsumesResource",
-                        id = thing.id + "_4",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        place2 = thing.place2,
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-                }
-
-                mandatory_list.AddRange(values);
-                if (values2.Count>0)
-                    mandatory_list.AddRange(values2);
-
-                needline_mandatory_views.Add(thing.id, mandatory_list);
-            
             }
-            
-            if (values2.Count > 0)
-                things = things.Concat(values2);
-
-            tuple_types = tuple_types.Concat(values);
 
             //Service Data Flow (DM2rx)
 
@@ -4289,7 +4304,7 @@ namespace NEAR
                         value = (string)result3.Attribute("SALinkIdentity"),
                         place1 = (string)result.Attribute("SALinkIdentity"),
                         place2 = (string)result2.Attribute("SALinkIdentity"),
-                        //foundation = (string)result4.Attribute("SAObjId"),
+                        foundation = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result3.Attribute("SALinkIdentity"),
                         value_type = "$resources$"
                     };
 
@@ -4307,185 +4322,193 @@ namespace NEAR
                 {
                     if (value2.type != "Data")
                     {
-                        values2.Add(new Thing
-                        {
-                            type = "Data",
-                            id = thing.id + "_7",
-                            name = thing.name,
-                            value = "$none$",
-                            place1 = "$none$",
-                            place2 = "$none$",
-                            foundation = "IndividualType",
-                            value_type = "$none$"
-                        });
+                        errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Service Data Flow Element: Data\r\n");
+                        continue;
+                        //values2.Add(new Thing
+                        //{
+                        //    type = "Data",
+                        //    id = thing.id + "_7",
+                        //    name = thing.name,
+                        //    value = "$none$",
+                        //    place1 = "$none$",
+                        //    place2 = "$none$",
+                        //    foundation = "IndividualType",
+                        //    value_type = "$none$"
+                        //});
 
-                        things_dic.Add(thing.id + "_7", new Thing
-                        {
-                            type = "Data",
-                            id = thing.id + "_7",
-                            name = thing.name,
-                            value = "$none$",
-                            place1 = "$none$",
-                            place2 = "$none$",
-                            foundation = "IndividualType",
-                            value_type = "$none$"
-                        });
+                        //things_dic.Add(thing.id + "_7", new Thing
+                        //{
+                        //    type = "Data",
+                        //    id = thing.id + "_7",
+                        //    name = thing.name,
+                        //    value = "$none$",
+                        //    place1 = "$none$",
+                        //    place2 = "$none$",
+                        //    foundation = "IndividualType",
+                        //    value_type = "$none$"
+                        //});
 
-                        needs_data = true;
+                        //needs_data = true;
                     }
                     else
                     {
                         mandatory_list.Add(value2);
+
+                        things_dic.TryGetValue(thing.place1, out value);
+
+                        if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place1, out value2))
+                        {
+                            errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Service Data Flow Element: System Function\r\n");
+                            continue;
+                            //values2.Add(new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_1",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //things_dic.Add(thing.id + "_1", new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_1",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityProducesResource",
+                            //    id = thing.id + "_3",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = thing.id + "_1",
+                            //    place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityPerformedByPerformer",
+                            //    id = thing.id + "_5",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = thing.place1,
+                            //    place2 = thing.id + "_1",
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+
+                        }
+                        else
+                        {
+                            values.Add(new Thing
+                            {
+                                type = "activityProducesResource",
+                                id = thing.foundation + "_3",
+                                name = thing.name,
+                                value = "$none$",
+                                place1 = thing.place1,
+                                place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                                foundation = "CoupleType",
+                                value_type = "$none$"
+                            });
+                        }
+
+                        things_dic.TryGetValue(thing.place2, out value);
+
+                        if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place2, out value2))
+                        {
+                            errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Service Data Flow Element: System Function\r\n");
+                            continue;
+                            //values2.Add(new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_2",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //things_dic.Add(thing.id + "_2", new Thing
+                            //{
+                            //    type = "Activity",
+                            //    id = thing.id + "_2",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = "$none$",
+                            //    place2 = "$none$",
+                            //    foundation = "IndividualType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityConsumesResource",
+                            //    id = thing.id + "_4",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                            //    place2 = thing.id + "_2",
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+
+                            //values.Add(new Thing
+                            //{
+                            //    type = "activityPerformedByPerformer",
+                            //    id = thing.id + "_6",
+                            //    name = thing.name,
+                            //    value = "$none$",
+                            //    place1 = thing.place2,
+                            //    place2 = thing.id + "_2",
+                            //    foundation = "CoupleType",
+                            //    value_type = "$none$"
+                            //});
+                        }
+                        else
+                        {
+                            values.Add(new Thing
+                            {
+                                type = "activityConsumesResource",
+                                id = thing.foundation+ "_4",
+                                name = thing.name,
+                                value = "$none$",
+                                place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
+                                place2 = thing.place2,
+                                foundation = "CoupleType",
+                                value_type = "$none$"
+                            });
+                        }
+
+                        mandatory_list.AddRange(values);
+                        if (values2.Count > 0)
+                            mandatory_list.AddRange(values2);
+
+                        results_dic = new Dictionary<string, List<Thing>>();
+                        results_dic.Add(thing.id, mandatory_list);
+                        MergeDictionaries(needline_mandatory_views, results_dic);
+
+                        if (values2.Count > 0)
+                            things = things.Concat(values2);
+
+                        tuple_types = tuple_types.Concat(values);
                     }
-                }
-
-                things_dic.TryGetValue(thing.place1, out value);
-
-                if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place1, out value2))
-                {
-                    values2.Add(new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_1",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    things_dic.Add(thing.id + "_1", new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_1",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityProducesResource",
-                        id = thing.id + "_3",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.id + "_1",
-                        place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityPerformedByPerformer",
-                        id = thing.id + "_5",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.place1,
-                        place2 = thing.id + "_1",
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
 
                 }
-                else
-                {
-                    values.Add(new Thing
-                    {
-                        type = "activityProducesResource",
-                        id = thing.id + "_3",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.place1,
-                        place2 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-                }
-
-                things_dic.TryGetValue(thing.place2, out value);
-
-                if (value.type != "Activity")// || !values_dic.TryGetValue(thing.place2, out value2))
-                {
-                    values2.Add(new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_2",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    things_dic.Add(thing.id + "_2", new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_2",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityConsumesResource",
-                        id = thing.id + "_4",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        place2 = thing.id + "_2",
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-
-                    values.Add(new Thing
-                    {
-                        type = "activityPerformedByPerformer",
-                        id = thing.id + "_6",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = thing.place2,
-                        place2 = thing.id + "_2",
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-                }
-                else
-                {
-                    values.Add(new Thing
-                    {
-                        type = "activityConsumesResource",
-                        id = thing.id + "_4",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = (needs_data ? thing.id + "_7" : (string)thing.value),
-                        place2 = thing.place2,
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    });
-                }
-
-                mandatory_list.AddRange(values);
-                if (values2.Count > 0)
-                    mandatory_list.AddRange(values2);
-
-                needline_mandatory_views.Add(thing.id, mandatory_list);
-
             }
-
-            if (values2.Count > 0)
-                things = things.Concat(values2);
-
-            tuple_types = tuple_types.Concat(values);
 
             //Organization Owns Projects and PV-1
 
@@ -4625,6 +4648,23 @@ namespace NEAR
                 }
             }
                     //PV1_mandatory_views = tuple_types_temp_new.GroupBy(y => ((Tuple<string, string>)y.value).Item1).ToDictionary(z => ((Tuple<string, string>)z.First().value).Item1, z => z.ToList());
+
+            //BPMN Lookup
+
+            results =
+                          from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                          where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Call Activity" ||
+                            (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+
+                          select new Thing
+                          {
+                              type = "temp",
+                              id = (string)result.Parent.Parent.Attribute("SAObjId") + "_" + (string)result.Attribute("SALinkIdentity"),
+                              place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
+                              place2 = (string)(string)result.Attribute("SALinkIdentity")
+                          };
+
+            bpmn_lookup = results.ToDictionary(x => x.place1, x => x);
 
             //ToLists
                     values3 = tuples.ToList();
@@ -5230,6 +5270,8 @@ namespace NEAR
 
             //Views
 
+            values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").ToDictionary(x=>x.id,x=>x);
+
             foreach (string[] current_lookup in View_Lookup)
             {
                 sorted_results = new List<List<Thing>>();
@@ -5249,7 +5291,7 @@ namespace NEAR
                         place2 = (string)result.Attribute("SASymIdDef"),
                         value = (string)result.Attribute("SASymIdDef"),
                         //value = Find_Def_DM2_Type((string)result.Attribute("SASymIdDef"),ref values5),
-                        foundation = "$none$",
+                        foundation = (string)result.Parent.Attribute("SAObjMinorTypeNum"),
                         value_type = "$element_type$"
                     };
                 view_holder.Add(results.ToList());
@@ -5267,6 +5309,14 @@ namespace NEAR
                     //thing.value = (string) Find_Def_DM2_Type((string)thing.value, values5.ToList());
                     if (thing.place2 != null)
                     {
+                        if (thing.foundation == "142")
+                        {
+                            if (bpmn_lookup.TryGetValue(thing.place2, out value2))
+                            {
+                                thing.place2 = value2.place2;
+                            }
+                        }
+
                         if (things_dic.TryGetValue(thing.place2, out value))
                             thing.value = (string)value.type;
 
@@ -5329,6 +5379,17 @@ namespace NEAR
                     {
                         if (thing.place2 != null)
                         {
+                           
+                            if (values_dic2.TryGetValue(thing.place2, out value))
+                            {
+                                values = new List<Thing>();
+                                values.Add(value);
+                                if (Allowed_Needline(thing.type, values, ref things_dic) == false)
+                                {
+                                    continue;
+                                }
+                            }
+
                             if (((string)thing.value).Substring(0, 1) != "_")
                             {
                                 temp = Find_Mandatory_Optional((string)thing.value, view.First().name, thing.type, thing.place1, ref errors_list);

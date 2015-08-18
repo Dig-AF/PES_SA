@@ -10,9 +10,16 @@ namespace NEAR
 {
     public static class PES_SA
     {
+
+        //Translation Data Structures
+
         static string[][] Element_Lookup = new string[][] { 
                             new string[] { "Activity", "Activity (DM2)", "IndividualType", "1154", "1326", "default" }, 
                             new string[] { "Activity", "Operational Activity", "IndividualType", "", "", "extra" },
+
+                            new string[] { "Activity", "BPMN Event", "IndividualType", "", "", "extra" },
+                            new string[] { "Activity", "BPMN Process", "IndividualType", "", "", "extra" },
+
                             new string[] { "Activity", "Data Store (DM2x)", "IndividualType", "", "", "extra" },
                             new string[] { "Activity", "Project Milestone (DM2x)", "IndividualType", "", "", "extra" },
                             new string[] { "Activity", "System Milestone (DM2x)", "IndividualType", "", "", "extra" },
@@ -136,42 +143,52 @@ namespace NEAR
                             new string[] {"CV-2", "CV-02 Capability Taxonomy (DM2)", "305", "default"}, //1st
                             new string[] {"CV-4", "CV-04 Capability Dependencies (DM2)", "341", "default"},
                             new string[] {"DIV-2", "DIV-02 Logical Data Model (Entity Relation) (DM2)", "4", "default"},
-                            new string[] {"DIV-2", "DIV-02 Logical Data Model (IDEF1X) (DM2)", "23", "default"},
+                            
                             new string[] {"DIV-3", "DIV-03 Physical Data Model (DM2)", "26", "default"},
                             new string[] {"OV-1", "OV-01 High Level Operational Concept (DM2)", "280", "default"}, //1st
                             new string[] {"OV-2", "OV-02 Operational Resource Flow (DM2)", "281", "default"},
-                            new string[] {"OV-2", "OV-02 Operational Resource Flow Alternative (DM2)", "282", "extra"},
+                            
                             new string[] {"OV-4", "OV-04 Organizational Relationships (DM2)", "283", "default"},
                             new string[] {"OV-5a", "OV-05a Operational Activity Decomposition (DM2)", "284", "default"}, //1st
                             new string[] {"OV-5b", "OV-05b Operational Activity Model (DM2)", "285", "default"},
                             new string[] {"OV-6a", "OV-06a Operational Rules Model (DM2)", "286", "default"},
                             new string[] {"OV-6b", "OV-06b State Transition (DM2)", "339", "default"},
-                            new string[] {"OV-6b", "OV-06b State Transition Alternative (DM2)", "287", "extra"},
-                            new string[] {"OV-6c", "OV-06c Performers Event-Trace (DM2)", "340", "extra"},
+                            
+                            
                             new string[] {"OV-6c", "OV-06c Activities Event-Trace (DM2)", "288", "default"},
                             new string[] {"OV-6c", "OV-06c/SV-11c/SvcV-11c BPMN Event Trace Description (DM2x)", "142", "default"},
-                            new string[] {"PV-1", "PV-01 Project Portfolio Relationships (DM2)", "342", "default"},
-                            new string[] {"PV-1", "PV-01 Project Portfolio Relationships At Time (DM2)", "343", "extra"},
+                            
                             new string[] {"PV-2", "PV-02 Project Timelines (DM2)", "346", "default"},
-                            new string[] {"SV-1", "SV-01 Systems Interface Description Alternative (DM2)", "291", "default"},
+                            new string[] {"SV-1", "SV-01 Systems Interface Description (DM2)", "309", "default"},
+                            
                             new string[] {"SV-2", "SV-02 Systems Resource Flow Description Alternative (DM2)", "292", "default"},
                             new string[] {"SV-4", "SV-04 Systems Functionality Description (DM2)", "311", "default"},
-                            new string[] {"SV-4", "SV-04 Systems Functionality Decomposition (DM2)", "300", "extra"},
-                            new string[] {"SV-4", "SV-04 Systems Functionality Description Alternative (DM2)", "293", "extra"},
+                            
                             new string[] {"SV-8", "SV-08 Systems Evolution Description (DM2)", "365", "default"},
-                            new string[] {"SV-10b", "SV-10b Systems State Transition Description (DM2)", "344", "default"},
+                            
                             new string[] {"SV-10c", "SV-10c Performer-Role Event-Trace (DM2x)", "134", "default"},
                             new string[] {"SvcV-1", "SvcV-01 Services Context Description Alternative (DM2)", "301", "default"},
                             new string[] {"SvcV-2", "SvcV-02 Services Resource Flow Description Alternative (DM2)", "302", "default"},
                             new string[] {"SvcV-4", "SvcV-04 Services Functionality Description (DM2)", "314", "default"},
-                            new string[] {"SvcV-10b", "SvcV-10b Services State Transition Description (DM2)", "345", "default"},
-                            new string[] {"SvcV-10c", "SvcV-10c Performer-Role Event-Trace (DM2x)", "138", "default"},
+                            
+                            
                             };
 
         static string[][] Not_Processed_View_Lookup = new string[][] {  
-                            new string[] {"SV-1", "SV-01 Systems Interface Description (DM2)", "309", "default"}, 
+                            new string[] {"SV-1", "SV-01 Systems Interface Description Alternative (DM2)", "291", "default"}, 
+                            new string[] {"SV-4", "SV-04 Systems Functionality Decomposition (DM2)", "300", "extra"},
+                            new string[] {"SV-4", "SV-04 Systems Functionality Description Alternative (DM2)", "293", "extra"},
                             new string[] {"SV-10c", "SV-10c Systems Event-Trace (DM2)", "335", "default"},
-                            };
+                            new string[] {"DIV-2", "DIV-02 Logical Data Model (IDEF1X) (DM2)", "23", "default"},
+                            new string[] {"OV-6b", "OV-06b State Transition Alternative (DM2)", "287", "extra"},
+                            new string[] {"OV-6c", "OV-06c Performers Event-Trace (DM2)", "340", "extra"},   
+                            new string[] {"OV-2", "OV-02 Operational Resource Flow Alternative (DM2)", "282", "extra"},
+                            new string[] {"PV-1", "PV-01 Project Portfolio Relationships (DM2)", "342", "default"},
+                            new string[] {"PV-1", "PV-01 Project Portfolio Relationships At Time (DM2)", "343", "extra"},
+                            new string[] {"SV-10b", "SV-10b Systems State Transition Description (DM2)", "344", "default"},
+                            new string[] {"SvcV-10b", "SvcV-10b Services State Transition Description (DM2)", "345", "default"},
+                            new string[] {"SvcV-10c", "SvcV-10c Performer-Role Event-Trace (DM2x)", "138", "default"},
+        };
 
         static string[][] Mandatory_Lookup = new string[][] { 
                             new string[] {"Capability", "CV-2"},
@@ -647,6 +664,8 @@ namespace NEAR
                             new string[] {"DataType", "AV-2"},
                             };
 
+        //PES Data Structures
+
         private class Thing
         {
             public string type;
@@ -679,6 +698,8 @@ namespace NEAR
             public List<Thing> mandatory;
             public List<Thing> optional;
         }
+
+        //Helper Functions
 
         private static string Resource_Flow_Type(string type, string view, string place1, string place2, Dictionary<string, Thing> things)
         {
@@ -1183,6 +1204,7 @@ namespace NEAR
         }
 
         ////////////////////
+        //Main
         ////////////////////
 
         public static bool SA2PES(byte[] input, ref string output, ref string errors)
@@ -1225,6 +1247,9 @@ namespace NEAR
             Dictionary<string, List<Thing>> DIV3_optional = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> DIV3_mandatory = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> results_dic;
+            Dictionary<string, List<Thing>> results_dic2;
+            Dictionary<string, List<Thing>> results_dic3;
+            Dictionary<string, List<Thing>> results_dic4;
             Dictionary<string, List<Thing>> period_dic = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> datatype_mandatory_dic = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> datatype_optional_dic = new Dictionary<string, List<Thing>>();
@@ -1251,7 +1276,7 @@ namespace NEAR
             List<string> errors_list = new List<string>();
 
 
-            //Diagram Type
+            //Diagram Type error
 
             results =
                 from result in root.Elements("Class").Elements("SADiagram")
@@ -1284,7 +1309,7 @@ namespace NEAR
                 }
             }
 
-
+            //Bulk Translations
 
             //Doc Block
 
@@ -1681,6 +1706,8 @@ namespace NEAR
             }
 
             tuple_types = tuple_types.GroupBy(x => x.id).Select(grp => grp.First());
+
+            //Complex Translations
 
             //CV-1
 
@@ -2489,9 +2516,10 @@ namespace NEAR
 
             //}
 
+            results_dic2 = new Dictionary<string, List<Thing>>();
+            results_dic3 = new Dictionary<string, List<Thing>>();
             results_dic = tuple_types.Where(x => x.type == "activityPerformedByPerformer").GroupBy(x => x.place1).ToDictionary(x => x.Key, x => x.ToList());
-            values_dic = tuple_types.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place1).Select(x=>x.First()).ToDictionary(x => x.place1, x => x);
-            values_dic2 = tuple_types.Where(x => x.type == "activityConsumesResource").GroupBy(x => x.place2).Select(x => x.First()).ToDictionary(x => x.place2, x => x);
+            aro = tuple_types.Where(x => x.type == "activityConsumesResource").GroupBy(x => x.place2).ToDictionary(x => x.Key, x => x.ToList());
 
             results =
                     from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
@@ -2516,13 +2544,17 @@ namespace NEAR
             {
                 if (results_dic.TryGetValue(thing.place2, out values))
                 {
+                    values2 = new List<Thing>();
+                    values4 = new List<Thing>();
                     add = true;
                     foreach (Thing app in values)
                     {
-                        if(values_dic2.TryGetValue(app.place2,out value))
+                        if(aro.TryGetValue(app.place2,out values3))
                         {
                             add = false;
-                            break;
+                            //break;
+                            values4.Add(app);
+                            values2.AddRange(values3);
                         }
                     }
                     if(add)
@@ -2532,6 +2564,9 @@ namespace NEAR
                 {
                     errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityPerformedByPerformer\r\n");
                 }
+
+                results_dic3.Add(thing.id, values4);
+                results_dic2.Add(thing.id, values2);
 
                 //if (values_dic.TryGetValue(thing.id, out value))
                 //    continue;
@@ -2650,6 +2685,8 @@ namespace NEAR
                 //needline_mandatory_views.Add(thing.id, values);
             }
 
+            aro2 = tuple_types.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place1).ToDictionary(x => x.Key, x => x.ToList());
+
             results =
                     from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
                     where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "System Exchange (DM2rx)" && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "Operational Exchange (DM2rx)"
@@ -2671,16 +2708,36 @@ namespace NEAR
 
             foreach (Thing thing in results.ToList())
             {
-
+                results_dic2.TryGetValue(thing.id, out values4);
+                values_dic = values4.ToDictionary(x => "_" + x.id.Split('_')[1], x => x);
                 if (results_dic.TryGetValue(thing.place2, out values))
                 {
                     add = true;
+                    values2 = new List<Thing>();
                     foreach (Thing app in values)
                     {
-                        if (values_dic.TryGetValue(app.place2, out value))
+                        if (aro2.TryGetValue(app.place2, out values3))
                         {
-                            add = false;
-                            break;
+                            foreach (Thing apr in values3)
+                            {
+                                if (values_dic.TryGetValue("_" + apr.id.Split('_')[1], out value))
+                                {
+                                    add = false;
+                                    //break;
+                                    values2.Add(value);
+                                    values2.Add(things_dic[value.place1]);
+                                    values2.Add(things_dic[value.place2]);
+                                    values2.Add(app);
+                                    values2.Add(things_dic[app.place1]);
+                                    values2.Add(apr);
+                                    values2.Add(things_dic[apr.place1]);
+                                    results_dic3.TryGetValue(thing.id, out values5);
+                                    values6 = values5.Where(x => x.place2 == value.place2).ToList();
+                                    values2.AddRange(values6);
+                                    foreach (Thing app2 in values6)
+                                        values2.Add(things_dic[app2.place2]);
+                                }
+                            }
                         }
                     }
                     if (add)
@@ -2690,6 +2747,14 @@ namespace NEAR
                 {
                     errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityPerformedByPerformer\r\n");
                 }
+
+                needline_mandatory_views.Add(thing.id, values2);
+
+                //results_dic2 = new Dictionary<string, List<Thing>>();
+
+                //results_dic2.Add(thing.id, values2);
+
+                //MergeDictionaries(needline_mandatory_views, results_dic2);
 
                 //values = new List<Thing>();
 
@@ -4653,18 +4718,101 @@ namespace NEAR
 
             results =
                           from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                          where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Call Activity" ||
-                            (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+                          where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Call Activity" 
+                            //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
 
                           select new Thing
                           {
                               type = "temp",
-                              id = (string)result.Parent.Parent.Attribute("SAObjId") + "_" + (string)result.Attribute("SALinkIdentity"),
-                              place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                              place2 = (string)(string)result.Attribute("SALinkIdentity")
+                              id = (string)result.Attribute("SALinkIdentity"),
+                              foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                           };
 
-            bpmn_lookup = results.ToDictionary(x => x.place1, x => x);
+            bpmn_lookup = results.ToDictionary(x => x.foundation, x => x);
+
+            results =
+                          from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol")
+                          where (string)result.Attribute("SAObjMinorTypeName") == "Call Activity"
+                          //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+
+                          select new Thing
+                          {
+                              type = "temp",
+                              id = (string)result.Parent.Attribute("SAObjId"),
+                              foundation = (string)result.Attribute("SASymIdDef")
+                          };
+
+            values_dic = new Dictionary<string, Thing>();
+
+            foreach (Thing thing in results)
+            {
+                if (bpmn_lookup.TryGetValue(thing.foundation, out value))
+                    values_dic.Add(thing.id + value.id, thing);
+            }
+
+            results =
+                          from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                          where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+                          from result2 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                          where (string)result2.Parent.Attribute("SAPrpName") == "consumingActivity"
+                          where (string)result2.Parent.Parent.Attribute("SAObjId") == (string)result.Attribute("SALinkIdentity")
+                          from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                          where (string)result3.Parent.Attribute("SAPrpName") == "producingActivity"
+                          where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Attribute("SALinkIdentity")
+                          where result.Parent.Parent.Parent.Elements("SADiagram") != null
+                            
+                          select new Thing
+                          {
+                              type = "temp",
+                              name = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjName"),
+                              id = (string)result.Attribute("SALinkIdentity"),
+                              place1 = (string)result2.Attribute("SALinkIdentity"),
+                              place2 = (string)result3.Attribute("SALinkIdentity"),
+                              foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
+                              value = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjId"),
+                              value_type = "$view_id$"
+                          };
+            foreach(Thing thing in results)
+            {
+            if(values_dic.TryGetValue(thing.value + thing.place1,out value)
+                && values_dic.TryGetValue(thing.value + thing.place2,out value2))
+                bpmn_lookup.Add(thing.foundation,thing); 
+            else
+                errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Sequence Flow Ignored: " + thing.foundation + "\r\n");
+
+            }
+
+            results =
+                         from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                         where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Message Flow"
+                         from result2 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                         where (string)result2.Parent.Attribute("SAPrpName") == "consumingActivity"
+                         where (string)result2.Parent.Parent.Attribute("SAObjId") == (string)result.Attribute("SALinkIdentity")
+                         from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                         where (string)result3.Parent.Attribute("SAPrpName") == "producingActivity"
+                         where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Attribute("SALinkIdentity")
+                         where result.Parent.Parent.Parent.Elements("SADiagram") != null
+
+                         select new Thing
+                         {
+                             type = "temp",
+                             name = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjName"),
+                             id = (string)result.Attribute("SALinkIdentity"),
+                             place1 = (string)result2.Attribute("SALinkIdentity"),
+                             place2 = (string)result3.Attribute("SALinkIdentity"),
+                             foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
+                             value = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjId"),
+                             value_type = "$view_id$"
+                         };
+            foreach (Thing thing in results)
+            {
+                if (values_dic.TryGetValue(thing.value + thing.place1, out value)
+                    && values_dic.TryGetValue(thing.value + thing.place2, out value2))
+                    bpmn_lookup.Add(thing.foundation, thing);
+                else
+                    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Message Flow Ignored: " + thing.foundation + "\r\n");
+
+            }
 
             //ToLists
                     values3 = tuples.ToList();
@@ -4672,6 +4820,8 @@ namespace NEAR
                     things = null;
                     tuples = null;
                     tuple_types = null;
+
+            //Derived Views
 
             //AV-2
 
@@ -4964,7 +5114,7 @@ namespace NEAR
 
             results_dic = values4.Where(x => x.type == "WholePartType").GroupBy(x => x.place1).ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
 
-            //Diagramming
+            //Diagramming Information
 
             locations =
                     from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol")
@@ -5268,7 +5418,7 @@ namespace NEAR
             values_dic2 = null;
             results2 = null;
 
-            //Views
+            //View Compilation
 
             values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").ToDictionary(x=>x.id,x=>x);
 
@@ -5313,7 +5463,7 @@ namespace NEAR
                         {
                             if (bpmn_lookup.TryGetValue(thing.place2, out value2))
                             {
-                                thing.place2 = value2.place2;
+                                thing.place2 = value2.id;
                             }
                         }
 
@@ -5732,6 +5882,8 @@ namespace NEAR
             mandatory_list = null;
             optional_list = null;
             view_holder = null;
+
+            //XML Output
 
             using (var sw = new Utf8StringWriter())
             {

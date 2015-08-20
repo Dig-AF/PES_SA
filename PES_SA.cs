@@ -2685,180 +2685,184 @@ namespace NEAR
                 //needline_mandatory_views.Add(thing.id, values);
             }
 
-            aro2 = tuple_types.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place1).ToDictionary(x => x.Key, x => x.ToList());
-
-            results =
-                    from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                    where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "System Exchange (DM2rx)" && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "Operational Exchange (DM2rx)"
-                        && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "System Data Flow (DM2rx)" && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "Service Data Flow (DM2rx)"
-                    where (string)result.Parent.Attribute("SAPrpName") == "performerSource" || (string)result.Parent.Attribute("SAPrpName") == "Source"
-                    from result2 in root.Elements("Class").Elements("SADefinition")
-                    where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
-                    select new Thing
-                    {
-                        type = "Resource Flow",
-                        id = (string)result.Parent.Parent.Attribute("SAObjId"),
-                        name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
-                        value = (string)result.Parent.Attribute("SAPrpName") + "_" + (string)result.Parent.Parent.Attribute("SAObjMinorTypeName"),
-                        place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                        place2 = (string)result.Attribute("SALinkIdentity"),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    };
-
-            foreach (Thing thing in results.ToList())
+            if (results_dic2.Count>0)
             {
-                results_dic2.TryGetValue(thing.id, out values4);
-                values_dic = values4.ToDictionary(x => "_" + x.id.Split('_')[1], x => x);
-                if (results_dic.TryGetValue(thing.place2, out values))
-                {
-                    add = true;
-                    values2 = new List<Thing>();
-                    values7 = new List<Thing>();
-                    foreach (Thing app in values)
-                    {
-                        if (aro2.TryGetValue(app.place2, out values3))
+                aro2 = tuple_types.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place1).ToDictionary(x => x.Key, x => x.ToList());
+
+                results =
+                        from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                        where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "System Exchange (DM2rx)" && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "Operational Exchange (DM2rx)"
+                            && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "System Data Flow (DM2rx)" && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "Service Data Flow (DM2rx)"
+                        where (string)result.Parent.Attribute("SAPrpName") == "performerSource" || (string)result.Parent.Attribute("SAPrpName") == "Source"
+                        from result2 in root.Elements("Class").Elements("SADefinition")
+                        where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
+                        select new Thing
                         {
-                            foreach (Thing apr in values3)
+                            type = "Resource Flow",
+                            id = (string)result.Parent.Parent.Attribute("SAObjId"),
+                            name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
+                            value = (string)result.Parent.Attribute("SAPrpName") + "_" + (string)result.Parent.Parent.Attribute("SAObjMinorTypeName"),
+                            place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
+                            place2 = (string)result.Attribute("SALinkIdentity"),
+                            foundation = "CoupleType",
+                            value_type = "$none$"
+                        };
+
+                foreach (Thing thing in results.ToList())
+                {
+                    results_dic2.TryGetValue(thing.id, out values4);
+                    if (values4 == null)
+                        continue;
+                    values_dic = values4.ToDictionary(x => "_" + x.id.Split('_')[1], x => x);
+                    if (results_dic.TryGetValue(thing.place2, out values))
+                    {
+                        add = true;
+                        values2 = new List<Thing>();
+                        values7 = new List<Thing>();
+                        foreach (Thing app in values)
+                        {
+                            if (aro2.TryGetValue(app.place2, out values3))
                             {
-                                if (values_dic.TryGetValue("_" + apr.id.Split('_')[1], out value))
+                                foreach (Thing apr in values3)
                                 {
-                                    add = false;
-                                    //break;
-                                    values2.Add(value);
-                                    values7.Add(things_dic[value.place1]);
-                                    values2.Add(things_dic[value.place2]);
-                                    values2.Add(app);
-                                    value2 = things_dic[app.place1];
-                                    if (value2.type == "Performer")
-                                        values7.Add(value2);
-                                    else
-                                        values2.Add(value2);
-                                    values2.Add(apr);
-                                    values2.Add(things_dic[apr.place1]);
-                                    results_dic3.TryGetValue(thing.id, out values5);
-                                    values6 = values5.Where(x => x.place2 == value.place2).ToList();
-                                    values2.AddRange(values6);
-                                    foreach (Thing app2 in values6)
+                                    if (values_dic.TryGetValue("_" + apr.id.Split('_')[1], out value))
                                     {
-                                         value2 = things_dic[app2.place1];
+                                        add = false;
+                                        //break;
+                                        values2.Add(value);
+                                        values7.Add(things_dic[value.place1]);
+                                        values2.Add(things_dic[value.place2]);
+                                        values2.Add(app);
+                                        value2 = things_dic[app.place1];
                                         if (value2.type == "Performer")
                                             values7.Add(value2);
                                         else
                                             values2.Add(value2);
+                                        values2.Add(apr);
+                                        values2.Add(things_dic[apr.place1]);
+                                        results_dic3.TryGetValue(thing.id, out values5);
+                                        values6 = values5.Where(x => x.place2 == value.place2).ToList();
+                                        values2.AddRange(values6);
+                                        foreach (Thing app2 in values6)
+                                        {
+                                             value2 = things_dic[app2.place1];
+                                            if (value2.type == "Performer")
+                                                values7.Add(value2);
+                                            else
+                                                values2.Add(value2);
+                                        }
                                     }
                                 }
                             }
                         }
+                        if (add)
+                            errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityProducesResource\r\n");
                     }
-                    if (add)
-                        errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityProducesResource\r\n");
+                    else
+                    {
+                        errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityPerformedByPerformer\r\n");
+                    }
+
+                    needline_mandatory_views.Add(thing.id, values2);
+
+                    if (values7.Count >0)
+                        needline_optional_views.Add(thing.id, values7);
+
+                    //results_dic2 = new Dictionary<string, List<Thing>>();
+
+                    //results_dic2.Add(thing.id, values2);
+
+                    //MergeDictionaries(needline_mandatory_views, results_dic2);
+
+                    //values = new List<Thing>();
+
+                    //values.Add(new Thing
+                    //{
+                    //    type = "Activity",
+                    //    id = thing.id + "_4",
+                    //    name = thing.name,
+                    //    value = "$none$",
+                    //    place1 = "$none$",
+                    //    place2 = "$none$",
+                    //    foundation = "IndividualType",
+                    //    value_type = "$none$"
+                    //});
+
+                    //things = things.Concat(values);
+
+                    //values = new List<Thing>();
+
+                    //values.Add(new Thing
+                    //{
+                    //    type = "activityProducesResource",
+                    //    id = thing.id + "_5",
+                    //    name = (((string)thing.value).Contains("performerSource") ? "Needline" : "SF"),
+                    //    value = "$none$",
+                    //    place1 = thing.id + "_4",
+                    //    place2 = thing.id + "_2",
+                    //    foundation = "CoupleType",
+                    //    value_type = "$none$"
+                    //});
+
+                    //values.Add(new Thing
+                    //{
+                    //    type = "activityPerformedByPerformer",
+                    //    id = thing.id + "_6",
+                    //    name = thing.name,
+                    //    value = "$none$",
+                    //    place1 = thing.place2,
+                    //    place2 = thing.id + "_4",
+                    //    foundation = "CoupleType",
+                    //    value_type = "$none$"
+                    //});
+
+                    //tuple_types = tuple_types.Concat(values);
+
+                    //values = new List<Thing>();
+
+                    //values.Add(new Thing
+                    //{
+                    //    type = "activityProducesResource",
+                    //    id = thing.id + "_5",
+                    //    name = (((string)thing.value).Contains("performerSource") ? "Needline" : "SF"),
+                    //    value = "$none$",
+                    //    place1 = thing.id + "_4",
+                    //    place2 = thing.id + "_2",
+                    //    foundation = "CoupleType",
+                    //    value_type = "$none$"
+                    //});
+
+                    //values.Add(new Thing
+                    //{
+                    //    type = "Activity",
+                    //    id = thing.id + "_4",
+                    //    name = thing.name,
+                    //    value = "$none$",
+                    //    place1 = "$none$",
+                    //    place2 = "$none$",
+                    //    foundation = "IndividualType",
+                    //    value_type = "$none$"
+                    //});
+
+                    //values.Add(new Thing
+                    //{
+                    //    type = "activityPerformedByPerformer",
+                    //    id = thing.id + "_6",
+                    //    name = thing.name,
+                    //    value = "$none$",
+                    //    place1 = thing.place2,
+                    //    place2 = thing.id + "_4",
+                    //    foundation = "CoupleType",
+                    //    value_type = "$none$"
+                    //});
+
+                    //results_dic = new Dictionary<string, List<Thing>>();
+
+                    //results_dic.Add(thing.id, values);
+
+                    //MergeDictionaries(needline_mandatory_views, results_dic);
                 }
-                else
-                {
-                    errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityPerformedByPerformer\r\n");
-                }
-
-                needline_mandatory_views.Add(thing.id, values2);
-
-                if (values7.Count >0)
-                    needline_optional_views.Add(thing.id, values7);
-
-                //results_dic2 = new Dictionary<string, List<Thing>>();
-
-                //results_dic2.Add(thing.id, values2);
-
-                //MergeDictionaries(needline_mandatory_views, results_dic2);
-
-                //values = new List<Thing>();
-
-                //values.Add(new Thing
-                //{
-                //    type = "Activity",
-                //    id = thing.id + "_4",
-                //    name = thing.name,
-                //    value = "$none$",
-                //    place1 = "$none$",
-                //    place2 = "$none$",
-                //    foundation = "IndividualType",
-                //    value_type = "$none$"
-                //});
-
-                //things = things.Concat(values);
-
-                //values = new List<Thing>();
-
-                //values.Add(new Thing
-                //{
-                //    type = "activityProducesResource",
-                //    id = thing.id + "_5",
-                //    name = (((string)thing.value).Contains("performerSource") ? "Needline" : "SF"),
-                //    value = "$none$",
-                //    place1 = thing.id + "_4",
-                //    place2 = thing.id + "_2",
-                //    foundation = "CoupleType",
-                //    value_type = "$none$"
-                //});
-
-                //values.Add(new Thing
-                //{
-                //    type = "activityPerformedByPerformer",
-                //    id = thing.id + "_6",
-                //    name = thing.name,
-                //    value = "$none$",
-                //    place1 = thing.place2,
-                //    place2 = thing.id + "_4",
-                //    foundation = "CoupleType",
-                //    value_type = "$none$"
-                //});
-
-                //tuple_types = tuple_types.Concat(values);
-
-                //values = new List<Thing>();
-
-                //values.Add(new Thing
-                //{
-                //    type = "activityProducesResource",
-                //    id = thing.id + "_5",
-                //    name = (((string)thing.value).Contains("performerSource") ? "Needline" : "SF"),
-                //    value = "$none$",
-                //    place1 = thing.id + "_4",
-                //    place2 = thing.id + "_2",
-                //    foundation = "CoupleType",
-                //    value_type = "$none$"
-                //});
-
-                //values.Add(new Thing
-                //{
-                //    type = "Activity",
-                //    id = thing.id + "_4",
-                //    name = thing.name,
-                //    value = "$none$",
-                //    place1 = "$none$",
-                //    place2 = "$none$",
-                //    foundation = "IndividualType",
-                //    value_type = "$none$"
-                //});
-
-                //values.Add(new Thing
-                //{
-                //    type = "activityPerformedByPerformer",
-                //    id = thing.id + "_6",
-                //    name = thing.name,
-                //    value = "$none$",
-                //    place1 = thing.place2,
-                //    place2 = thing.id + "_4",
-                //    foundation = "CoupleType",
-                //    value_type = "$none$"
-                //});
-
-                //results_dic = new Dictionary<string, List<Thing>>();
-
-                //results_dic.Add(thing.id, values);
-
-                //MergeDictionaries(needline_mandatory_views, results_dic);
             }
-
             //Supports
 
             results =

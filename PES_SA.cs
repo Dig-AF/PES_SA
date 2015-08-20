@@ -2714,6 +2714,7 @@ namespace NEAR
                 {
                     add = true;
                     values2 = new List<Thing>();
+                    values7 = new List<Thing>();
                     foreach (Thing app in values)
                     {
                         if (aro2.TryGetValue(app.place2, out values3))
@@ -2725,17 +2726,27 @@ namespace NEAR
                                     add = false;
                                     //break;
                                     values2.Add(value);
-                                    values2.Add(things_dic[value.place1]);
+                                    values7.Add(things_dic[value.place1]);
                                     values2.Add(things_dic[value.place2]);
                                     values2.Add(app);
-                                    values2.Add(things_dic[app.place1]);
+                                    value2 = things_dic[app.place1];
+                                    if (value2.type == "Performer")
+                                        values7.Add(value2);
+                                    else
+                                        values2.Add(value2);
                                     values2.Add(apr);
                                     values2.Add(things_dic[apr.place1]);
                                     results_dic3.TryGetValue(thing.id, out values5);
                                     values6 = values5.Where(x => x.place2 == value.place2).ToList();
                                     values2.AddRange(values6);
                                     foreach (Thing app2 in values6)
-                                        values2.Add(things_dic[app2.place2]);
+                                    {
+                                         value2 = things_dic[app2.place1];
+                                        if (value2.type == "Performer")
+                                            values7.Add(value2);
+                                        else
+                                            values2.Add(value2);
+                                    }
                                 }
                             }
                         }
@@ -2749,6 +2760,9 @@ namespace NEAR
                 }
 
                 needline_mandatory_views.Add(thing.id, values2);
+
+                if (values7.Count >0)
+                    needline_optional_views.Add(thing.id, values7);
 
                 //results_dic2 = new Dictionary<string, List<Thing>>();
 
@@ -3152,6 +3166,7 @@ namespace NEAR
 
             results =
                     from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty")
+                    where (string)result.Parent.Attribute("SAObjMinorTypeName") != "Relationship"
                     where (string)result.Attribute("SAPrpName") == "To Cardinality"
 
                     select new Thing
@@ -3952,10 +3967,11 @@ namespace NEAR
 
             tuple_types = tuple_types.Concat(results.ToList());
 
-            //DIV-2 Relationship
+            //DIV-2 Relationships
 
             results =
                     from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                    where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Non-specific Relation" || (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Relationship"
                     where (string)result.Parent.Attribute("SAPrpName") == "From Entity"
                     from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
                     where (string)result3.Parent.Attribute("SAPrpName") == "To Entity"
@@ -3969,12 +3985,39 @@ namespace NEAR
                     select new Thing
                     {
                         type = "OverlapType",
-                        id = (string)result.Parent.Parent.Attribute("SAObjId"),
+                        id = (string)result.Parent.Parent.Attribute("SAObjId")+"_1",
                         name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
                         value = "$none$",
                         place1 = (string)result3.Attribute("SALinkIdentity"),
                         place2 = (string)result.Attribute("SALinkIdentity"),
                         foundation = "CoupleType",
+                        value_type = "$none$"
+                    };
+
+            tuple_types = tuple_types.Concat(results.ToList());
+
+            results =
+                    from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                    where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Super-sub Relation"
+                    where (string)result.Parent.Attribute("SAPrpName") == "From Entity"
+                    from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                    where (string)result3.Parent.Attribute("SAPrpName") == "To Entity"
+                    where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Parent.Parent.Attribute("SAObjId")
+                    from result2 in root.Elements("Class").Elements("SADefinition")
+                    where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
+                    from result4 in root.Elements("Class").Elements("SADefinition")
+                    where (string)result3.Attribute("SALinkIdentity") == (string)result4.Attribute("SAObjId")
+
+
+                    select new Thing
+                    {
+                        type = "superSubtype",
+                        id = (string)result.Parent.Parent.Attribute("SAObjId") + "_1",
+                        name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
+                        value = "$none$",
+                        place1 = (string)result3.Attribute("SALinkIdentity"),
+                        place2 = (string)result.Attribute("SALinkIdentity"),
+                        foundation = "superSubtype",
                         value_type = "$none$"
                     };
 
@@ -4772,13 +4815,14 @@ namespace NEAR
                               value = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjId"),
                               value_type = "$view_id$"
                           };
+
             foreach(Thing thing in results)
             {
-            if(values_dic.TryGetValue(thing.value + thing.place1,out value)
-                && values_dic.TryGetValue(thing.value + thing.place2,out value2))
+            //if(values_dic.TryGetValue(thing.value + thing.place1,out value)
+            //    && values_dic.TryGetValue(thing.value + thing.place2,out value2))
                 bpmn_lookup.Add(thing.foundation,thing); 
-            else
-                errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Sequence Flow Ignored: " + thing.foundation + "\r\n");
+            //else
+            //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Sequence Flow Ignored: " + thing.foundation + "\r\n");
 
             }
 
@@ -4804,14 +4848,14 @@ namespace NEAR
                              value = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjId"),
                              value_type = "$view_id$"
                          };
+
             foreach (Thing thing in results)
             {
-                if (values_dic.TryGetValue(thing.value + thing.place1, out value)
-                    && values_dic.TryGetValue(thing.value + thing.place2, out value2))
+                //if (values_dic.TryGetValue(thing.value + thing.place1, out value)
+                //    && values_dic.TryGetValue(thing.value + thing.place2, out value2))
                     bpmn_lookup.Add(thing.foundation, thing);
-                else
-                    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Message Flow Ignored: " + thing.foundation + "\r\n");
-
+                //else
+                //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Message Flow Ignored: " + thing.foundation + "\r\n");
             }
 
             //ToLists
@@ -5470,7 +5514,7 @@ namespace NEAR
                         if (things_dic.TryGetValue(thing.place2, out value))
                             thing.value = (string)value.type;
 
-                        if (thing.type == "DIV-3")
+                        if (thing.type == "DIV-3" || thing.type == "DIV-2")
                         {
                             values2 = new List<Thing>();
                             
@@ -5527,6 +5571,7 @@ namespace NEAR
 
                     foreach (Thing thing in view)
                     {
+
                         if (thing.place2 != null)
                         {
                            
@@ -5574,13 +5619,16 @@ namespace NEAR
                             if (period_dic.TryGetValue(thing.place2, out values))
                                 optional_list.AddRange(values);
 
-                            values = new List<Thing>();
-                            if (datatype_mandatory_dic.TryGetValue(thing.place2, out values))
-                                mandatory_list.AddRange(values);
+                            if (thing.type.Contains("DIV-3"))
+                            {
+                                values = new List<Thing>();
+                                if (datatype_mandatory_dic.TryGetValue(thing.place2, out values))
+                                    mandatory_list.AddRange(values);
 
-                            values = new List<Thing>();
-                            if (datatype_optional_dic.TryGetValue(thing.place2, out values))
-                                optional_list.AddRange(values);
+                                values = new List<Thing>();
+                                if (datatype_optional_dic.TryGetValue(thing.place2, out values))
+                                    optional_list.AddRange(values);
+                            }
 
                             if (thing.type.Contains("SvcV"))
                             {

@@ -2763,7 +2763,8 @@ namespace NEAR
                         errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityPerformedByPerformer\r\n");
                     }
 
-                    needline_mandatory_views.Add(thing.id, values2);
+                    if (values2.Count > 0)
+                        needline_mandatory_views.Add(thing.id, values2);
 
                     if (values7.Count >0)
                         needline_optional_views.Add(thing.id, values7);
@@ -3760,7 +3761,7 @@ namespace NEAR
                         select new Thing
                         {
                             type = "activityPartOfProjectType",
-                            id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity"),
+                            id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity") + "_1",
                             name = "$none$",
                             value = "$none$",
                             place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
@@ -3777,7 +3778,7 @@ namespace NEAR
                             select new Thing
                             {
                                 type = "activityPartOfProjectType",
-                                id = (string)result.Attribute("SALinkIdentity") + (string)result.Parent.Parent.Attribute("SAObjId"),
+                                id = (string)result.Attribute("SALinkIdentity") + (string)result.Parent.Parent.Attribute("SAObjId") + "_1",
                                 name = "$none$",
                                 value = "$none$",
                                 place2 = (string)result.Parent.Parent.Attribute("SAObjId"),
@@ -3871,6 +3872,63 @@ namespace NEAR
                 values.Add(new Thing
                 {
                     type = "PeriodType",
+                    id = thing.place2 + "_t1",
+                    name = (string)thing.value,
+                    value = "$none$",
+                    place1 = "$none$",
+                    place2 = "$none$",
+                    foundation = "IndividualType",
+                    value_type = "$none$"
+                });
+
+                values.Add(thing);
+
+                period_dic.Add(thing.place2, values);
+            }
+
+            //Event Duration
+
+            results =
+                    from result in root.Elements("Class").Elements("SADefinition")
+                    where (string)result.Attribute("SAObjMinorTypeName") == "BPMN Event"
+
+                    select new Thing
+                    {
+                        type = "HappensInType",
+                        id = (string)result.Attribute("SAObjId") + "_t2",
+                        name = "$none$",
+                        value = "0",
+                        place1 = (string)result.Attribute("SAObjId") + "_t1",
+                        place2 = (string)result.Attribute("SAObjId"),
+                        foundation = "WholePartType",
+                        value_type = "$duration$"
+                    };
+
+            tuple_types = tuple_types.Concat(results.ToList());
+
+            foreach (Thing thing in results)
+            {
+                values = new List<Thing>();
+
+                values.Add(new Thing
+                {
+                    type = "Duration",
+                    id = thing.place2 + "_t1",
+                    name = (string)thing.value,
+                    value = "$none$",
+                    place1 = "$none$",
+                    place2 = "$none$",
+                    foundation = "IndividualType",
+                    value_type = "$none$"
+                });
+
+                things = things.Concat(values);
+
+                values = new List<Thing>();
+
+                values.Add(new Thing
+                {
+                    type = "Duration",
                     id = thing.place2 + "_t1",
                     name = (string)thing.value,
                     value = "$none$",
@@ -4778,6 +4836,56 @@ namespace NEAR
             bpmn_lookup = results.ToDictionary(x => x.foundation, x => x);
 
             results =
+                          from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                          where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Participant"
+                          //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+
+                          select new Thing
+                          {
+                              type = "temp",
+                              id = (string)result.Attribute("SALinkIdentity"),
+                              foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
+                          };
+
+            bpmn_lookup = results.ToDictionary(x => x.foundation, x => x);
+
+            values = new List<Thing>();
+            foreach (Thing thing in results)
+            {
+                things_dic.Remove(thing.foundation);
+                //var itemToRemove = things.SingleOrDefault(r => r.id == thing.foundation);
+                //if (itemToRemove != null)
+                //    values.Add(itemToRemove);
+            }
+
+            //things = things.Except(values);
+
+            results =
+                         from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                         where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "BPMN Process"
+                         //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+
+                         select new Thing
+                         {
+                             type = "temp",
+                             id = (string)result.Attribute("SALinkIdentity"),
+                             foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
+                         };
+
+            bpmn_lookup = results.ToDictionary(x => x.foundation, x => x);
+
+            values = new List<Thing>();
+            foreach (Thing thing in results)
+            {
+                things_dic.Remove(thing.foundation);
+                //var itemToRemove = things.SingleOrDefault(r => r.id == thing.foundation);
+                //if (itemToRemove != null)
+                //    values.Add(itemToRemove);
+            }
+
+            //things = things.Except(values);
+
+            results =
                           from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol")
                           where (string)result.Attribute("SAObjMinorTypeName") == "Call Activity"
                           //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
@@ -4865,6 +4973,9 @@ namespace NEAR
             //ToLists
                     values3 = tuples.ToList();
                     values4 = tuple_types.ToList();
+                    values5 = new List<Thing>();
+                    values6 = new List<Thing>();
+                    values7 = new List<Thing>();
                     things = null;
                     tuples = null;
                     tuple_types = null;

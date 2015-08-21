@@ -443,6 +443,7 @@ namespace NEAR
                             new string[] {"superSubtype", "OV-6c"}, 
                             new string[] {"WholePartType", "OV-6c"},
                             new string[] {"activityPerformedByPerformer", "OV-6c"},
+                            new string[] {"BeforeAfterType", "OV-6c"},
                             new string[] {"Condition", "OV-6a"},
                             new string[] {"Information", "OV-6a"},
                             new string[] {"Location", "OV-6a"},
@@ -1225,7 +1226,7 @@ namespace NEAR
             Dictionary<string, Thing> things_dic;
             Dictionary<string, Thing> values_dic;
             Dictionary<string, Thing> values_dic2;
-            Dictionary<string, Thing> bpmn_lookup;
+            Dictionary<string, List<Thing>> bpmn_lookup;
             Dictionary<string, List<Thing>> doc_blocks_views = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> description_views = new Dictionary<string, List<Thing>>();
             Dictionary<string, List<Thing>> OV1_pic_views = new Dictionary<string, List<Thing>>();
@@ -4833,7 +4834,7 @@ namespace NEAR
                               foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                           };
 
-            bpmn_lookup = results.ToDictionary(x => x.foundation, x => x);
+            bpmn_lookup = results.ToDictionary(x => x.foundation, x => new List<Thing>() {x});
 
             results =
                           from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
@@ -4847,9 +4848,9 @@ namespace NEAR
                               foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                           };
 
-            bpmn_lookup = results.ToDictionary(x => x.foundation, x => x);
+            MergeDictionaries(bpmn_lookup,results.ToDictionary(x => x.foundation, x => new List<Thing>() { x }));
 
-            values = new List<Thing>();
+            //values = new List<Thing>();
             foreach (Thing thing in results)
             {
                 things_dic.Remove(thing.foundation);
@@ -4872,9 +4873,9 @@ namespace NEAR
                              foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                          };
 
-            bpmn_lookup = results.ToDictionary(x => x.foundation, x => x);
+            MergeDictionaries(bpmn_lookup, results.ToDictionary(x => x.foundation, x => new List<Thing>() { x }));
 
-            values = new List<Thing>();
+            //values = new List<Thing>();
             foreach (Thing thing in results)
             {
                 things_dic.Remove(thing.foundation);
@@ -4885,25 +4886,25 @@ namespace NEAR
 
             //things = things.Except(values);
 
-            results =
-                          from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol")
-                          where (string)result.Attribute("SAObjMinorTypeName") == "Call Activity"
-                          //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+            //results =
+            //              from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol")
+            //              where (string)result.Attribute("SAObjMinorTypeName") == "Call Activity"
+            //              //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
 
-                          select new Thing
-                          {
-                              type = "temp",
-                              id = (string)result.Parent.Attribute("SAObjId"),
-                              foundation = (string)result.Attribute("SASymIdDef")
-                          };
+            //              select new Thing
+            //              {
+            //                  type = "temp",
+            //                  id = (string)result.Parent.Attribute("SAObjId"),
+            //                  foundation = (string)result.Attribute("SASymIdDef")
+            //              };
 
-            values_dic = new Dictionary<string, Thing>();
+            //values_dic = new Dictionary<string, Thing>();
 
-            foreach (Thing thing in results)
-            {
-                if (bpmn_lookup.TryGetValue(thing.foundation, out value))
-                    values_dic.Add(thing.id + value.id, thing);
-            }
+            //foreach (Thing thing in results)
+            //{
+            //    if (bpmn_lookup.TryGetValue(thing.foundation, out value))
+            //        values_dic.Add(thing.id + value.id, thing);
+            //}
 
             results =
                           from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
@@ -4927,14 +4928,35 @@ namespace NEAR
                               value = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjId"),
                               value_type = "$view_id$"
                           };
+          
 
             foreach(Thing thing in results)
             {
             //if(values_dic.TryGetValue(thing.value + thing.place1,out value)
             //    && values_dic.TryGetValue(thing.value + thing.place2,out value2))
-                bpmn_lookup.Add(thing.foundation,thing); 
+            //    bpmn_lookup.Add(thing.foundation,thing); 
             //else
             //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Sequence Flow Ignored: " + thing.foundation + "\r\n");
+
+                value = new Thing
+                    {
+                        type = "BeforeAfterType",
+                        id = thing.id + "_30",
+                        name = "$none$",
+                        value = "BeforeAfterType",
+                        place1 = thing.place2,
+                        place2 = thing.place1,
+                        foundation = "CoupleType",
+                        value_type = "$none$"
+                    };
+
+                tuple_types = tuple_types.Concat(new List<Thing>(){value});
+
+                values = new List<Thing>();
+
+                values.Add(thing);
+                values.Add(value);
+                bpmn_lookup.Add(thing.foundation,values);
 
             }
 
@@ -4965,7 +4987,7 @@ namespace NEAR
             {
                 //if (values_dic.TryGetValue(thing.value + thing.place1, out value)
                 //    && values_dic.TryGetValue(thing.value + thing.place2, out value2))
-                    bpmn_lookup.Add(thing.foundation, thing);
+                    bpmn_lookup.Add(thing.foundation, new List<Thing>() {thing});
                 //else
                 //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Message Flow Ignored: " + thing.foundation + "\r\n");
             }
@@ -5620,9 +5642,24 @@ namespace NEAR
                     {
                         if (thing.foundation == "142")
                         {
-                            if (bpmn_lookup.TryGetValue(thing.place2, out value2))
+                            if (bpmn_lookup.TryGetValue(thing.place2, out values))
                             {
-                                thing.place2 = value2.id;
+                                thing.place2 = values.First().id;
+                                if (values.Count() > 1)
+                                {
+                                    view_elements.Add(new Thing
+                                    {
+                                        type = thing.type,
+                                        id = thing.place1 + values[1].id,
+                                        name = thing.name,
+                                        value = values[1].value,
+                                        place1 = thing.place1,
+                                        place2 = values[1].id,
+                                        foundation = thing.foundation,
+                                        value_type = thing.value_type
+                                    });
+                                    max++;
+                                }
                             }
                         }
 

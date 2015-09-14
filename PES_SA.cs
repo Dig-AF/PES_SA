@@ -979,6 +979,34 @@ namespace EAWS.Core.SilverBullet
             return true;
         }
 
+        private static bool Correct_Needline(List<Thing> values, List<Thing> view)
+        {
+            
+            int count = 0;
+
+            foreach (Thing thing in values)
+            {
+                if (thing.type == "activityPerformedByPerformer")
+                {
+                    bool place1 = false;
+
+                    foreach (Thing item in view)
+                    {
+                        if (item.place2 == thing.place1)
+                            place1 = true;
+                    }
+
+                    if (place1 == true)
+                    count++;
+                }
+            }
+
+            if (count == 2)
+                return true;
+
+            return false;
+        }
+
         private static bool Allowed_Class(string view, string type)
         {
             foreach (string[] current_lookup in Mandatory_Lookup)
@@ -3214,6 +3242,21 @@ namespace EAWS.Core.SilverBullet
                                                 values7.Add(value2);
                                             else
                                                 values2.Add(value2);
+
+                                            tuple_types = tuple_types.Concat(new List<Thing>()
+                                            {
+                                                new Thing
+                                                {
+                                                    type = "OverlapType",
+                                                    id = thing.id,
+                                                    name = thing.name,
+                                                    value = "$none$",
+                                                    place1 = app.place1,
+                                                    place2 = app2.place1,
+                                                    foundation = "CoupleType",
+                                                    value_type = "$none$"
+                                                }
+                                            });
                                         }
                                     }
                                 }
@@ -4978,6 +5021,7 @@ namespace EAWS.Core.SilverBullet
                           {
                               type = "temp",
                               id = (string)result.Attribute("SALinkIdentity"),
+                              name = (string)result.Parent.Parent.Attribute("SAObjName"),
                               foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                           };
 
@@ -4992,6 +5036,7 @@ namespace EAWS.Core.SilverBullet
                           {
                               type = "temp",
                               id = (string)result.Attribute("SALinkIdentity"),
+                              name = (string)result.Parent.Parent.Attribute("SAObjName"),
                               foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                           };
 
@@ -5017,6 +5062,7 @@ namespace EAWS.Core.SilverBullet
                          {
                              type = "temp",
                              id = (string)result.Attribute("SALinkIdentity"),
+                             name = (string)result.Parent.Parent.Attribute("SAObjName"),
                              foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                          };
 
@@ -5067,7 +5113,7 @@ namespace EAWS.Core.SilverBullet
                           select new Thing
                           {
                               type = "temp",
-                              name = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjName"),
+                              name = (string)result.Parent.Parent.Attribute("SAObjName"),
                               id = (string)result.Attribute("SALinkIdentity"),
                               place1 = (string)result2.Attribute("SALinkIdentity"),
                               place2 = (string)result3.Attribute("SALinkIdentity"),
@@ -5089,7 +5135,7 @@ namespace EAWS.Core.SilverBullet
                     {
                         type = "BeforeAfterType",
                         id = thing.id + "_30",
-                        name = "$none$",
+                        name = thing.name,
                         value = "BeforeAfterType",
                         place1 = thing.place2,
                         place2 = thing.place1,
@@ -5121,7 +5167,7 @@ namespace EAWS.Core.SilverBullet
                          select new Thing
                          {
                              type = "temp",
-                             name = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjName"),
+                             name = (string)result.Parent.Parent.Attribute("SAObjName"),
                              id = (string)result.Attribute("SALinkIdentity"),
                              place1 = (string)result2.Attribute("SALinkIdentity"),
                              place2 = (string)result3.Attribute("SALinkIdentity"),
@@ -5137,6 +5183,41 @@ namespace EAWS.Core.SilverBullet
                     bpmn_lookup.Add(thing.foundation, new List<Thing>() {thing});
                 //else
                 //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Message Flow Ignored: " + thing.foundation + "\r\n");
+            }
+
+            foreach (List<Thing> list in bpmn_lookup.Values.ToList())
+            {
+                Thing thing = list.First();
+                things_dic.Add(thing.foundation,
+
+                    new Thing
+                         {
+                             type = "Information",
+                             name = "BPMN Name",
+                             id = thing.foundation,
+                             place1 = "$none$",
+                             place2 = "$none$",
+                             foundation = "IndividualType",
+                             value = (string)thing.name,
+                             value_type = "examplar"
+                         }
+
+                );
+
+                tuple_types = tuple_types.Concat(new List<Thing>(){
+                    new Thing
+                            {
+                                type = "describedBy",
+                                id = thing.foundation + "_i2",
+                                foundation = "namedBy",
+                                place1 = thing.id,
+                                place2 = thing.foundation,
+                                name = "$none$",
+                                value = "$none$",
+                                value_type = "$none$"
+                            }
+                    }
+                );
             }
 
             //ToLists
@@ -6016,12 +6097,15 @@ namespace EAWS.Core.SilverBullet
                                 values = new List<Thing>();
                                 if (DIV2_3_optional.TryGetValue(thing.place2, out values))
                                 {
-                                    optional_list.AddRange(values);
-                                }
-                                values = new List<Thing>();
-                                if (DIV2_3_mandatory.TryGetValue(thing.place2, out values))
-                                {
-                                    mandatory_list.AddRange(values);
+                                    if (Correct_Needline(values, view))
+                                    {
+                                        optional_list.AddRange(values);
+                                        values2 = new List<Thing>();
+                                        if (DIV2_3_mandatory.TryGetValue(thing.place2, out values2))
+                                        {
+                                            mandatory_list.AddRange(values);
+                                        }
+                                    }
                                 }
                             }
                             else if (thing.type == "OV-4")

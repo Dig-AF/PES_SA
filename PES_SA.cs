@@ -6103,7 +6103,7 @@ namespace EAWS.Core.SilverBullet
                                         values2 = new List<Thing>();
                                         if (DIV2_3_mandatory.TryGetValue(thing.place2, out values2))
                                         {
-                                            mandatory_list.AddRange(values);
+                                            mandatory_list.AddRange(values2);
                                         }
                                     }
                                 }

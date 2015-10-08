@@ -44,6 +44,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] { "Data", "Column", "IndividualType","", "1370", "extra" },
                             new string[] { "Data", "Index", "IndividualType","", "1370", "extra" },
                             new string[] { "Data", "Physical Foreign Key Component", "IndividualType","", "1370", "extra" },
+                            new string[] { "Data", "Logical Foreign Key Component", "IndividualType","", "1370", "extra" },
 
                             new string[] { "Data", "Data (DM2)", "IndividualType","", "1370", "default" },
                             new string[] { "Data", "Entity", "IndividualType","30", "15", "extra" },
@@ -80,15 +81,15 @@ namespace EAWS.Core.SilverBullet
 
                             }; 
 
-        static string[][] RSA_Element_Lookup = new string[][] { 
-                            new string[] { "Activity", "OperationalNodeSpecification", "IndividualType", "", "", "default" },
-                            new string[] { "Capability", "Capability", "IndividualType", "", "", "default" },
-                            new string[] { "System", "System", "IndividualType", "", "", "default" },
+        //static string[][] RSA_Element_Lookup = new string[][] { 
+        //                    new string[] { "Activity", "OperationalNodeSpecification", "IndividualType", "", "", "default" },
+        //                    new string[] { "Capability", "Capability", "IndividualType", "", "", "default" },
+        //                    new string[] { "System", "System", "IndividualType", "", "", "default" },
 
-                            };
+        //                    };
 
-        static string[][] Tuple_Lookup = new string[][] { 
-                            };
+        //static string[][] Tuple_Lookup = new string[][] { 
+        //                    };
 
         static string[][] Tuple_Type_Lookup = new string[][] { 
                             new string[] { "WholePartType", "Data Element", "WholePartType", "1", "Attribute", "Attribute" },
@@ -126,16 +127,16 @@ namespace EAWS.Core.SilverBullet
                             new string[] { "ruleConstrainsActivity", "ruleConstrainsActivity", "CoupleType", "2", "Activity (DM2)", "Activity" },
                             };
 
-        static string[][] SA_Element_Lookup = new string[][] {
-                            new string[] { "Needline", "Need Line (DM2rx)", "CoupleType","1244", "1402","default" },
-                            new string[] { "SysRF", "System Resource Flow (DM2rx)", "CoupleType","1245", "1403","default" },
-                            new string[] { "PRF", "Physical Resource Flow (DM2rx)", "CoupleType","1475", "1462","default" },
-                            new string[] { "SvcRF", "Service Resource Flow (DM2rx)", "CoupleType","1236", "1394","default" },
-                            new string[] { "SDF", "System Data Flow (DM2rx)", "CoupleType","1215", "1386","default" },
-                            new string[] { "SvcDF", "Service Data Flow (DM2rx)", "CoupleType","1239", "1396","default" },
-                            new string[] { "CapabilityDependency", "Capability Dependency (DM2rx)", "CoupleType","1433", "1449","default" },
-                            new string[] { "ARO", "ActivityResourceOverlap (DM2r)", "CoupleType","1208", "1383","default" },
-                            };
+        //static string[][] SA_Element_Lookup = new string[][] {
+        //                    new string[] { "Needline", "Need Line (DM2rx)", "CoupleType","1244", "1402","default" },
+        //                    new string[] { "SysRF", "System Resource Flow (DM2rx)", "CoupleType","1245", "1403","default" },
+        //                    new string[] { "PRF", "Physical Resource Flow (DM2rx)", "CoupleType","1475", "1462","default" },
+        //                    new string[] { "SvcRF", "Service Resource Flow (DM2rx)", "CoupleType","1236", "1394","default" },
+        //                    new string[] { "SDF", "System Data Flow (DM2rx)", "CoupleType","1215", "1386","default" },
+        //                    new string[] { "SvcDF", "Service Data Flow (DM2rx)", "CoupleType","1239", "1396","default" },
+        //                    new string[] { "CapabilityDependency", "Capability Dependency (DM2rx)", "CoupleType","1433", "1449","default" },
+        //                    new string[] { "ARO", "ActivityResourceOverlap (DM2r)", "CoupleType","1208", "1383","default" },
+        //                    };
 
         static string[][] View_Lookup = new string[][] {  
                             new string[] {"AV-1", "AV-01 Overview and Summary (DM2)", "289", "default"}, 
@@ -702,42 +703,42 @@ namespace EAWS.Core.SilverBullet
 
         //Helper Functions
 
-        private static string Resource_Flow_Type(string type, string view, string place1, string place2, Dictionary<string, Thing> things)
-        {
-            string type1 = things[place1].type;
-            string type2 = things[place2].type;
+        //private static string Resource_Flow_Type(string type, string view, string place1, string place2, Dictionary<string, Thing> things)
+        //{
+        //    string type1 = things[place1].type;
+        //    string type2 = things[place2].type;
 
-            if (type == "SF" && view.Contains("SV"))
-            {
-                return "System Data Flow (DM2rx)";
-            }
+        //    if (type == "SF" && view.Contains("SV"))
+        //    {
+        //        return "System Data Flow (DM2rx)";
+        //    }
 
-            if (type == "SF" && view.Contains("SvcV"))
-            {
-                if (type1 == "Service" && type2 == "Service")
-                {
-                    return "Service Resource Flow (DM2rx)";
-                }
-                else
-                {
-                    return "Service Data Flow (DM2rx)";
-                }
-            }
+        //    if (type == "SF" && view.Contains("SvcV"))
+        //    {
+        //        if (type1 == "Service" && type2 == "Service")
+        //        {
+        //            return "Service Resource Flow (DM2rx)";
+        //        }
+        //        else
+        //        {
+        //            return "Service Data Flow (DM2rx)";
+        //        }
+        //    }
                 
-            if (type == "Needline" && view.Contains("SvcV"))
-                return "Physical Resource Flow (DM2rx)";
+        //    if (type == "Needline" && view.Contains("SvcV"))
+        //        return "Physical Resource Flow (DM2rx)";
 
-            if (type == "Needline" && view.Contains("SV"))
-            {
-                if (type1 == "System" && type2 == "System")    
-                    return "System Resource Flow (DM2rx)";
-                else
-                    return "Physical Resource Flow (DM2rx)";
-            }
-            else
-                return "Need Line (DM2rx)";
+        //    if (type == "Needline" && view.Contains("SV"))
+        //    {
+        //        if (type1 == "System" && type2 == "System")    
+        //            return "System Resource Flow (DM2rx)";
+        //        else
+        //            return "Physical Resource Flow (DM2rx)";
+        //    }
+        //    else
+        //        return "Need Line (DM2rx)";
                 
-        }
+        //}
 
         public static void Decode(string base64String, string outputFileName)
         {
@@ -855,16 +856,16 @@ namespace EAWS.Core.SilverBullet
             return null;
         }
 
-        private static string Find_DM2_Type_RSA(string input)
-        {
+        //private static string Find_DM2_Type_RSA(string input)
+        //{
 
-            foreach (string[] current_lookup in RSA_Element_Lookup)
-            {
-                if (input == current_lookup[1])
-                    return current_lookup[0];
-            }
-            return null;
-        }
+        //    foreach (string[] current_lookup in RSA_Element_Lookup)
+        //    {
+        //        if (input == current_lookup[1])
+        //            return current_lookup[0];
+        //    }
+        //    return null;
+        //}
 
         private static string Find_Def_DM2_Type(string input, List<Thing> things)
         {
@@ -898,57 +899,57 @@ namespace EAWS.Core.SilverBullet
             return null;
         }
 
-        private static string Find_Symbol_Element_SA_Minor_Type(ref string input, string view)
-        {
+        //private static string Find_Symbol_Element_SA_Minor_Type(ref string input, string view)
+        //{
 
-            foreach (string[] first_lookup in Element_Lookup)
-            {
-                if (input == first_lookup[1])
-                {
-                    foreach (string[] second_lookup in SA_Element_View_Lookup)
-                    {
-                        if (view == second_lookup[0] && input == second_lookup[1])
-                        {
-                            input = second_lookup[2];
-                            return second_lookup[3];
-                        }
-                    }
-                    return first_lookup[3];
-                }
+        //    foreach (string[] first_lookup in Element_Lookup)
+        //    {
+        //        if (input == first_lookup[1])
+        //        {
+        //            foreach (string[] second_lookup in SA_Element_View_Lookup)
+        //            {
+        //                if (view == second_lookup[0] && input == second_lookup[1])
+        //                {
+        //                    input = second_lookup[2];
+        //                    return second_lookup[3];
+        //                }
+        //            }
+        //            return first_lookup[3];
+        //        }
                     
-            }
-            foreach (string[] current_lookup in SA_Element_Lookup)
-            {
-                if (input == current_lookup[1])
-                    return current_lookup[3];
-            }
-            return null;
-        }
+        //    }
+        //    foreach (string[] current_lookup in SA_Element_Lookup)
+        //    {
+        //        if (input == current_lookup[1])
+        //            return current_lookup[3];
+        //    }
+        //    return null;
+        //}
 
-        private static string Find_Definition_Element_SA_Minor_Type(string input)
-        {
+        //private static string Find_Definition_Element_SA_Minor_Type(string input)
+        //{
 
-            foreach (string[] current_lookup in Element_Lookup)
-            {
-                if (input == current_lookup[1])
-                    return current_lookup[4];
-            }
-            foreach (string[] current_lookup in SA_Element_Lookup)
-            {
-                if (input == current_lookup[1])
-                    return current_lookup[4];
-            }
-            return null;
-        }
+        //    foreach (string[] current_lookup in Element_Lookup)
+        //    {
+        //        if (input == current_lookup[1])
+        //            return current_lookup[4];
+        //    }
+        //    foreach (string[] current_lookup in SA_Element_Lookup)
+        //    {
+        //        if (input == current_lookup[1])
+        //            return current_lookup[4];
+        //    }
+        //    return null;
+        //}
 
         private static string Find_SA_Relationship_Type(string rela_type, string thing_type, string place)
         {
 
-            foreach (string[] current_lookup in Tuple_Lookup)
-            {
-                if (rela_type == current_lookup[0] && thing_type == current_lookup[4] && (place == "1" ? (current_lookup[3] == "1" || current_lookup[3] == "5") : (current_lookup[3] == "2" || current_lookup[3] == "4")))
-                        return current_lookup[1];
-            }
+            //foreach (string[] current_lookup in Tuple_Lookup)
+            //{
+            //    if (rela_type == current_lookup[0] && thing_type == current_lookup[4] && (place == "1" ? (current_lookup[3] == "1" || current_lookup[3] == "5") : (current_lookup[3] == "2" || current_lookup[3] == "4")))
+            //            return current_lookup[1];
+            //}
             foreach (string[] current_lookup in Tuple_Type_Lookup)
             {
                 if (rela_type == current_lookup[0] && thing_type == current_lookup[4] && (place == "1" ? (current_lookup[3] == "1" || current_lookup[3] == "5") : (current_lookup[3] == "2" || current_lookup[3] == "4")))
@@ -1605,46 +1606,46 @@ namespace EAWS.Core.SilverBullet
 
             //Regular tuples
 
-            foreach (string[] current_lookup in Tuple_Lookup)
-            {
-                if (current_lookup[3] == "1")
-                {
-                    results =
-                        from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                        where (string)result.Parent.Attribute("SAPrpName") == current_lookup[1]
-                        select new Thing
-                        {
-                            type = current_lookup[0],
-                            id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity"),
-                            name = "$none$",
-                            value = "$none$",
-                            place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                            place2 = (string)result.Attribute("SALinkIdentity"),
-                            foundation = current_lookup[2],
-                            value_type = "$none$"
-                        };
-                }
-                else
-                {
-                    results =
-                        from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                        where (string)result.Parent.Attribute("SAPrpName") == current_lookup[1]
-                        select new Thing
-                        {
-                            type = current_lookup[0],
-                            id = (string)result.Attribute("SALinkIdentity") + (string)result.Parent.Parent.Attribute("SAObjId"),
-                            name = "$none$",
-                            value = "$none$",
-                            place2 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                            place1 = (string)result.Attribute("SALinkIdentity"),
-                            foundation = current_lookup[2],
-                            value_type = "$none$"
-                        };
-                }
-                tuples = tuples.Concat(results.ToList());
-            }
+            //foreach (string[] current_lookup in Tuple_Lookup)
+            //{
+            //    if (current_lookup[3] == "1")
+            //    {
+            //        results =
+            //            from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+            //            where (string)result.Parent.Attribute("SAPrpName") == current_lookup[1]
+            //            select new Thing
+            //            {
+            //                type = current_lookup[0],
+            //                id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity"),
+            //                name = "$none$",
+            //                value = "$none$",
+            //                place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
+            //                place2 = (string)result.Attribute("SALinkIdentity"),
+            //                foundation = current_lookup[2],
+            //                value_type = "$none$"
+            //            };
+            //    }
+            //    else
+            //    {
+            //        results =
+            //            from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+            //            where (string)result.Parent.Attribute("SAPrpName") == current_lookup[1]
+            //            select new Thing
+            //            {
+            //                type = current_lookup[0],
+            //                id = (string)result.Attribute("SALinkIdentity") + (string)result.Parent.Parent.Attribute("SAObjId"),
+            //                name = "$none$",
+            //                value = "$none$",
+            //                place2 = (string)result.Parent.Parent.Attribute("SAObjId"),
+            //                place1 = (string)result.Attribute("SALinkIdentity"),
+            //                foundation = current_lookup[2],
+            //                value_type = "$none$"
+            //            };
+            //    }
+            //    tuples = tuples.Concat(results.ToList());
+            //}
 
-            tuples = tuples.GroupBy(x => x.id).Select(grp => grp.First());
+            //tuples = tuples.GroupBy(x => x.id).Select(grp => grp.First());
 
             //Regular TupleTypes
 
@@ -3765,6 +3766,38 @@ namespace EAWS.Core.SilverBullet
                     values3.Add(thing);
             }
 
+            //values_dic = values3.GroupBy(x => x.foundation).Select(grp => grp.First()).ToDictionary(x => x.foundation, x => x);
+
+            results =
+                    from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                    where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Non-specific Relation"
+                    where (string)result.Parent.Attribute("SAPrpName") == "From Table" || (string)result.Parent.Attribute("SAPrpName") == "From Entity"
+                    from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                    where (string)result3.Parent.Attribute("SAPrpName") == "To Table" || (string)result3.Parent.Attribute("SAPrpName") == "To Entity"
+                    where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Parent.Parent.Attribute("SAObjId")
+                    from result2 in root.Elements("Class").Elements("SADefinition")
+                    where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
+                    from result4 in root.Elements("Class").Elements("SADefinition")
+                    where (string)result3.Attribute("SALinkIdentity") == (string)result4.Attribute("SAObjId")
+
+                    select new Thing
+                    {
+                        type = "Non-specific",
+                        id = (string)result.Parent.Parent.Attribute("SAObjId"),
+                        name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
+                        value = "$none$",
+                        place1 = (string)result.Attribute("SALinkIdentity"),
+                        place2 = (string)result3.Attribute("SALinkIdentity"),
+                        foundation = "$none$",
+                        value_type = "$PK ID$"
+                    };
+
+            foreach (Thing thing in results)
+            {
+                //if (!values_dic.TryGetValue(thing.id, out value))
+                    values3.Add(thing);
+            }
+
             foreach (Thing thing in values3)
             {
                 values = new List<Thing>();
@@ -3785,7 +3818,7 @@ namespace EAWS.Core.SilverBullet
                 {
                     type = "Rule",
                     id = thing.id + "_73",
-                    name = (thing.type == "T" ? "Identifying" : "Non-Identifying"),
+                    name = (thing.type == "T" ? "Identifying" : (thing.type == "F" ? "Non-Identifying" : thing.type)),
                     value = "$none$",
                     place1 = "$none$",
                     place2 = "$none$",
@@ -4044,7 +4077,7 @@ namespace EAWS.Core.SilverBullet
                 {
                     type = "Rule",
                     id = thing.id + "_73",
-                    name = (thing.type == "T" ? "Identifying" : "Non-Identifying"),
+                    name = (thing.type == "T" ? "Identifying" : (thing.type == "F" ? "Non-Identifying" : thing.type)),
                     value = "$none$",
                     place1 = "$none$",
                     place2 = "$none$",
@@ -4681,32 +4714,32 @@ namespace EAWS.Core.SilverBullet
 
             //DIV-2 Relationships
 
-            results =
-                    from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                    where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Non-specific Relation" //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Relationship"
-                    where (string)result.Parent.Attribute("SAPrpName") == "From Entity"
-                    from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                    where (string)result3.Parent.Attribute("SAPrpName") == "To Entity"
-                    where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Parent.Parent.Attribute("SAObjId")
-                    from result2 in root.Elements("Class").Elements("SADefinition")
-                    where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
-                    from result4 in root.Elements("Class").Elements("SADefinition")
-                    where (string)result3.Attribute("SALinkIdentity") == (string)result4.Attribute("SAObjId")
+            //results =
+            //        from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+            //        where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Non-specific Relation" //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Relationship"
+            //        where (string)result.Parent.Attribute("SAPrpName") == "From Entity"
+            //        from result3 in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+            //        where (string)result3.Parent.Attribute("SAPrpName") == "To Entity"
+            //        where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Parent.Parent.Attribute("SAObjId")
+            //        from result2 in root.Elements("Class").Elements("SADefinition")
+            //        where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
+            //        from result4 in root.Elements("Class").Elements("SADefinition")
+            //        where (string)result3.Attribute("SALinkIdentity") == (string)result4.Attribute("SAObjId")
 
 
-                    select new Thing
-                    {
-                        type = "OverlapType",
-                        id = (string)result.Parent.Parent.Attribute("SAObjId")+"_1",
-                        name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
-                        value = "$none$",
-                        place1 = (string)result3.Attribute("SALinkIdentity"),
-                        place2 = (string)result.Attribute("SALinkIdentity"),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    };
+            //        select new Thing
+            //        {
+            //            type = "OverlapType",
+            //            id = (string)result.Parent.Parent.Attribute("SAObjId")+"_1",
+            //            name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
+            //            value = "$none$",
+            //            place1 = (string)result3.Attribute("SALinkIdentity"),
+            //            place2 = (string)result.Attribute("SALinkIdentity"),
+            //            foundation = "CoupleType",
+            //            value_type = "$none$"
+            //        };
 
-            tuple_types = tuple_types.Concat(results.ToList());
+            //tuple_types = tuple_types.Concat(results.ToList());
 
             results =
                     from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
@@ -6429,833 +6462,834 @@ namespace EAWS.Core.SilverBullet
 
         public static string PES2SA(byte[] input)
         {
-            Dictionary<string,Thing> things = new Dictionary<string,Thing>();
-            Dictionary<string, Thing> results_dic;
-            Dictionary<string, Location> location_dic = new Dictionary<string, Location>();
-            IEnumerable<Thing> tuple_types = new List<Thing>();
-            IEnumerable<Thing> tuples = new List<Thing>();
-            IEnumerable<Thing> results;
-            List<View> views = new List<View>();
-            string temp="";
-            string temp2="";
-            string temp3="";
-            string date = DateTime.Now.ToString("d");
-            string time = DateTime.Now.ToString("T");
-            string prop_date = DateTime.Now.ToString("yyyyMMdd");
-            string prop_time = DateTime.Now.ToString("HHmmss");
-            string minor_type;
-            string minor_type_name;
-            Guid view_GUID;
-            Guid thing_GUID;
-            Guid temp_GUID;
-            Dictionary<string, Guid> thing_GUIDs = new Dictionary<string, Guid>();
-            Dictionary<string, Thing> OV1_pic_views;
-            Dictionary<string, List<Thing>> CV4_CD_views;
-            Dictionary<string, List<Thing>> ARO_views;
-            Dictionary<string, Thing> doc_block_views;
-            Dictionary<string, List<Thing>> support_views;
-            Dictionary<string, List<Thing>> needline_views;
-            List<string> SA_Def_elements = new List<string>();
-            XElement root = XElement.Load(new MemoryStream(input));
-            List<List<Thing>> sorted_results;
-            //bool representation_scheme = false;
-            int count = 0;
-            int count2 = 0;
-            string loc_x, loc_y, size_x, size_y;
-            Thing value;
-            List<Thing> values;
-            XNamespace ns = "http://www.ideasgroup.org/xsd";
-            Location location;
-            List<string> errors_list = new List<string>();
+            return null;
+        //    Dictionary<string,Thing> things = new Dictionary<string,Thing>();
+        //    Dictionary<string, Thing> results_dic;
+        //    Dictionary<string, Location> location_dic = new Dictionary<string, Location>();
+        //    IEnumerable<Thing> tuple_types = new List<Thing>();
+        //    IEnumerable<Thing> tuples = new List<Thing>();
+        //    IEnumerable<Thing> results;
+        //    List<View> views = new List<View>();
+        //    string temp="";
+        //    string temp2="";
+        //    string temp3="";
+        //    string date = DateTime.Now.ToString("d");
+        //    string time = DateTime.Now.ToString("T");
+        //    string prop_date = DateTime.Now.ToString("yyyyMMdd");
+        //    string prop_time = DateTime.Now.ToString("HHmmss");
+        //    string minor_type;
+        //    string minor_type_name;
+        //    Guid view_GUID;
+        //    Guid thing_GUID;
+        //    Guid temp_GUID;
+        //    Dictionary<string, Guid> thing_GUIDs = new Dictionary<string, Guid>();
+        //    Dictionary<string, Thing> OV1_pic_views;
+        //    Dictionary<string, List<Thing>> CV4_CD_views;
+        //    Dictionary<string, List<Thing>> ARO_views;
+        //    Dictionary<string, Thing> doc_block_views;
+        //    Dictionary<string, List<Thing>> support_views;
+        //    Dictionary<string, List<Thing>> needline_views;
+        //    List<string> SA_Def_elements = new List<string>();
+        //    XElement root = XElement.Load(new MemoryStream(input));
+        //    List<List<Thing>> sorted_results;
+        //    //bool representation_scheme = false;
+        //    int count = 0;
+        //    int count2 = 0;
+        //    string loc_x, loc_y, size_x, size_y;
+        //    Thing value;
+        //    List<Thing> values;
+        //    XNamespace ns = "http://www.ideasgroup.org/xsd";
+        //    Location location;
+        //    List<string> errors_list = new List<string>();
 
-            // regular Things
+        //    // regular Things
 
-            foreach (string[] current_lookup in Element_Lookup)
-            {
-                if (current_lookup[5] != "default")
-                    continue;
-                //if (current_lookup[0] == "ArchitecturalDescription")
-                //{
-                //    results =
-                //      from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol").Elements("SAPicture")
-                //      where (string)result.Parent.Attribute("SAObjMinorTypeName") == "Picture"
-                //      where (from diagram in result.Parent.Parent.Parent.Elements("SADefinition")
-                //             where (string)diagram.Attribute("SAObjId") == (string)result.Parent.Attribute("SASymIdDef")
-                //             select diagram
-                //         ).Any()
-                //      select new Thing
-                //      {
-                //          type = "ArchitecturalDescription",
-                //          id = (string)result.Parent.Attribute("SASymIdDef"),
-                //          name = (string)result.Parent.Attribute("SAObjName"),
-                //          value = (string)result.Attribute("SAPictureData"),
-                //          place1 = "$none$",
-                //          place2 = "$none$",
-                //          foundation = "IndividualType",
-                //          value_type = "exemplar"
-                //      };
+        //    foreach (string[] current_lookup in Element_Lookup)
+        //    {
+        //        if (current_lookup[5] != "default")
+        //            continue;
+        //        //if (current_lookup[0] == "ArchitecturalDescription")
+        //        //{
+        //        //    results =
+        //        //      from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol").Elements("SAPicture")
+        //        //      where (string)result.Parent.Attribute("SAObjMinorTypeName") == "Picture"
+        //        //      where (from diagram in result.Parent.Parent.Parent.Elements("SADefinition")
+        //        //             where (string)diagram.Attribute("SAObjId") == (string)result.Parent.Attribute("SASymIdDef")
+        //        //             select diagram
+        //        //         ).Any()
+        //        //      select new Thing
+        //        //      {
+        //        //          type = "ArchitecturalDescription",
+        //        //          id = (string)result.Parent.Attribute("SASymIdDef"),
+        //        //          name = (string)result.Parent.Attribute("SAObjName"),
+        //        //          value = (string)result.Attribute("SAPictureData"),
+        //        //          place1 = "$none$",
+        //        //          place2 = "$none$",
+        //        //          foundation = "IndividualType",
+        //        //          value_type = "exemplar"
+        //        //      };
 
-                //    //if (results.Count() > 0)
-                //        //representation_scheme = true;
-                //}
-                //else
-                //{
+        //        //    //if (results.Count() > 0)
+        //        //        //representation_scheme = true;
+        //        //}
+        //        //else
+        //        //{
 
-                results =
-                    from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-                    where (string)result.Parent.Name.ToString() == current_lookup[0]
-                    select new Thing
-                        {
-                            type = current_lookup[0],
-                            id = ((string)result.Parent.Attribute("id")).Substring(2),
-                            name = (string)result.Attribute("exemplarText"),
-                            value = current_lookup[1],
-                            place1 = "$none$",
-                            place2 = "$none$",
-                            foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-                            value_type = "SAObjMinorTypeName"
-                        };
+        //        results =
+        //            from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+        //            where (string)result.Parent.Name.ToString() == current_lookup[0]
+        //            select new Thing
+        //                {
+        //                    type = current_lookup[0],
+        //                    id = ((string)result.Parent.Attribute("id")).Substring(2),
+        //                    name = (string)result.Attribute("exemplarText"),
+        //                    value = current_lookup[1],
+        //                    place1 = "$none$",
+        //                    place2 = "$none$",
+        //                    foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
+        //                    value_type = "SAObjMinorTypeName"
+        //                };
 
-                results_dic =
-                    (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-                     where (string)result.Parent.Name.ToString() == current_lookup[0]
-                     select new
-                     {
-                         key = ((string)result.Parent.Attribute("id")).Substring(2),
-                         value = new Thing
-                         {
-                             type = current_lookup[0],
-                             id = ((string)result.Parent.Attribute("id")).Substring(2),
-                             name = (string)result.Attribute("exemplarText"),
-                             value = current_lookup[1],
-                             place1 = "$none$",
-                             place2 = "$none$",
-                             foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-                             value_type = "SAObjMinorTypeName"
-                         }
-                     }).ToDictionary(a => a.key, a => a.value);
-                //}
+        //        results_dic =
+        //            (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+        //             where (string)result.Parent.Name.ToString() == current_lookup[0]
+        //             select new
+        //             {
+        //                 key = ((string)result.Parent.Attribute("id")).Substring(2),
+        //                 value = new Thing
+        //                 {
+        //                     type = current_lookup[0],
+        //                     id = ((string)result.Parent.Attribute("id")).Substring(2),
+        //                     name = (string)result.Attribute("exemplarText"),
+        //                     value = current_lookup[1],
+        //                     place1 = "$none$",
+        //                     place2 = "$none$",
+        //                     foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
+        //                     value_type = "SAObjMinorTypeName"
+        //                 }
+        //             }).ToDictionary(a => a.key, a => a.value);
+        //        //}
 
-                if (results_dic.Count() > 0)
-                    MergeDictionaries(things, results_dic);
-            }
+        //        if (results_dic.Count() > 0)
+        //            MergeDictionaries(things, results_dic);
+        //    }
 
-            //  diagramming
+        //    //  diagramming
 
-            results =
-                     from result in root.Elements("IdeasData").Elements("SpatialMeasure").Elements(ns + "Name")
-                     select new Thing
-                         {
-                             id = ((string)result.Parent.Attribute("id")).Substring(2,((string)result.Parent.Attribute("id")).Length-5),
-                             name = (string)result.Attribute("exemplarText"),
-                             value = (string)result.Parent.Attribute("numericValue"),
-                             place1 = "$none$",
-                             place2 = "$none$",
-                             foundation = "$none$",
-                             value_type = "diagramming"
-                         };
+        //    results =
+        //             from result in root.Elements("IdeasData").Elements("SpatialMeasure").Elements(ns + "Name")
+        //             select new Thing
+        //                 {
+        //                     id = ((string)result.Parent.Attribute("id")).Substring(2,((string)result.Parent.Attribute("id")).Length-5),
+        //                     name = (string)result.Attribute("exemplarText"),
+        //                     value = (string)result.Parent.Attribute("numericValue"),
+        //                     place1 = "$none$",
+        //                     place2 = "$none$",
+        //                     foundation = "$none$",
+        //                     value_type = "diagramming"
+        //                 };
 
-            sorted_results = results.GroupBy(x => x.id).Select(group => group.OrderBy(x => x.name).ToList()).ToList();
+        //    sorted_results = results.GroupBy(x => x.id).Select(group => group.OrderBy(x => x.name).ToList()).ToList();
 
-            foreach (List<Thing> coords in sorted_results)
-            {
-                location_dic.Add(coords.First().id, 
-                    new Location {
-                        id = coords.First().id,
-                        bottom_right_x = (string)coords[0].value,
-                        bottom_right_y = (string)coords[1].value,
-                        bottom_right_z ="0",
-                        top_left_x = (string)coords[3].value,
-                        top_left_y = (string)coords[4].value,
-                        top_left_z = "0",
-                    });
-            }
+        //    foreach (List<Thing> coords in sorted_results)
+        //    {
+        //        location_dic.Add(coords.First().id, 
+        //            new Location {
+        //                id = coords.First().id,
+        //                bottom_right_x = (string)coords[0].value,
+        //                bottom_right_y = (string)coords[1].value,
+        //                bottom_right_z ="0",
+        //                top_left_x = (string)coords[3].value,
+        //                top_left_y = (string)coords[4].value,
+        //                top_left_z = "0",
+        //            });
+        //    }
 
-            // doc block
+        //    // doc block
 
-            results =
-                    from result in root.Elements("IdeasData").Elements("Information")
-                    from result2 in root.Elements("IdeasData").Elements("describedBy")
-                    where ((string)result2.Attribute("tuplePlace2")).Substring(2) == ((string)result.Attribute("id")).Substring(2)
-                    select new Thing
-                    {
-                          type = "Information",
-                          id = ((string)result.Attribute("id")).Substring(2),
-                          name = (string)result.Attribute("exemplar"),
-                          value = "$none$",
-                          place1 = "$none$",
-                          place2 = "$none$",
-                          foundation = "IndividualType",
-                          value_type = "$none$"
-                      };
-            if (results.Count() > 0)
-            {
-                foreach (Thing thing in results)
-                {
-                    things.Remove(thing.id);
-                }
-            }
+        //    results =
+        //            from result in root.Elements("IdeasData").Elements("Information")
+        //            from result2 in root.Elements("IdeasData").Elements("describedBy")
+        //            where ((string)result2.Attribute("tuplePlace2")).Substring(2) == ((string)result.Attribute("id")).Substring(2)
+        //            select new Thing
+        //            {
+        //                  type = "Information",
+        //                  id = ((string)result.Attribute("id")).Substring(2),
+        //                  name = (string)result.Attribute("exemplar"),
+        //                  value = "$none$",
+        //                  place1 = "$none$",
+        //                  place2 = "$none$",
+        //                  foundation = "IndividualType",
+        //                  value_type = "$none$"
+        //              };
+        //    if (results.Count() > 0)
+        //    {
+        //        foreach (Thing thing in results)
+        //        {
+        //            things.Remove(thing.id);
+        //        }
+        //    }
 
-            doc_block_views =
-                   (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-                    where (string)result.Attribute("exemplarText") == "Doc Block Comment"
-                    from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-                    where (string)result2.Parent.Parent.Name.ToString() != "AV-2"
-                    where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-                    select new
-                    {
-                        key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
-                        value = new Thing
-                        {
-                            type = "$none$",
-                            id = ((string)result.Parent.Attribute("id")).Substring(2),
-                            name = (string)result.Attribute("exemplarText"),
-                            value = ((string)result.Parent.Attribute("exemplar")),
-                            place1 = "$none$",
-                            place2 = "$none$",
-                            foundation = "$none$",
-                            value_type = "Comment"
-                        }
-                    }).ToDictionary(a => a.key, a => a.value);
+        //    doc_block_views =
+        //           (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+        //            where (string)result.Attribute("exemplarText") == "Doc Block Comment"
+        //            from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+        //            where (string)result2.Parent.Parent.Name.ToString() != "AV-2"
+        //            where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+        //            select new
+        //            {
+        //                key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
+        //                value = new Thing
+        //                {
+        //                    type = "$none$",
+        //                    id = ((string)result.Parent.Attribute("id")).Substring(2),
+        //                    name = (string)result.Attribute("exemplarText"),
+        //                    value = ((string)result.Parent.Attribute("exemplar")),
+        //                    place1 = "$none$",
+        //                    place2 = "$none$",
+        //                    foundation = "$none$",
+        //                    value_type = "Comment"
+        //                }
+        //            }).ToDictionary(a => a.key, a => a.value);
 
-            //Support
+        //    //Support
 
-            results =
-                     from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-                     where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
-                     where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
-                     from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
-                     where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Attribute("place1Type")).Substring(2)
-                     from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
-                     where ((string)result2.Attribute("exemplarText") == "Support")
-                     where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
-                     from result6 in root.Elements("IdeasData").Elements("Resource")
-                     where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-                     from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
-                     where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
-                     from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
-                     where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
+        //    results =
+        //             from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
+        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
+        //             from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
+        //             where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Attribute("place1Type")).Substring(2)
+        //             from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
+        //             where ((string)result2.Attribute("exemplarText") == "Support")
+        //             where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
+        //             from result6 in root.Elements("IdeasData").Elements("Resource")
+        //             where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+        //             from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
+        //             where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
+        //             from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
+        //             where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
                      
-                     select new Thing
-                    {
-                        type = "SupportedBy",
-                        id = ((string)result.Attribute("place1Type")).Substring(2) + ((string)result4.Attribute("place1Type")).Substring(2),
-                        name = "$none$",
-                        value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
-                        place1 = ((string)result.Attribute("place1Type")).Substring(2),
-                        place2 = ((string)result4.Attribute("place1Type")).Substring(2),
-                        foundation = "$none$",
-                        value_type = "View ID"
-                    };
+        //             select new Thing
+        //            {
+        //                type = "SupportedBy",
+        //                id = ((string)result.Attribute("place1Type")).Substring(2) + ((string)result4.Attribute("place1Type")).Substring(2),
+        //                name = "$none$",
+        //                value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
+        //                place1 = ((string)result.Attribute("place1Type")).Substring(2),
+        //                place2 = ((string)result4.Attribute("place1Type")).Substring(2),
+        //                foundation = "$none$",
+        //                value_type = "View ID"
+        //            };
 
-            support_views = results.GroupBy(x => (string)x.value)
-                             .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+        //    support_views = results.GroupBy(x => (string)x.value)
+        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
 
-            if (results.Count() > 0)
-            {
-                foreach (Thing thing in results)
-                {
-                    things.Remove(thing.place1 + "_2");
-                    things.Remove(thing.place2 + "_2");
-                    things.Remove(thing.place1 + "_3");
-                    things.Remove(thing.place2 + "_3");
-                }
-            }
+        //    if (results.Count() > 0)
+        //    {
+        //        foreach (Thing thing in results)
+        //        {
+        //            things.Remove(thing.place1 + "_2");
+        //            things.Remove(thing.place2 + "_2");
+        //            things.Remove(thing.place1 + "_3");
+        //            things.Remove(thing.place2 + "_3");
+        //        }
+        //    }
 
-            // Needlines and System Resource Flow
+        //    // Needlines and System Resource Flow
 
-            results =
-                     from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-                     where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
-                     where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
-                     from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer").Elements(ns + "Name")
-                     where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("place1Type")).Substring(2)
-                     from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
-                     where ((string)result2.Attribute("exemplarText") == "Needline") || ((string)result2.Attribute("exemplarText") == "SF")
-                     where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
-                     from result6 in root.Elements("IdeasData").Elements("Resource")
-                     where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-                     from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
-                     where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
-                     from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
-                     where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
+        //    results =
+        //             from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
+        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
+        //             from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer").Elements(ns + "Name")
+        //             where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("place1Type")).Substring(2)
+        //             from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
+        //             where ((string)result2.Attribute("exemplarText") == "Needline") || ((string)result2.Attribute("exemplarText") == "SF")
+        //             where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
+        //             from result6 in root.Elements("IdeasData").Elements("Resource")
+        //             where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+        //             from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
+        //             where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
+        //             from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
+        //             where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
                      
-                     select new Thing
-                     {
-                         type = 
-                         Resource_Flow_Type(
-                         (string)result2.Attribute("exemplarText"), (string)result5.Parent.Parent.Name.ToString(), ((string)result.Parent.Attribute("place1Type")).Substring(2), ((string)result4.Attribute("place1Type")).Substring(2), things
-                         ),
-                         id = ((string)result2.Attribute("id")).Substring(1,((string)result2.Attribute("id")).Length-3),
-                         name = ((string)result.Attribute("exemplarText")),
-                         value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
-                         place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
-                         place2 = ((string)result4.Attribute("place1Type")).Substring(2),
-                         foundation = "$none$",
-                         value_type = "View ID"
-                     };
+        //             select new Thing
+        //             {
+        //                 type = 
+        //                 Resource_Flow_Type(
+        //                 (string)result2.Attribute("exemplarText"), (string)result5.Parent.Parent.Name.ToString(), ((string)result.Parent.Attribute("place1Type")).Substring(2), ((string)result4.Attribute("place1Type")).Substring(2), things
+        //                 ),
+        //                 id = ((string)result2.Attribute("id")).Substring(1,((string)result2.Attribute("id")).Length-3),
+        //                 name = ((string)result.Attribute("exemplarText")),
+        //                 value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
+        //                 place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
+        //                 place2 = ((string)result4.Attribute("place1Type")).Substring(2),
+        //                 foundation = "$none$",
+        //                 value_type = "View ID"
+        //             };
 
-            needline_views = results.GroupBy(x => (string)x.value)
-                             .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+        //    needline_views = results.GroupBy(x => (string)x.value)
+        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
 
-            if (results.Count() > 0)
-            {
-                foreach (Thing thing in needline_views.First().Value)
-                {
-                    things.Remove(thing.id + "_1");
-                    things.Remove(thing.id + "_2");
-                    things.Remove(thing.id + "_4");
-                    things.Add(thing.id,thing);
-                }
-            }
+        //    if (results.Count() > 0)
+        //    {
+        //        foreach (Thing thing in needline_views.First().Value)
+        //        {
+        //            things.Remove(thing.id + "_1");
+        //            things.Remove(thing.id + "_2");
+        //            things.Remove(thing.id + "_4");
+        //            things.Add(thing.id,thing);
+        //        }
+        //    }
 
-            // Capability Dependency
+        //    // Capability Dependency
 
-            results =
-                   from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-                   where (string)result2.Name.ToString() == "CV-4_BeforeAfterType"
-                   from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-                   where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-                   select new Thing
-                       {
-                           type = "Capability Dependency (DM2rx)",
-                           id = ((string)result.Parent.Attribute("id")).Substring(2),
-                           name = (string)result.Attribute("exemplarText"),
-                           value = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
-                           place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
-                           place2 = ((string)result.Parent.Attribute("place2Type")).Substring(2),
-                           foundation = "$none$",
-                           value_type = "View ID"
-                       };
+        //    results =
+        //           from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+        //           where (string)result2.Name.ToString() == "CV-4_BeforeAfterType"
+        //           from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+        //           where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+        //           select new Thing
+        //               {
+        //                   type = "Capability Dependency (DM2rx)",
+        //                   id = ((string)result.Parent.Attribute("id")).Substring(2),
+        //                   name = (string)result.Attribute("exemplarText"),
+        //                   value = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
+        //                   place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
+        //                   place2 = ((string)result.Parent.Attribute("place2Type")).Substring(2),
+        //                   foundation = "$none$",
+        //                   value_type = "View ID"
+        //               };
                 
-            CV4_CD_views = results.GroupBy(x => (string)x.value)
-                             .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+        //    CV4_CD_views = results.GroupBy(x => (string)x.value)
+        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
             
-            if (CV4_CD_views.Count() > 0)
-            {
-                foreach (Thing thing in CV4_CD_views.First().Value)
-                {
-                    things.Remove(thing.id);
-                }
-            }
+        //    if (CV4_CD_views.Count() > 0)
+        //    {
+        //        foreach (Thing thing in CV4_CD_views.First().Value)
+        //        {
+        //            things.Remove(thing.id);
+        //        }
+        //    }
 
-            //ARO
+        //    //ARO
 
-            results =
-                   from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-                   where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
-                   where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
-                   from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
-                   where ((string)result2.Attribute("exemplarText") == "ARO")
-                   where ((string)result5.Attribute("ref")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-                   from result6 in root.Elements("IdeasData").Elements("Resource").Elements(ns + "Name")
-                   where ((string)result6.Parent.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-                   from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
-                   where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
-                   select new Thing
-                   {
-                       type = "ActivityResourceOverlap (DM2r)",
-                       id = ((string)result3.Attribute("id")).Substring(2, ((string)result3.Attribute("id")).Length - 4),
-                       name = ((string)result6.Attribute("exemplarText")),
-                       value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
-                       place1 = ((string)result3.Attribute("place1Type")).Substring(2),
-                       place2 = ((string)result2.Parent.Attribute("place2Type")).Substring(2),
-                       foundation = "$none$",
-                       value_type = "View ID"
-                   };
+        //    results =
+        //           from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+        //           where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
+        //           where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
+        //           from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
+        //           where ((string)result2.Attribute("exemplarText") == "ARO")
+        //           where ((string)result5.Attribute("ref")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+        //           from result6 in root.Elements("IdeasData").Elements("Resource").Elements(ns + "Name")
+        //           where ((string)result6.Parent.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+        //           from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
+        //           where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
+        //           select new Thing
+        //           {
+        //               type = "ActivityResourceOverlap (DM2r)",
+        //               id = ((string)result3.Attribute("id")).Substring(2, ((string)result3.Attribute("id")).Length - 4),
+        //               name = ((string)result6.Attribute("exemplarText")),
+        //               value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
+        //               place1 = ((string)result3.Attribute("place1Type")).Substring(2),
+        //               place2 = ((string)result2.Parent.Attribute("place2Type")).Substring(2),
+        //               foundation = "$none$",
+        //               value_type = "View ID"
+        //           };
 
-            ARO_views = results.GroupBy(x => (string)x.value)
-                             .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+        //    ARO_views = results.GroupBy(x => (string)x.value)
+        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
 
-            if (ARO_views.Count() > 0)
-            {
-                foreach (Thing thing in ARO_views.First().Value)
-                {
-                    things.Remove(thing.id + "_1");
-                    things.Remove(thing.id + "_2");
-                    things.Remove(thing.id + "_3");
-                }
-            }
+        //    if (ARO_views.Count() > 0)
+        //    {
+        //        foreach (Thing thing in ARO_views.First().Value)
+        //        {
+        //            things.Remove(thing.id + "_1");
+        //            things.Remove(thing.id + "_2");
+        //            things.Remove(thing.id + "_3");
+        //        }
+        //    }
 
-            // OV-1 Pic
+        //    // OV-1 Pic
 
-            OV1_pic_views =
-                   (
-                    from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-                    where (string)result2.Name.ToString() == "OV-1_ArchitecturalDescription"
-                    from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-                    where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-                    from result3 in root.Elements("IdeasData").Elements("representationSchemeInstance")
-                    //where (string)result.Parent.Name.ToString() == "ArchitecturalDescription"
-                    where ((string)result3.Attribute("tuplePlace2")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-                    select new
-                    {
-                        key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
-                        value = new Thing
-                        {
-                            type = "ArchitecturalDescription",
-                            id = ((string)result.Parent.Attribute("id")).Substring(2),
-                            name = (string)result.Attribute("exemplarText"),
-                            value = ((string)result.Parent.Attribute("exemplar")),
-                            place1 = "$none$",
-                            place2 = "$none$",
-                            foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-                            value_type = "Picture"
-                        }
-                    }).ToDictionary(a => a.key, a => a.value);
+        //    OV1_pic_views =
+        //           (
+        //            from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+        //            where (string)result2.Name.ToString() == "OV-1_ArchitecturalDescription"
+        //            from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+        //            where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+        //            from result3 in root.Elements("IdeasData").Elements("representationSchemeInstance")
+        //            //where (string)result.Parent.Name.ToString() == "ArchitecturalDescription"
+        //            where ((string)result3.Attribute("tuplePlace2")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+        //            select new
+        //            {
+        //                key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
+        //                value = new Thing
+        //                {
+        //                    type = "ArchitecturalDescription",
+        //                    id = ((string)result.Parent.Attribute("id")).Substring(2),
+        //                    name = (string)result.Attribute("exemplarText"),
+        //                    value = ((string)result.Parent.Attribute("exemplar")),
+        //                    place1 = "$none$",
+        //                    place2 = "$none$",
+        //                    foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
+        //                    value_type = "Picture"
+        //                }
+        //            }).ToDictionary(a => a.key, a => a.value);
 
-            if (OV1_pic_views.Count() > 0)
-            {
-                foreach (Thing thing in OV1_pic_views.Values.ToList())
-                {
-                    things.Remove(thing.id);
-                }
-            }
+        //    if (OV1_pic_views.Count() > 0)
+        //    {
+        //        foreach (Thing thing in OV1_pic_views.Values.ToList())
+        //        {
+        //            things.Remove(thing.id);
+        //        }
+        //    }
 
-            // regular tuples
+        //    // regular tuples
 
-            foreach (string[] current_lookup in Tuple_Lookup)
-            {
-                if (current_lookup[3] != "1" && current_lookup[3] != "5")
-                    continue;
+        //    foreach (string[] current_lookup in Tuple_Lookup)
+        //    {
+        //        if (current_lookup[3] != "1" && current_lookup[3] != "5")
+        //            continue;
 
-                results =
-                    from result in root.Elements("IdeasData").Descendants()
-                    where (string)result.Name.ToString() == current_lookup[0]
-                    from result2 in root.Elements("IdeasData").Descendants()
-                    where ((string)result.Attribute("tuplePlace1")) == ((string)result2.Attribute("id"))
-                    where (string)result2.Name.ToString() == current_lookup[5]
-                    select new Thing
-                    {
-                        type = current_lookup[0],
-                        id = ((string)result.Attribute("id")).Substring(2),
-                        name = "$none$",
-                        value = (string)result2.Name.ToString(),
-                        place1 = ((string)result.Attribute("tuplePlace1")).Substring(2),
-                        place2 = ((string)result.Attribute("tuplePlace2")).Substring(2),
-                        foundation = current_lookup[2],
-                        value_type = "element type"
-                    };
+        //        results =
+        //            from result in root.Elements("IdeasData").Descendants()
+        //            where (string)result.Name.ToString() == current_lookup[0]
+        //            from result2 in root.Elements("IdeasData").Descendants()
+        //            where ((string)result.Attribute("tuplePlace1")) == ((string)result2.Attribute("id"))
+        //            where (string)result2.Name.ToString() == current_lookup[5]
+        //            select new Thing
+        //            {
+        //                type = current_lookup[0],
+        //                id = ((string)result.Attribute("id")).Substring(2),
+        //                name = "$none$",
+        //                value = (string)result2.Name.ToString(),
+        //                place1 = ((string)result.Attribute("tuplePlace1")).Substring(2),
+        //                place2 = ((string)result.Attribute("tuplePlace2")).Substring(2),
+        //                foundation = current_lookup[2],
+        //                value_type = "element type"
+        //            };
 
-                tuples = tuples.Concat(results.ToList());
-            }
+        //        tuples = tuples.Concat(results.ToList());
+        //    }
 
-            // regular tuple types
+        //    // regular tuple types
 
-            foreach (string[] current_lookup in Tuple_Type_Lookup)
-            {
+        //    foreach (string[] current_lookup in Tuple_Type_Lookup)
+        //    {
 
-                if (current_lookup[3] != "1" && current_lookup[3] != "5")
-                    continue;
+        //        if (current_lookup[3] != "1" && current_lookup[3] != "5")
+        //            continue;
 
-                results =
-                    from result in root.Elements("IdeasData").Descendants()
-                    where (string)result.Name.ToString() == current_lookup[0]
-                    from result2 in root.Elements("IdeasData").Descendants()
-                    where ((string)result.Attribute("place1Type")) == ((string)result2.Attribute("id"))
-                    where (string)result2.Name.ToString() == current_lookup[5]
+        //        results =
+        //            from result in root.Elements("IdeasData").Descendants()
+        //            where (string)result.Name.ToString() == current_lookup[0]
+        //            from result2 in root.Elements("IdeasData").Descendants()
+        //            where ((string)result.Attribute("place1Type")) == ((string)result2.Attribute("id"))
+        //            where (string)result2.Name.ToString() == current_lookup[5]
 
-                    select new Thing
-                    {
-                        type = current_lookup[0],
-                        id = ((string)result.Attribute("id")).Substring(2),
-                        name = "$none$",
-                        value = (string)result2.Name.ToString(),
-                        place1 = ((string)result.Attribute("place1Type")).Substring(2),
-                        place2 = ((string)result.Attribute("place2Type")).Substring(2),
-                        foundation = current_lookup[2],
-                        value_type = "element type"
-                    };
+        //            select new Thing
+        //            {
+        //                type = current_lookup[0],
+        //                id = ((string)result.Attribute("id")).Substring(2),
+        //                name = "$none$",
+        //                value = (string)result2.Name.ToString(),
+        //                place1 = ((string)result.Attribute("place1Type")).Substring(2),
+        //                place2 = ((string)result.Attribute("place2Type")).Substring(2),
+        //                foundation = current_lookup[2],
+        //                value_type = "element type"
+        //            };
 
-                tuple_types = tuple_types.Concat(results.ToList());
-            }
+        //        tuple_types = tuple_types.Concat(results.ToList());
+        //    }
 
-            // views
+        //    // views
 
-            foreach (string[] current_lookup in View_Lookup)
-            {
-                if (current_lookup[3] != "default")
-                    continue;
-                results =
-                    from result in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-                    where (string)result.Parent.Parent.Name.ToString() == current_lookup[0]
-                    select new Thing
-                    {
-                        type = current_lookup[0],
-                        id = ((string)result.Parent.Parent.Attribute("id")).Substring(2) + ((string)result.Attribute("ref")).Substring(2),
-                        name = ((string)result.Parent.Parent.Attribute("name")).Replace("&", " And "),
-                        place1 = ((string)result.Parent.Parent.Attribute("id")).Substring(2),
-                        place2 = ((string)result.Attribute("ref")).Substring(2),
-                        value = (things.TryGetValue(((string)result.Attribute("ref")).Substring(2), out value)) ? value : new Thing {type="$none$"},
-                        foundation = "$none$",
-                        value_type = "Thing"
-                    };
+        //    foreach (string[] current_lookup in View_Lookup)
+        //    {
+        //        if (current_lookup[3] != "default")
+        //            continue;
+        //        results =
+        //            from result in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+        //            where (string)result.Parent.Parent.Name.ToString() == current_lookup[0]
+        //            select new Thing
+        //            {
+        //                type = current_lookup[0],
+        //                id = ((string)result.Parent.Parent.Attribute("id")).Substring(2) + ((string)result.Attribute("ref")).Substring(2),
+        //                name = ((string)result.Parent.Parent.Attribute("name")).Replace("&", " And "),
+        //                place1 = ((string)result.Parent.Parent.Attribute("id")).Substring(2),
+        //                place2 = ((string)result.Attribute("ref")).Substring(2),
+        //                value = (things.TryGetValue(((string)result.Attribute("ref")).Substring(2), out value)) ? value : new Thing {type="$none$"},
+        //                foundation = "$none$",
+        //                value_type = "Thing"
+        //            };
 
 
-                sorted_results = results.GroupBy(x => x.name).Select(group => group.Distinct().ToList()).ToList();
-                //sorted_results = Add_Tuples(sorted_results, tuples);
-                //sorted_results = Add_Tuples(sorted_results, tuple_types);
+        //        sorted_results = results.GroupBy(x => x.name).Select(group => group.Distinct().ToList()).ToList();
+        //        //sorted_results = Add_Tuples(sorted_results, tuples);
+        //        //sorted_results = Add_Tuples(sorted_results, tuple_types);
 
-                foreach (List<Thing> view in sorted_results)
-                {
-                    List<Thing> mandatory_list = new List<Thing>();
-                    List<Thing> optional_list = new List<Thing>();
+        //        foreach (List<Thing> view in sorted_results)
+        //        {
+        //            List<Thing> mandatory_list = new List<Thing>();
+        //            List<Thing> optional_list = new List<Thing>();
 
-                    foreach (Thing thing in view)
-                    {
+        //            foreach (Thing thing in view)
+        //            {
 
-                        temp = Find_Mandatory_Optional((string)((Thing)thing.value).type, view.First().name, thing.type, thing.place1, ref errors_list);
-                        if (temp == "Mandatory")
-                        {
-                            mandatory_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
-                        }
-                        if (temp == "Optional")
-                        {
-                            optional_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
-                        }
-                    }
+        //                temp = Find_Mandatory_Optional((string)((Thing)thing.value).type, view.First().name, thing.type, thing.place1, ref errors_list);
+        //                if (temp == "Mandatory")
+        //                {
+        //                    mandatory_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
+        //                }
+        //                if (temp == "Optional")
+        //                {
+        //                    optional_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
+        //                }
+        //            }
 
-                    mandatory_list = mandatory_list.OrderBy(x => x.type).ToList();
-                    optional_list = optional_list.OrderBy(x => x.type).ToList();
+        //            mandatory_list = mandatory_list.OrderBy(x => x.type).ToList();
+        //            optional_list = optional_list.OrderBy(x => x.type).ToList();
 
-                    if (needline_views.TryGetValue(view.First().place1, out values))
-                        optional_list.AddRange(values);
+        //            if (needline_views.TryGetValue(view.First().place1, out values))
+        //                optional_list.AddRange(values);
 
-                    if (CV4_CD_views.TryGetValue(view.First().place1, out values))
-                        optional_list.AddRange(values);
+        //            if (CV4_CD_views.TryGetValue(view.First().place1, out values))
+        //                optional_list.AddRange(values);
 
-                    if (ARO_views.TryGetValue(view.First().place1, out values))
-                        optional_list.AddRange(values);
+        //            if (ARO_views.TryGetValue(view.First().place1, out values))
+        //                optional_list.AddRange(values);
 
-                    //if (Proper_View(mandatory_list, view.First().type))
-                    views.Add(new View { type = current_lookup[1], id = view.First().place1, name = view.First().name, mandatory = mandatory_list, optional = optional_list });
-                }
-            }
+        //            //if (Proper_View(mandatory_list, view.First().type))
+        //            views.Add(new View { type = current_lookup[1], id = view.First().place1, name = view.First().name, mandatory = mandatory_list, optional = optional_list });
+        //        }
+        //    }
 
-            // output
+        //    // output
 
-            foreach (string thing in things.Keys)
-            {
-                    thing_GUID = Guid.NewGuid();
-                    thing_GUIDs.Add(thing, thing_GUID);
-            }
+        //    foreach (string thing in things.Keys)
+        //    {
+        //            thing_GUID = Guid.NewGuid();
+        //            thing_GUIDs.Add(thing, thing_GUID);
+        //    }
 
-            using (var sw = new Utf8StringWriter())
-            {
-                using (var writer = XmlWriter.Create(sw))
-                {
+        //    using (var sw = new Utf8StringWriter())
+        //    {
+        //        using (var writer = XmlWriter.Create(sw))
+        //        {
 
-                    writer.WriteRaw(@"<Classes>");
+        //            writer.WriteRaw(@"<Classes>");
 
-                    foreach (View view in views)
-                    {
-                        count2 = 0;
-                        count++;
-                        view_GUID = Guid.NewGuid();
-                        minor_type = Find_View_SA_Minor_Type(view.type);
+        //            foreach (View view in views)
+        //            {
+        //                count2 = 0;
+        //                count++;
+        //                view_GUID = Guid.NewGuid();
+        //                minor_type = Find_View_SA_Minor_Type(view.type);
 
-                        writer.WriteRaw("<Class><SADiagram SAObjId=\"" + view.id + "\" SAObjName=\"" + view.name + "\" SAObjMinorTypeName=\"" + view.type
-                            + "\" SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"1\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\""
-                            + date + "\" SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"" + view.name + "\" "
-                            + "SADgmCLevelNumber=\"\" SADgmSnapGridEnt=\"0\" SADgmSnapGridLin=\"0\" SADgmPGridNumEnt=\"4 4\" SADgmPGridNumLin=\"10 10\""
-                            + " SADgmPGridSizeEnt=\"25 25\" SADgmPGridSizeLin=\"10 10\" SADgmGridUnit100=\"100 100\" SADgmBPresentationMenu=\"0\""
-                            + " SADgmBShowPages=\"0\" SADgmBShowRuler=\"0\" SADgmBShowGrid=\"-1\" SADgmBShowScroll=\"-1\" SADgmBShowNodeShadow=\"-1\""
-                            + " SADgmBShowLineShadow=\"0\" SADgmBShowTextShadow=\"0\" SADgmPShadowDelta=\"5 5\" SADgmRGBShadowColor=\"0x00c0c0c0\""
-                            + " SADgmRMargin=\"50 50 50 50\" SADgmBBorder=\"0\" SADgmBorderOffset=\"-13\" SADgmWBorderPenStyle=\"0x0010\" SADgmBDgmBorder=\"0\""
-                            + " SADgmIDgmForm=\"0\" SADgmWOrientation=\"0x0003\" SADgmBDgmPDefault=\"1\" SADgmBIsHierarchy=\"0\" SADgmBBackgroundColorOn=\"0\""
-                            + " SADgmRGBBackgroundColor=\"0x00ffffff\" SADgmWLinePenStyle=\"0x0103\">");
+        //                writer.WriteRaw("<Class><SADiagram SAObjId=\"" + view.id + "\" SAObjName=\"" + view.name + "\" SAObjMinorTypeName=\"" + view.type
+        //                    + "\" SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"1\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\""
+        //                    + date + "\" SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"" + view.name + "\" "
+        //                    + "SADgmCLevelNumber=\"\" SADgmSnapGridEnt=\"0\" SADgmSnapGridLin=\"0\" SADgmPGridNumEnt=\"4 4\" SADgmPGridNumLin=\"10 10\""
+        //                    + " SADgmPGridSizeEnt=\"25 25\" SADgmPGridSizeLin=\"10 10\" SADgmGridUnit100=\"100 100\" SADgmBPresentationMenu=\"0\""
+        //                    + " SADgmBShowPages=\"0\" SADgmBShowRuler=\"0\" SADgmBShowGrid=\"-1\" SADgmBShowScroll=\"-1\" SADgmBShowNodeShadow=\"-1\""
+        //                    + " SADgmBShowLineShadow=\"0\" SADgmBShowTextShadow=\"0\" SADgmPShadowDelta=\"5 5\" SADgmRGBShadowColor=\"0x00c0c0c0\""
+        //                    + " SADgmRMargin=\"50 50 50 50\" SADgmBBorder=\"0\" SADgmBorderOffset=\"-13\" SADgmWBorderPenStyle=\"0x0010\" SADgmBDgmBorder=\"0\""
+        //                    + " SADgmIDgmForm=\"0\" SADgmWOrientation=\"0x0003\" SADgmBDgmPDefault=\"1\" SADgmBIsHierarchy=\"0\" SADgmBBackgroundColorOn=\"0\""
+        //                    + " SADgmRGBBackgroundColor=\"0x00ffffff\" SADgmWLinePenStyle=\"0x0103\">");
 
-                        writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"1\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                            + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                            + "<SAProperty SAPrpName=\"Use Automatic Gradient Fills\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-                            + "<SAProperty SAPrpName=\"DGX File Name\" SAPrpValue=\"D" + count.ToString("D7") + ".DGX\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                            //+ ((minor_type == "283") ? "" : "<SAProperty SAPrpName=\"Hierarchical Numbering\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>") 
-                            + "<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-                            + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-                            + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
-                            + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + view_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
-                            // + "<SAProperty SAPrpName=\"Description\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
-                            //+ "<SAProperty SAPrpName=\"Vertical Pools and Lanes\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-                            //+ "<SAProperty SAPrpName=\"Check Connections\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-                            //+ "<SAProperty SAPrpName=\"Auto-create/update 1380\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-                            //+ "<SAProperty SAPrpName=\"Auto-populate Where of APBP\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-                            //+ "<SAProperty SAPrpName=\"Peers\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Diagram\"" 
-                            //+ " SAPrpEditDefMinorType=\"" + view.type + "\"/>"
-                            //+ "<SAProperty SAPrpName=\"Architecture Type\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"
-                            //+ "<SAProperty SAPrpName=\"Related Architecture Description\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\""
-                            //+ " SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"ArchitecturalDescription (DM2)\"/>"
-                            //+ "<SAProperty SAPrpName=\"OSLCLink\" SAPrpValue=\"\" SAPrpEditType=\"8\" SAPrpLength=\"4074\" SAPrpEditDefMajorType=\"Definition\""
-                            //+ " SAPrpEditDefMinorType=\"OSLC Link\"/>"
-                            //+ "<SAProperty SAPrpName=\"Reference Documents\" SAPrpValue=\"\" SAPrpEditType=\"18\" SAPrpLength=\"1024\"/>"
-                            + "<SAProperty SAPrpName=\"SA VISIO Last Modified By\" SAPrpValue=\"SA\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                            + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + DateTime.Now.ToString("yyyyMMdd") + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-                            + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + DateTime.Now.ToString("HHmmss") + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-                            + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>");
+        //                writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"1\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                    + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                    + "<SAProperty SAPrpName=\"Use Automatic Gradient Fills\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+        //                    + "<SAProperty SAPrpName=\"DGX File Name\" SAPrpValue=\"D" + count.ToString("D7") + ".DGX\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                    //+ ((minor_type == "283") ? "" : "<SAProperty SAPrpName=\"Hierarchical Numbering\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>") 
+        //                    + "<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+        //                    + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+        //                    + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
+        //                    + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + view_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
+        //                    // + "<SAProperty SAPrpName=\"Description\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Vertical Pools and Lanes\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Check Connections\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Auto-create/update 1380\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Auto-populate Where of APBP\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Peers\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Diagram\"" 
+        //                    //+ " SAPrpEditDefMinorType=\"" + view.type + "\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Architecture Type\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Related Architecture Description\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\""
+        //                    //+ " SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"ArchitecturalDescription (DM2)\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"OSLCLink\" SAPrpValue=\"\" SAPrpEditType=\"8\" SAPrpLength=\"4074\" SAPrpEditDefMajorType=\"Definition\""
+        //                    //+ " SAPrpEditDefMinorType=\"OSLC Link\"/>"
+        //                    //+ "<SAProperty SAPrpName=\"Reference Documents\" SAPrpValue=\"\" SAPrpEditType=\"18\" SAPrpLength=\"1024\"/>"
+        //                    + "<SAProperty SAPrpName=\"SA VISIO Last Modified By\" SAPrpValue=\"SA\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                    + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + DateTime.Now.ToString("yyyyMMdd") + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+        //                    + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + DateTime.Now.ToString("HHmmss") + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+        //                    + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>");
 
-                        List<Thing> thing_list = new List<Thing>(view.mandatory);
-                        thing_list.AddRange(view.optional);
+        //                List<Thing> thing_list = new List<Thing>(view.mandatory);
+        //                thing_list.AddRange(view.optional);
 
-                        foreach (Thing thing in thing_list)
-                        {
+        //                foreach (Thing thing in thing_list)
+        //                {
 
-                            if (thing_GUIDs.TryGetValue(thing.id, out thing_GUID) == false)
-                            {
-                                thing_GUID = Guid.NewGuid();
-                                thing_GUIDs.Add(thing.id, thing_GUID);
-                            }
+        //                    if (thing_GUIDs.TryGetValue(thing.id, out thing_GUID) == false)
+        //                    {
+        //                        thing_GUID = Guid.NewGuid();
+        //                        thing_GUIDs.Add(thing.id, thing_GUID);
+        //                    }
 
-                            if (location_dic.TryGetValue(view.id + thing.id, out location) == true)
-                            {
-                                loc_x = location.top_left_x;
-                                loc_y = location.top_left_y;
-                                size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
-                                size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
-                            }
-                            else
-                            {
-                                loc_x = "574";
-                                loc_y = "203";
-                                size_x = "125";
-                                size_y = "55";
-                            }
+        //                    if (location_dic.TryGetValue(view.id + thing.id, out location) == true)
+        //                    {
+        //                        loc_x = location.top_left_x;
+        //                        loc_y = location.top_left_y;
+        //                        size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
+        //                        size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
+        //                    }
+        //                    else
+        //                    {
+        //                        loc_x = "574";
+        //                        loc_y = "203";
+        //                        size_x = "125";
+        //                        size_y = "55";
+        //                    }
 
-                            minor_type_name = thing.type;
-                            minor_type = Find_Symbol_Element_SA_Minor_Type(ref minor_type_name, view.type);
+        //                    minor_type_name = thing.type;
+        //                    minor_type = Find_Symbol_Element_SA_Minor_Type(ref minor_type_name, view.type);
 
-                            writer.WriteRaw("<SASymbol SAObjId=\"" + thing.id + view.id.Substring(1) + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + minor_type_name + "\""
-                                + " SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\""
-                                + " SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;.&quot;" + thing.name + "&quot;\" SASymIdDgm=\"" + view.id + "\" SASymIdDef=\"" + thing.id + "\""
-                                //other
-                                + " SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"" + count2 + "\""
-                                + " SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\""
-                                + " SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\""
-                                + " SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x082a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\""
-                                + " SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\""
-                                + " SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0007\" SASymSeqNum=\"0\""
-                                + " SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\""
-                                + " SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\""
-                                + " SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\""
-                                + " SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"1\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\""
-                                + " SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"572\""
-                                + " SASymNameLocY=\"168\" SASymNameSizeX=\"121\" SASymNameSizeY=\"18\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\""
-                                + " SASymDescSizeY=\"0\">");
+        //                    writer.WriteRaw("<SASymbol SAObjId=\"" + thing.id + view.id.Substring(1) + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + minor_type_name + "\""
+        //                        + " SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\""
+        //                        + " SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;.&quot;" + thing.name + "&quot;\" SASymIdDgm=\"" + view.id + "\" SASymIdDef=\"" + thing.id + "\""
+        //                        //other
+        //                        + " SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"" + count2 + "\""
+        //                        + " SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\""
+        //                        + " SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\""
+        //                        + " SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x082a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\""
+        //                        + " SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\""
+        //                        + " SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0007\" SASymSeqNum=\"0\""
+        //                        + " SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\""
+        //                        + " SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\""
+        //                        + " SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\""
+        //                        + " SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"1\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\""
+        //                        + " SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"572\""
+        //                        + " SASymNameLocY=\"168\" SASymNameSizeX=\"121\" SASymNameSizeY=\"18\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\""
+        //                        + " SASymDescSizeY=\"0\">");
 
-                            writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                                + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                                + "<SAProperty SAPrpName=\"Object Class Number\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                                + "<SAProperty SAPrpName=\"Object Type Number\" SAPrpValue=\"" + Find_Definition_Element_SA_Minor_Type(thing.type) + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                                + "<SAProperty SAPrpName=\"Symbol Represents\" SAPrpValue=\"" + thing.type + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
-                                + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                                //+ "<SARelation SARelId=\"_1982\" SARelTypeNum=\"6\" SARelTypeName=\"connects\"/>"
-                                //+ "<SARelation SARelId=\"_1980\" SARelTypeNum=\"8\" SARelTypeName=\"connects\"/>"
-                                //+ "<SARelation SARelId=\"_1979\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
-                                //+ "<SARelation SARelId=\"_1991\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
-                                + "</SASymbol>");
+        //                    writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                        + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                        + "<SAProperty SAPrpName=\"Object Class Number\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                        + "<SAProperty SAPrpName=\"Object Type Number\" SAPrpValue=\"" + Find_Definition_Element_SA_Minor_Type(thing.type) + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                        + "<SAProperty SAPrpName=\"Symbol Represents\" SAPrpValue=\"" + thing.type + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
+        //                        + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                        //+ "<SARelation SARelId=\"_1982\" SARelTypeNum=\"6\" SARelTypeName=\"connects\"/>"
+        //                        //+ "<SARelation SARelId=\"_1980\" SARelTypeNum=\"8\" SARelTypeName=\"connects\"/>"
+        //                        //+ "<SARelation SARelId=\"_1979\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
+        //                        //+ "<SARelation SARelId=\"_1991\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
+        //                        + "</SASymbol>");
                             
-                            count2++;
-                        }
+        //                    count2++;
+        //                }
 
-                        if (OV1_pic_views.TryGetValue(view.id, out value))
-                        {
+        //                if (OV1_pic_views.TryGetValue(view.id, out value))
+        //                {
                             
-                            if (location_dic.TryGetValue(view.id + value.id, out location) == true)
-                            {
-                                loc_x = location.top_left_x;
-                                loc_y = location.top_left_y;
-                                size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
-                                size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
-                            }
-                            else
-                            {
-                                loc_x = "574";
-                                loc_y = "203";
-                                size_x = "125";
-                                size_y = "55";
-                            }
+        //                    if (location_dic.TryGetValue(view.id + value.id, out location) == true)
+        //                    {
+        //                        loc_x = location.top_left_x;
+        //                        loc_y = location.top_left_y;
+        //                        size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
+        //                        size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
+        //                    }
+        //                    else
+        //                    {
+        //                        loc_x = "574";
+        //                        loc_y = "203";
+        //                        size_x = "125";
+        //                        size_y = "55";
+        //                    }
 
-                            writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"" + value.name + "\" SAObjMinorTypeName=\"Picture\" SAObjMinorTypeNum=\"11\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"ir\""
-                                + " SAObjUpdateDate=\"2/5/2015\" SAObjUpdateTime=\"10:00:16 AM\" SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\""
-                                + " SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"1\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\""
-                                + " SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\""
-                                + " SASymFlags3=\"0x0000\" SASymTextFlags=\"0x003a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\""
-                                + " SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\""
-                                + " SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\""
-                                + " SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\""
-                                + " SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\""
-                                + " SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"-150\" SASymNameLocY=\"-100\" SASymNameSizeX=\"0\" SASymNameSizeY=\"0\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\" SASymDescSizeY=\"0\""
-                                + " SASymZPPicFile=\"P" + count.ToString("D7") + ".BMP\" SASymZPPicType=\"0x0101\">");
+        //                    writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"" + value.name + "\" SAObjMinorTypeName=\"Picture\" SAObjMinorTypeNum=\"11\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"ir\""
+        //                        + " SAObjUpdateDate=\"2/5/2015\" SAObjUpdateTime=\"10:00:16 AM\" SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\""
+        //                        + " SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"1\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\""
+        //                        + " SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\""
+        //                        + " SASymFlags3=\"0x0000\" SASymTextFlags=\"0x003a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\""
+        //                        + " SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\""
+        //                        + " SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\""
+        //                        + " SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\""
+        //                        + " SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\""
+        //                        + " SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"-150\" SASymNameLocY=\"-100\" SASymNameSizeX=\"0\" SASymNameSizeY=\"0\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\" SASymDescSizeY=\"0\""
+        //                        + " SASymZPPicFile=\"P" + count.ToString("D7") + ".BMP\" SASymZPPicType=\"0x0101\">");
 
-                            writer.WriteRaw("<SAPicture SAPictureEncodingMethod=\"Hex\" SAPictureEncodingVersion=\"1.0\" SAOriginalFile=\"P" + count.ToString("D7") + ".BMP\" SAOriginalFileLength=\"152054\" SAPictureData=\"" + value.value + "\"/>"
-                                + " <SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"~T~\" SAPrpValue=\"11\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/></SASymbol>");
-                        }
+        //                    writer.WriteRaw("<SAPicture SAPictureEncodingMethod=\"Hex\" SAPictureEncodingVersion=\"1.0\" SAOriginalFile=\"P" + count.ToString("D7") + ".BMP\" SAOriginalFileLength=\"152054\" SAPictureData=\"" + value.value + "\"/>"
+        //                        + " <SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"~T~\" SAPrpValue=\"11\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/></SASymbol>");
+        //                }
 
-                        if (doc_block_views.TryGetValue(view.id, out value))
-                        {
-                            if (location_dic.TryGetValue(view.id, out location) == true)
-                            {
-                                loc_x = location.top_left_x;
-                                loc_y = location.top_left_y;
-                                size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
-                                size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
-                            }
-                            else
-                            {
-                                loc_x = "574";
-                                loc_y = "203";
-                                size_x = "125";
-                                size_y = "55";
-                            }
+        //                if (doc_block_views.TryGetValue(view.id, out value))
+        //                {
+        //                    if (location_dic.TryGetValue(view.id, out location) == true)
+        //                    {
+        //                        loc_x = location.top_left_x;
+        //                        loc_y = location.top_left_y;
+        //                        size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
+        //                        size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
+        //                    }
+        //                    else
+        //                    {
+        //                        loc_x = "574";
+        //                        loc_y = "203";
+        //                        size_x = "125";
+        //                        size_y = "55";
+        //                    }
 
-                            writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"\" SAObjMinorTypeName=\"Doc Block\" SAObjMinorTypeNum=\"4\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"SAS\" SAObjUpdateDate=\"1/29/2015\" SAObjUpdateTime=\"3:01:32 PM\""
-                            + " SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"3\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"0\""
-                            + " SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x000a\""
-                            + " SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\""
-                            + " SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\""
-                            + " SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\""
-                            + " SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"569\" SASymNameLocY=\"166\" SASymNameSizeX=\"393\" SASymNameSizeY=\"51\""
-                            + " SASymDescLocX=\"620\" SASymDescLocY=\"367\" SASymDescSizeX=\"273\" SASymDescSizeY=\"17\" SASymZPDesc=\"" + value.value + "\"><SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                            + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"4\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"Description\" SAPrpValue=\"" + value.value + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/></SASymbol>");
-                        }
+        //                    writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"\" SAObjMinorTypeName=\"Doc Block\" SAObjMinorTypeNum=\"4\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"SAS\" SAObjUpdateDate=\"1/29/2015\" SAObjUpdateTime=\"3:01:32 PM\""
+        //                    + " SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"3\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"0\""
+        //                    + " SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x000a\""
+        //                    + " SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\""
+        //                    + " SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\""
+        //                    + " SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\""
+        //                    + " SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"569\" SASymNameLocY=\"166\" SASymNameSizeX=\"393\" SASymNameSizeY=\"51\""
+        //                    + " SASymDescLocX=\"620\" SASymDescLocY=\"367\" SASymDescSizeX=\"273\" SASymDescSizeY=\"17\" SASymZPDesc=\"" + value.value + "\"><SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                    + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"4\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"Description\" SAPrpValue=\"" + value.value + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/></SASymbol>");
+        //                }
 
-                        writer.WriteRaw(@"</SADiagram>");
+        //                writer.WriteRaw(@"</SADiagram>");
 
-                        foreach (Thing thing in thing_list)
-                        {
-                            if (!SA_Def_elements.Contains(thing.id))
-                            {
-                                SA_Def_elements.Add(thing.id);
-                                thing_GUID = thing_GUIDs[thing.id];
+        //                foreach (Thing thing in thing_list)
+        //                {
+        //                    if (!SA_Def_elements.Contains(thing.id))
+        //                    {
+        //                        SA_Def_elements.Add(thing.id);
+        //                        thing_GUID = thing_GUIDs[thing.id];
 
-                                minor_type = Find_Definition_Element_SA_Minor_Type(thing.type);
+        //                        minor_type = Find_Definition_Element_SA_Minor_Type(thing.type);
 
-                                writer.WriteRaw("<SADefinition SAObjId=\"" + thing.id + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + thing.type + "\" "
-                                    + "SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"3\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\" "
-                                    + "SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;." + thing.name + "\">"
-                                    + "<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                                    + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-                                    + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
-                                    + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"80\"/>"
-                                    + "<SAProperty SAPrpName=\"Is Instance\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-                                    + ((minor_type == "1327") ? "" : "<SAProperty SAPrpName=\"To Line End\" SAPrpValue=\"LineEnd1\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"));
+        //                        writer.WriteRaw("<SADefinition SAObjId=\"" + thing.id + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + thing.type + "\" "
+        //                            + "SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"3\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\" "
+        //                            + "SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;." + thing.name + "\">"
+        //                            + "<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                            + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+        //                            + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
+        //                            + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"80\"/>"
+        //                            + "<SAProperty SAPrpName=\"Is Instance\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+        //                            + ((minor_type == "1327") ? "" : "<SAProperty SAPrpName=\"To Line End\" SAPrpValue=\"LineEnd1\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"));
 
-                                //
+        //                        //
 
-                                //<SAProperty SAPrpName="Parent Of Capability" SAPrpValue="Definition:&quot;Capability (DM2)&quot;:&quot;99be13e4-03b9-43f1-bf82-0d508bea5cc3&quot;.&quot;(JCA 1.0) Force Support&quot;
-                                //    Definition:&quot;Capability (DM2)&quot;:a697273a-8c0e-4f84-b18e-7c6876dd0742.&quot;(JCA 2.0) Battlespace Awareness&quot;
-                                //    Definition:&quot;Capability (DM2)&quot;:&quot;3f98f92e-fe73-43e6-b506-7e4e86f861db&quot;.&quot;(JCA 3.0) Force Application&quot;
-                                //    Definition:&quot;Capability (DM2)&quot;:cd8cef3b-87a6-402f-9205-70e0794766c8.&quot;(JCA 4.0) Logistics&quot;
-                                //    Definition:&quot;Capability (DM2)&quot;:c5376ccf-5b8f-4a10-9d94-ef39ae03b453.&quot;(JCA 5.0) Command and Control&quot;
-                                //    Definition:&quot;Capability (DM2)&quot;:&quot;0f6cfd54-7aca-4c75-98b2-c7a785ad9fb6&quot;.&quot;(JCA 6.0) Net-Centric&quot;" SAPrpEditType="14" SAPrpLength="1200" SAPrpEditDefMajorType="Definition" SAPrpEditDefMinorType="Capability (DM2)">
-                                //    <SALink SALinkName="&quot;(JCA 1.0) Force Support&quot;" SALinkIdentity="_15647"/>
-                                //    <SALink SALinkName="&quot;(JCA 2.0) Battlespace Awareness&quot;" SALinkIdentity="_15639"/>
-                                //    <SALink SALinkName="&quot;(JCA 3.0) Force Application&quot;" SALinkIdentity="_15644"/>
-                                //    <SALink SALinkName="&quot;(JCA 4.0) Logistics&quot;" SALinkIdentity="_15648"/>
-                                //    <SALink SALinkName="&quot;(JCA 5.0) Command and Control&quot;" SALinkIdentity="_15643"/>
-                                //    <SALink SALinkName="&quot;(JCA 6.0) Net-Centric&quot;" SALinkIdentity="_15642"/>
-                                //</SAProperty>
+        //                        //<SAProperty SAPrpName="Parent Of Capability" SAPrpValue="Definition:&quot;Capability (DM2)&quot;:&quot;99be13e4-03b9-43f1-bf82-0d508bea5cc3&quot;.&quot;(JCA 1.0) Force Support&quot;
+        //                        //    Definition:&quot;Capability (DM2)&quot;:a697273a-8c0e-4f84-b18e-7c6876dd0742.&quot;(JCA 2.0) Battlespace Awareness&quot;
+        //                        //    Definition:&quot;Capability (DM2)&quot;:&quot;3f98f92e-fe73-43e6-b506-7e4e86f861db&quot;.&quot;(JCA 3.0) Force Application&quot;
+        //                        //    Definition:&quot;Capability (DM2)&quot;:cd8cef3b-87a6-402f-9205-70e0794766c8.&quot;(JCA 4.0) Logistics&quot;
+        //                        //    Definition:&quot;Capability (DM2)&quot;:c5376ccf-5b8f-4a10-9d94-ef39ae03b453.&quot;(JCA 5.0) Command and Control&quot;
+        //                        //    Definition:&quot;Capability (DM2)&quot;:&quot;0f6cfd54-7aca-4c75-98b2-c7a785ad9fb6&quot;.&quot;(JCA 6.0) Net-Centric&quot;" SAPrpEditType="14" SAPrpLength="1200" SAPrpEditDefMajorType="Definition" SAPrpEditDefMinorType="Capability (DM2)">
+        //                        //    <SALink SALinkName="&quot;(JCA 1.0) Force Support&quot;" SALinkIdentity="_15647"/>
+        //                        //    <SALink SALinkName="&quot;(JCA 2.0) Battlespace Awareness&quot;" SALinkIdentity="_15639"/>
+        //                        //    <SALink SALinkName="&quot;(JCA 3.0) Force Application&quot;" SALinkIdentity="_15644"/>
+        //                        //    <SALink SALinkName="&quot;(JCA 4.0) Logistics&quot;" SALinkIdentity="_15648"/>
+        //                        //    <SALink SALinkName="&quot;(JCA 5.0) Command and Control&quot;" SALinkIdentity="_15643"/>
+        //                        //    <SALink SALinkName="&quot;(JCA 6.0) Net-Centric&quot;" SALinkIdentity="_15642"/>
+        //                        //</SAProperty>
 
-                                //
+        //                        //
 
-                                sorted_results = Get_Tuples_place1(thing, tuples);
-                                sorted_results.AddRange(Get_Tuples_place1(thing, tuple_types));
-                                sorted_results.AddRange(Get_Tuples_place2(thing, tuples));
-                                sorted_results.AddRange(Get_Tuples_place2(thing, tuple_types));
-                                values = new List<Thing>();
-                                if(support_views.TryGetValue(view.id, out values))
-                                    sorted_results.AddRange(Get_Tuples_place1(thing, values));
-                                values = new List<Thing>();
-                                if (needline_views.TryGetValue(view.id, out values))
-                                    sorted_results.AddRange(Get_Tuples_id(thing, values));
+        //                        sorted_results = Get_Tuples_place1(thing, tuples);
+        //                        sorted_results.AddRange(Get_Tuples_place1(thing, tuple_types));
+        //                        sorted_results.AddRange(Get_Tuples_place2(thing, tuples));
+        //                        sorted_results.AddRange(Get_Tuples_place2(thing, tuple_types));
+        //                        values = new List<Thing>();
+        //                        if(support_views.TryGetValue(view.id, out values))
+        //                            sorted_results.AddRange(Get_Tuples_place1(thing, values));
+        //                        values = new List<Thing>();
+        //                        if (needline_views.TryGetValue(view.id, out values))
+        //                            sorted_results.AddRange(Get_Tuples_id(thing, values));
 
 
-                                if (sorted_results.Count() > 0)
-                                {
-                                    foreach (List<Thing> list in sorted_results)
-                                    {
-                                        count2 = 0;
+        //                        if (sorted_results.Count() > 0)
+        //                        {
+        //                            foreach (List<Thing> list in sorted_results)
+        //                            {
+        //                                count2 = 0;
                                         
-                                        foreach (Thing rela in list)
-                                        {
+        //                                foreach (Thing rela in list)
+        //                                {
                                             
-                                            if (thing_GUIDs.TryGetValue(rela.place2, out temp_GUID))
-                                            {
-                                                if (count2 == 0)
-                                                {
-                                                    temp = "<SAProperty SAPrpName=\"" + list.First().type + "\" SAPrpValue=\"";
-                                                    temp3 = "";
-                                                    temp2 = "";
-                                                    count2++;
-                                                }
+        //                                    if (thing_GUIDs.TryGetValue(rela.place2, out temp_GUID))
+        //                                    {
+        //                                        if (count2 == 0)
+        //                                        {
+        //                                            temp = "<SAProperty SAPrpName=\"" + list.First().type + "\" SAPrpValue=\"";
+        //                                            temp3 = "";
+        //                                            temp2 = "";
+        //                                            count2++;
+        //                                        }
 
-                                                if (things.TryGetValue(rela.place2, out value))
-                                                {
-                                                    temp = temp + "Definition:&quot;" + value.value + "&quot;:&quot;" + temp_GUID + ".&quot;" + value.name + "&quot;";
-                                                    temp2 = "\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"" + value.value + "\">";
-                                                    temp3 = temp3 + "<SALink SALinkName=\"&quot;" + value.name + "&quot;\" SALinkIdentity=\"" + value.id + "\"/>";
-                                                }
-                                            }
-                                        }
+        //                                        if (things.TryGetValue(rela.place2, out value))
+        //                                        {
+        //                                            temp = temp + "Definition:&quot;" + value.value + "&quot;:&quot;" + temp_GUID + ".&quot;" + value.name + "&quot;";
+        //                                            temp2 = "\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"" + value.value + "\">";
+        //                                            temp3 = temp3 + "<SALink SALinkName=\"&quot;" + value.name + "&quot;\" SALinkIdentity=\"" + value.id + "\"/>";
+        //                                        }
+        //                                    }
+        //                                }
 
-                                        if (count2 > 0)
-                                            writer.WriteRaw(temp + temp2 + temp3 + "</SAProperty>");  
-                                    }
-                                }
+        //                                if (count2 > 0)
+        //                                    writer.WriteRaw(temp + temp2 + temp3 + "</SAProperty>");  
+        //                            }
+        //                        }
 
-                                //
+        //                        //
 
-                                writer.WriteRaw("<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-                               + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-                               + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
-                               + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-                               + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-                               + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
-                               + "</SADefinition>");
-                            }
-                        }
-                        //writer.WriteRaw(@"<MandatoryElements>");
+        //                        writer.WriteRaw("<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+        //                       + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+        //                       + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
+        //                       + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+        //                       + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+        //                       + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
+        //                       + "</SADefinition>");
+        //                    }
+        //                }
+        //                //writer.WriteRaw(@"<MandatoryElements>");
 
-                        //foreach (Thing thing in view.mandatory)
-                        //{
-                        //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
-                        //}
+        //                //foreach (Thing thing in view.mandatory)
+        //                //{
+        //                //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
+        //                //}
 
-                        //writer.WriteRaw(@"</MandatoryElements>");
-                        //writer.WriteRaw(@"<OptionalElements>");
+        //                //writer.WriteRaw(@"</MandatoryElements>");
+        //                //writer.WriteRaw(@"<OptionalElements>");
 
-                        //foreach (Thing thing in view.optional)
-                        //{
-                        //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
-                        //}
+        //                //foreach (Thing thing in view.optional)
+        //                //{
+        //                //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
+        //                //}
 
-                        //writer.WriteRaw(@"</OptionalElements>");
-                        //writer.WriteRaw("</" + view.type + ">");
-                        writer.WriteRaw(@"</Class>");
-                    }
+        //                //writer.WriteRaw(@"</OptionalElements>");
+        //                //writer.WriteRaw("</" + view.type + ">");
+        //                writer.WriteRaw(@"</Class>");
+        //            }
 
-                    //foreach (Thing thing in things)
-                    //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id + "\" "
-                    //        + (((string)thing.value == "$none$") ? "" : thing.value_type + "=\"" + (string)thing.value + "\"") + ">" + "<ideas:Name exemplarText=\"" + thing.name
-                    //        + "\" namingScheme=\"ns1\" id=\"n" + thing.id + "\"/></" + thing.type + ">");
+        //            //foreach (Thing thing in things)
+        //            //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id + "\" "
+        //            //        + (((string)thing.value == "$none$") ? "" : thing.value_type + "=\"" + (string)thing.value + "\"") + ">" + "<ideas:Name exemplarText=\"" + thing.name
+        //            //        + "\" namingScheme=\"ns1\" id=\"n" + thing.id + "\"/></" + thing.type + ">");
 
-                    //foreach (Thing thing in tuple_types)
-                    //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
-                    //    + "\" place1Type=\"id" + thing.place1 + "\" place2Type=\"id" + thing.place2 + "\"/>");
+        //            //foreach (Thing thing in tuple_types)
+        //            //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
+        //            //    + "\" place1Type=\"id" + thing.place1 + "\" place2Type=\"id" + thing.place2 + "\"/>");
 
-                    //foreach (Thing thing in tuples)
-                    //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
-                    //    + "\" tuplePlace1=\"id" + thing.place1 + "\" tuplePlace2=\"id" + thing.place2 + "\"/>");
+        //            //foreach (Thing thing in tuples)
+        //            //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
+        //            //    + "\" tuplePlace1=\"id" + thing.place1 + "\" tuplePlace2=\"id" + thing.place2 + "\"/>");
 
-                    //writer.WriteRaw(@"</IdeasData>");
+        //            //writer.WriteRaw(@"</IdeasData>");
 
-                    //writer.WriteRaw(@"<IdeasViews frameworkVersion=""DM2.02_Chg_1"" framework=""DoDAF"">");
+        //            //writer.WriteRaw(@"<IdeasViews frameworkVersion=""DM2.02_Chg_1"" framework=""DoDAF"">");
 
-                    writer.WriteRaw(@"</Classes>");
+        //            writer.WriteRaw(@"</Classes>");
 
-                    writer.Flush();
-                }
-                return sw.ToString();
-            }
-        }
+        //            writer.Flush();
+        //        }
+        //        return sw.ToString();
+        //    }
+        //}
 
 //        /////////RSA
 
@@ -7823,7 +7857,7 @@ namespace EAWS.Core.SilverBullet
 //                }
 //                return sw.ToString();
 //            }
-//        }
+        }
 
 //        ////////////////////
 //        ////////////////////

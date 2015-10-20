@@ -420,6 +420,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "OV-5b"}, 
                             new string[] {"superSubtype", "OV-5b"}, 
                             new string[] {"WholePartType", "OV-5b"},
+                            new string[] {"OverlapType", "OV-5b"},
                             new string[] {"activityPerformedByPerformer", "OV-5b"},
                             new string[] {"Condition", "OV-6b"},
                             new string[] {"Information", "OV-6b"},
@@ -3249,7 +3250,7 @@ namespace EAWS.Core.SilverBullet
                                                 new Thing
                                                 {
                                                     type = "OverlapType",
-                                                    id = thing.id,
+                                                    id = thing.id+"_NL1",
                                                     name = thing.name,
                                                     value = "$none$",
                                                     place1 = app.place1,
@@ -5368,189 +5369,189 @@ namespace EAWS.Core.SilverBullet
             //if (sorted_results.First().Count() > 0)
             //    views.Add(new View { type = "OV-3", id = "_2", name = "NEAR OV-3", optional = optional_list, mandatory = mandatory_list });
 
-            //SV-6
+            ////SV-6
 
-            mandatory_list = new List<Thing>();
-            values = new List<Thing>();
-            optional_list = new List<Thing>();
-            sorted_results = new List<List<Thing>>();
+            //mandatory_list = new List<Thing>();
+            //values = new List<Thing>();
+            //optional_list = new List<Thing>();
+            //sorted_results = new List<List<Thing>>();
 
-            values_dic2 = things_dic.Where(x => x.Value.type == "Data").ToDictionary(p => p.Key, p => p.Value);
+            //values_dic2 = things_dic.Where(x => x.Value.type == "Data").ToDictionary(p => p.Key, p => p.Value);
 
-            results = values4.Where(x => x.type == "activityConsumesResource").Where(x => values_dic2.ContainsKey(x.place1));
-            values_dic = values4.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place2).Where(x => x.Count() == 1).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
+            //results = values4.Where(x => x.type == "activityConsumesResource").Where(x => values_dic2.ContainsKey(x.place1));
+            //values_dic = values4.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place2).Where(x => x.Count() == 1).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
 
-            foreach (Thing rela in results)
-            {
-                if (values_dic.TryGetValue(rela.place1, out value))
-                {
-                    values.Add(rela);
-                    values.Add(value);
-                }
+            //foreach (Thing rela in results)
+            //{
+            //    if (values_dic.TryGetValue(rela.place1, out value))
+            //    {
+            //        values.Add(rela);
+            //        values.Add(value);
+            //    }
 
-            }
+            //}
 
-            count = 0;
-            count2 = values.Count();
+            //count = 0;
+            //count2 = values.Count();
 
-            //var duplicateKeys = app2.GroupBy(x => x.place2)
-            //            .Where(group => group.Count() > 1)
-            //            .Select(group => group.Key);
+            ////var duplicateKeys = app2.GroupBy(x => x.place2)
+            ////            .Where(group => group.Count() > 1)
+            ////            .Select(group => group.Key);
 
-            //List<string> test = duplicateKeys.ToList();
+            ////List<string> test = duplicateKeys.ToList();
 
-            values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").Where(x => Allowed_Element("SV-6", x.place1, ref things_dic)).GroupBy(x => x.place2).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
+            //values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").Where(x => Allowed_Element("SV-6", x.place1, ref things_dic)).GroupBy(x => x.place2).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
 
-            while (count < count2)
-            {
-                add = false;
+            //while (count < count2)
+            //{
+            //    add = false;
 
-                foreach (Thing thing in values)
-                {
-                    if (values_dic2.TryGetValue(values[count].place2, out value))
-                        if (values_dic2.TryGetValue(values[count + 1].place1, out value2))
-                        {
-                            add = true;
-                            values.Add(value);
-                            values.Add(value2);
-                            break;
-                        }
-                }
-
-
-                if (add == true)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    values.RemoveAt(count);
-                    values.RemoveAt(count);
-                    count2 = count2 - 2;
-                }
-            }
-
-            sorted_results.Add(Add_Places(things_dic, values));
-
-            foreach (Thing thing in sorted_results.First())
-            {
-                temp = Find_Mandatory_Optional(thing.type, "SV-6", "SV-6", "_3", ref errors_list);
-                if (temp == "Mandatory")
-                    mandatory_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
-                if (temp == "Optional")
-                    optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
-            }
-
-            if (sorted_results.First().Count() > 0)
-                views.Add(new View { type = "SV-6", id = "_3", name = "NEAR SV-6", optional = optional_list, mandatory = mandatory_list });
-
-            //SvcV-6
-
-            mandatory_list = new List<Thing>();
-            values = new List<Thing>();
-            optional_list = new List<Thing>();
-            sorted_results = new List<List<Thing>>();
-
-            values_dic2 = things_dic.Where(x => x.Value.type == "Data").ToDictionary(p => p.Key, p => p.Value);
-
-            results = values4.Where(x => x.type == "activityConsumesResource").Where(x => values_dic2.ContainsKey(x.place1));
-            values_dic = values4.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place2).Where(x => x.Count() == 1).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
-
-            foreach (Thing rela in results)
-            {
-                if (values_dic.TryGetValue(rela.place1, out value))
-                {
-                    values.Add(rela);
-                    values.Add(value);
-                }
-
-            }
-
-            count = 0;
-            count2 = values.Count();
-
-            //var duplicateKeys = app2.GroupBy(x => x.place2)
-            //            .Where(group => group.Count() > 1)
-            //            .Select(group => group.Key);
-
-            //List<string> test = duplicateKeys.ToList();
-
-            values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").Where(x => Allowed_Element("SvcV-6", x.place1, ref things_dic)).GroupBy(x => x.place2).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
-
-            while (count < count2)
-            {
-                add = false;
-
-                foreach (Thing thing in values)
-                {
-                    if (values_dic2.TryGetValue(values[count].place2, out value))
-                        if (values_dic2.TryGetValue(values[count + 1].place1, out value2))
-                        {
-                            add = true;
-                            values.Add(value);
-                            values.Add(value2);
-                            break;
-                        }
-                }
+            //    foreach (Thing thing in values)
+            //    {
+            //        if (values_dic2.TryGetValue(values[count].place2, out value))
+            //            if (values_dic2.TryGetValue(values[count + 1].place1, out value2))
+            //            {
+            //                add = true;
+            //                values.Add(value);
+            //                values.Add(value2);
+            //                break;
+            //            }
+            //    }
 
 
-                if (add == true)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    values.RemoveAt(count);
-                    values.RemoveAt(count);
-                    count2 = count2 - 2;
-                }
-            }
+            //    if (add == true)
+            //    {
+            //        count = count + 2;
+            //    }
+            //    else
+            //    {
+            //        values.RemoveAt(count);
+            //        values.RemoveAt(count);
+            //        count2 = count2 - 2;
+            //    }
+            //}
 
-            sorted_results.Add(Add_Places(things_dic, values));
+            //sorted_results.Add(Add_Places(things_dic, values));
 
-            foreach (Thing thing in sorted_results.First())
-            {
+            //foreach (Thing thing in sorted_results.First())
+            //{
+            //    temp = Find_Mandatory_Optional(thing.type, "SV-6", "SV-6", "_3", ref errors_list);
+            //    if (temp == "Mandatory")
+            //        mandatory_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
+            //    if (temp == "Optional")
+            //        optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
+            //}
 
-                temp = Find_Mandatory_Optional(thing.type, "SvcV-6", "SvcV-6", "_4", ref errors_list);
-                if (temp == "Mandatory")
-                    mandatory_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
-                if (temp == "Optional")
-                    optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
+            //if (sorted_results.First().Count() > 0)
+            //    views.Add(new View { type = "SV-6", id = "_3", name = "NEAR SV-6", optional = optional_list, mandatory = mandatory_list });
 
-                if ((string)thing.type == "Service")
-                {
-                    values = new List<Thing>();
+            ////SvcV-6
 
-                    values.Add(new Thing
-                    {
-                        type = "ServiceDescription",
-                        id = thing.place2 + "_2",
-                        name = thing.place2 + "_Description",
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "Individual",
-                        value_type = "$none$"
-                    });
+            //mandatory_list = new List<Thing>();
+            //values = new List<Thing>();
+            //optional_list = new List<Thing>();
+            //sorted_results = new List<List<Thing>>();
 
-                    values.Add(new Thing
-                    {
-                        type = "serviceDescribedBy",
-                        id = thing.place2 + "_1",
-                        name = "$none$",
-                        value = "$none$",
-                        place1 = thing.id,
-                        place2 = thing.id + "_2",
-                        foundation = "namedBy",
-                        value_type = "$none$"
-                    });
+            //values_dic2 = things_dic.Where(x => x.Value.type == "Data").ToDictionary(p => p.Key, p => p.Value);
 
-                    mandatory_list.AddRange(values);
-                }
-            }
+            //results = values4.Where(x => x.type == "activityConsumesResource").Where(x => values_dic2.ContainsKey(x.place1));
+            //values_dic = values4.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place2).Where(x => x.Count() == 1).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
 
-            if (sorted_results.First().Count() > 0)
-                views.Add(new View { type = "SvcV-6", id = "_4", name = "NEAR SvcV-6", optional = optional_list, mandatory = mandatory_list });
+            //foreach (Thing rela in results)
+            //{
+            //    if (values_dic.TryGetValue(rela.place1, out value))
+            //    {
+            //        values.Add(rela);
+            //        values.Add(value);
+            //    }
+
+            //}
+
+            //count = 0;
+            //count2 = values.Count();
+
+            ////var duplicateKeys = app2.GroupBy(x => x.place2)
+            ////            .Where(group => group.Count() > 1)
+            ////            .Select(group => group.Key);
+
+            ////List<string> test = duplicateKeys.ToList();
+
+            //values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").Where(x => Allowed_Element("SvcV-6", x.place1, ref things_dic)).GroupBy(x => x.place2).Select(grp => grp.First()).ToDictionary(x => x.place2, x => x);
+
+            //while (count < count2)
+            //{
+            //    add = false;
+
+            //    foreach (Thing thing in values)
+            //    {
+            //        if (values_dic2.TryGetValue(values[count].place2, out value))
+            //            if (values_dic2.TryGetValue(values[count + 1].place1, out value2))
+            //            {
+            //                add = true;
+            //                values.Add(value);
+            //                values.Add(value2);
+            //                break;
+            //            }
+            //    }
+
+
+            //    if (add == true)
+            //    {
+            //        count = count + 2;
+            //    }
+            //    else
+            //    {
+            //        values.RemoveAt(count);
+            //        values.RemoveAt(count);
+            //        count2 = count2 - 2;
+            //    }
+            //}
+
+            //sorted_results.Add(Add_Places(things_dic, values));
+
+            //foreach (Thing thing in sorted_results.First())
+            //{
+
+            //    temp = Find_Mandatory_Optional(thing.type, "SvcV-6", "SvcV-6", "_4", ref errors_list);
+            //    if (temp == "Mandatory")
+            //        mandatory_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
+            //    if (temp == "Optional")
+            //        optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
+
+            //    if ((string)thing.type == "Service")
+            //    {
+            //        values = new List<Thing>();
+
+            //        values.Add(new Thing
+            //        {
+            //            type = "ServiceDescription",
+            //            id = thing.place2 + "_2",
+            //            name = thing.place2 + "_Description",
+            //            value = "$none$",
+            //            place1 = "$none$",
+            //            place2 = "$none$",
+            //            foundation = "Individual",
+            //            value_type = "$none$"
+            //        });
+
+            //        values.Add(new Thing
+            //        {
+            //            type = "serviceDescribedBy",
+            //            id = thing.place2 + "_1",
+            //            name = "$none$",
+            //            value = "$none$",
+            //            place1 = thing.id,
+            //            place2 = thing.id + "_2",
+            //            foundation = "namedBy",
+            //            value_type = "$none$"
+            //        });
+
+            //        mandatory_list.AddRange(values);
+            //    }
+            //}
+
+            //if (sorted_results.First().Count() > 0)
+            //    views.Add(new View { type = "SvcV-6", id = "_4", name = "NEAR SvcV-6", optional = optional_list, mandatory = mandatory_list });
 
             //DIV-3 Parts
 

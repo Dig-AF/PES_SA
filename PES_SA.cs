@@ -154,7 +154,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"OV-5b", "OV-05b Operational Activity Model (DM2)", "285", "default"},
                             new string[] {"OV-6a", "OV-06a Operational Rules Model (DM2)", "286", "default"},
                             new string[] {"OV-6b", "OV-06b State Transition (DM2)", "339", "default"},
-                            
+                            new string[] {"OV-6c", "OV-06c Performers Event-Trace (DM2)", "340", "extra"},  
                             
                             new string[] {"OV-6c", "OV-06c Activities Event-Trace (DM2)", "288", "default"},
                             new string[] {"OV-6c", "OV-06c/SV-11c/SvcV-11c BPMN Event Trace Description (DM2x)", "142", "default"},
@@ -181,8 +181,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"SV-4", "SV-04 Systems Functionality Description Alternative (DM2)", "293", "extra"},
                             new string[] {"SV-10c", "SV-10c Systems Event-Trace (DM2)", "335", "default"},
                             new string[] {"DIV-2", "DIV-02 Logical Data Model (IDEF1X) (DM2)", "23", "default"},
-                            new string[] {"OV-6b", "OV-06b State Transition Alternative (DM2)", "287", "extra"},
-                            new string[] {"OV-6c", "OV-06c Performers Event-Trace (DM2)", "340", "extra"},   
+                            new string[] {"OV-6b", "OV-06b State Transition Alternative (DM2)", "287", "extra"}, 
                             new string[] {"OV-2", "OV-02 Operational Resource Flow Alternative (DM2)", "282", "extra"},
                             new string[] {"PV-1", "PV-01 Project Portfolio Relationships (DM2)", "342", "default"},
                             new string[] {"PV-1", "PV-01 Project Portfolio Relationships At Time (DM2)", "343", "extra"},

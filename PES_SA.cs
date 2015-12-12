@@ -21,8 +21,8 @@ namespace EAWS.Core.SilverBullet
                             new string[] { "Activity", "BPMN Process", "IndividualType", "", "", "extra" },
 
                             new string[] { "Activity", "Data Store (DM2x)", "IndividualType", "", "", "extra" },
-                            new string[] { "Activity", "Project Milestone (DM2x)", "IndividualType", "", "", "extra" },
-                            new string[] { "Activity", "System Milestone (DM2x)", "IndividualType", "", "", "extra" },
+                            new string[] { "Activity", "Project Milestone (DM2x)", "IndividualType", "1441", "1450", "extra" },
+                            new string[] { "Activity", "System Milestone (DM2x)", "IndividualType", "1516", "1507", "extra" },
                             new string[] { "Capability", "Capability (DM2)", "IndividualType", "1155", "1327", "default" },
                             new string[] { "Performer", "Performer (DM2)", "IndividualType", "1178", "1367", "default" },
 
@@ -46,10 +46,10 @@ namespace EAWS.Core.SilverBullet
                             new string[] { "Data", "Physical Foreign Key Component", "IndividualType","", "1370", "extra" },
                             new string[] { "Data", "Logical Foreign Key Component", "IndividualType","", "1370", "extra" },
 
-                            new string[] { "Data", "Data (DM2)", "IndividualType","", "1370", "default" },
-                            new string[] { "Data", "Entity", "IndividualType","30", "15", "extra" },
-                            new string[] { "Data", "Attribute", "IndividualType","30", "5", "extra" },
-                            new string[] { "Data", "Data Element", "IndividualType","30", "105", "extra" },
+                            new string[] { "Data", "Data (DM2)", "IndividualType","", "1370", "extra" },
+                            new string[] { "Data", "Entity", "IndividualType","30", "15", "default" },
+                            new string[] { "Data", "Attribute", "IndividualType","30", "105", "extra" },
+                            new string[] { "Data", "Data Element", "IndividualType","30", "5", "extra" },
                             new string[] { "Data", "Access Path", "IndividualType","21", "21", "extra" },
                             new string[] { "Performer", "ServiceInterface (DM2)", "IndividualType","", "", "extra" },
                             new string[] { "Performer", "Interface (Port) (DM2)", "IndividualType","", "", "extra" },
@@ -64,7 +64,7 @@ namespace EAWS.Core.SilverBullet
 
                             new string[] { "IndividualType", "IndividualType", "IndividualType","", "", "default" },
                             new string[] { "ArchitecturalDescription", "ArchitecturalDescription (DM2)", "IndividualType","1179", "1368","default" },
-                            new string[] { "ServiceDescription", "ServiceDescription (DM2)", "IndividualType","", "1369","default" },
+                            new string[] { "ServiceDescription", "ServiceDescription (DM2)", "IndividualType","", "1369","extra" },
                             new string[] { "ProjectType", "Project (DM2)", "IndividualType","1159", "1348","default" },
                             new string[] { "Vision", "Vision (DM2)", "IndividualType","1172", "1361","default" },
                             new string[] { "Guidance", "Guidance (DM2)", "IndividualType","1157", "1329","default" },
@@ -79,7 +79,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] { "OV-02 Operational Resource Flow (DM2)", "Organization (DM2)", "Resource (DM2)", "1160" },
                             new string[] { "OV-02 Operational Resource Flow (DM2)", "Person (DM2)", "Performer (DM2)", "1178" },
 
-                            }; 
+                            };
 
         //static string[][] RSA_Element_Lookup = new string[][] { 
         //                    new string[] { "Activity", "OperationalNodeSpecification", "IndividualType", "", "", "default" },
@@ -92,7 +92,7 @@ namespace EAWS.Core.SilverBullet
         //                    };
 
         static string[][] Tuple_Type_Lookup = new string[][] { 
-                            new string[] { "WholePartType", "Data Element", "WholePartType", "1", "Attribute", "Attribute" },
+                            new string[] { "WholePartType", "Data Element", "WholePartType", "1", "Data", "Data" },
                             new string[] { "WholePartType", "Table Name", "WholePartType", "2", "Attribute", "Attribute" },
                             
                             new string[] { "WholePartType", "Foreign Keys and Roles", "WholePartType", "1", "Attribute", "Attribute" },
@@ -162,21 +162,24 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"PV-2", "PV-02 Project Timelines (DM2)", "346", "default"},
                             new string[] {"SV-1", "SV-01 Systems Interface Description (DM2)", "309", "default"},
                             
-                            new string[] {"SV-2", "SV-02 Systems Resource Flow Description Alternative (DM2)", "292", "default"},
+                            new string[] {"SV-2", "SV-02 Systems Resource Flow Description (DM2)", "310", "default"},
+                            
                             new string[] {"SV-4", "SV-04 Systems Functionality Description (DM2)", "311", "default"},
                             
                             new string[] {"SV-8", "SV-08 Systems Evolution Description (DM2)", "365", "default"},
                             
                             new string[] {"SV-10c", "SV-10c Performer-Role Event-Trace (DM2x)", "134", "default"},
-                            new string[] {"SvcV-1", "SvcV-01 Services Context Description Alternative (DM2)", "301", "default"},
-                            new string[] {"SvcV-2", "SvcV-02 Services Resource Flow Description Alternative (DM2)", "302", "default"},
+
+                            new string[] {"SvcV-1", "SvcV-01 Services Context Description (DM2)", "312", "default"},
+                            new string[] {"SvcV-2", "SvcV-02 Services Resource Flow Description (DM2)", "313", "default"},
                             new string[] {"SvcV-4", "SvcV-04 Services Functionality Description (DM2)", "314", "default"},
                             
                             
                             };
 
         static string[][] Not_Processed_View_Lookup = new string[][] {  
-                            new string[] {"SV-1", "SV-01 Systems Interface Description Alternative (DM2)", "291", "default"}, 
+                            new string[] {"SV-1", "SV-01 Systems Interface Description Alternative (DM2)", "291", "default"},  
+                            new string[] {"SV-2", "SV-02 Systems Resource Flow Description Alternative (DM2)", "292", "default"},
                             new string[] {"SV-4", "SV-04 Systems Functionality Decomposition (DM2)", "300", "extra"},
                             new string[] {"SV-4", "SV-04 Systems Functionality Description Alternative (DM2)", "293", "extra"},
                             new string[] {"SV-10c", "SV-10c Systems Event-Trace (DM2)", "335", "default"},
@@ -188,6 +191,9 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"SV-10b", "SV-10b Systems State Transition Description (DM2)", "344", "default"},
                             new string[] {"SvcV-10b", "SvcV-10b Services State Transition Description (DM2)", "345", "default"},
                             new string[] {"SvcV-10c", "SvcV-10c Performer-Role Event-Trace (DM2x)", "138", "default"},
+                            new string[] {"SvcV-1", "SvcV-01 Services Context Description Alternative (DM2)", "301", "default"},
+                            new string[] {"SvcV-2", "SvcV-02 Services Resource Flow Description Alternative (DM2)", "302", "default"},
+                            new string[] {"SvcV-4", "SvcV-04 Services Functionality Description Alternative (DM2)", "303", "default"},
         };
 
         static string[][] Mandatory_Lookup = new string[][] { 
@@ -362,6 +368,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"superSubtype", "OV-1"}, 
                             new string[] {"WholePartType", "OV-1"},
                             new string[] {"representationSchemeInstance", "OV-1"},
+                            new string[] {"OverlapType", "OV-1"},
                             new string[] {"Condition", "OV-2"},
                             new string[] {"Information", "OV-2"},
                             new string[] {"Location", "OV-2"},
@@ -372,6 +379,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "OV-2"}, 
                             new string[] {"superSubtype", "OV-2"}, 
                             new string[] {"WholePartType", "OV-2"},
+                            new string[] {"OverlapType", "OV-1"},
                             new string[] {"Condition", "OV-3"},
                             new string[] {"Information", "OV-3"},
                             new string[] {"Location", "OV-3"},
@@ -401,6 +409,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "OV-4"}, 
                             new string[] {"superSubtype", "OV-4"}, 
                             new string[] {"WholePartType", "OV-4"},
+                            new string[] {"OverlapType", "OV-4"},
                             new string[] {"Condition", "OV-5a"},
                             new string[] {"Information", "OV-5a"},
                             new string[] {"Location", "OV-5a"},
@@ -482,6 +491,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "SV-1"}, 
                             new string[] {"superSubtype", "SV-1"}, 
                             new string[] {"WholePartType", "SV-1"},
+                            new string[] {"OverlapType", "SV-1"},
                             new string[] {"Condition", "SV-10b"},
                             new string[] {"Information", "SV-10b"},
                             new string[] {"Location", "SV-10b"},
@@ -513,6 +523,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "SV-2"}, 
                             new string[] {"superSubtype", "SV-2"}, 
                             new string[] {"WholePartType", "SV-2"},
+                            new string[] {"OverlapType", "SV-2"},
                             new string[] {"Condition", "SvcV-1"},
                             new string[] {"Information", "SvcV-1"},
                             new string[] {"Location", "SvcV-1"},
@@ -524,6 +535,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"System", "SvcV-1"}, 
                             new string[] {"superSubtype", "SvcV-1"}, 
                             new string[] {"WholePartType", "SvcV-1"},
+                            new string[] {"OverlapType", "SvcV-1"},
                             new string[] {"Condition", "SvcV-10b"},
                             new string[] {"Information", "SvcV-10b"},
                             new string[] {"Location", "SvcV-10b"},
@@ -557,6 +569,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "SV-4"}, 
                             new string[] {"superSubtype", "SV-4"}, 
                             new string[] {"WholePartType", "SV-4"},
+                            new string[] {"OverlapType", "SV-4"},
                             new string[] {"Activity", "SV-8"},
                             new string[] {"Condition", "SV-8"},
                             new string[] {"Information", "SV-8"},
@@ -583,6 +596,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"System", "SvcV-4"},  
                             new string[] {"superSubtype", "SvcV-4"}, 
                             new string[] {"WholePartType", "SvcV-4"},
+                            new string[] {"OverlapType", "SvcV-4"},
                             new string[] {"Condition", "SvcV-2"},
                             new string[] {"Information", "SvcV-2"},
                             new string[] {"Location", "SvcV-2"},
@@ -594,6 +608,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"System", "SvcV-2"}, 
                             new string[] {"superSubtype", "SvcV-2"}, 
                             new string[] {"WholePartType", "SvcV-2"},
+                            new string[] {"OverlapType", "SvcV-2"},
                             new string[] {"Condition", "DIV-2"},
                             new string[] {"Information", "DIV-2"},
                             new string[] {"Location", "DIV-2"},
@@ -614,6 +629,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"superSubtype", "DIV-3"}, 
                             new string[] {"WholePartType", "DIV-3"},
                             new string[] {"typeInstance", "DIV-3"},
+                            new string[] {"OverlapType", "DIV-3"},
                             new string[] {"Condition", "PV-1"},
                             new string[] {"Information", "PV-1"},
                             new string[] {"Location", "PV-1"},
@@ -671,9 +687,9 @@ namespace EAWS.Core.SilverBullet
         private class Thing
         {
             public string type;
-            public string id; 
+            public string id;
             public string name;
-            public object value; 
+            public object value;
             public string place1;
             public string place2;
             public string foundation;
@@ -683,7 +699,7 @@ namespace EAWS.Core.SilverBullet
         private class Location
         {
             public string id;
-            public string element_id; 
+            public string element_id;
             public string top_left_x;
             public string top_left_y;
             public string top_left_z;
@@ -724,7 +740,7 @@ namespace EAWS.Core.SilverBullet
         //            return "Service Data Flow (DM2rx)";
         //        }
         //    }
-                
+
         //    if (type == "Needline" && view.Contains("SvcV"))
         //        return "Physical Resource Flow (DM2rx)";
 
@@ -737,7 +753,7 @@ namespace EAWS.Core.SilverBullet
         //    }
         //    else
         //        return "Need Line (DM2rx)";
-                
+
         //}
 
         public static void Decode(string base64String, string outputFileName)
@@ -834,7 +850,7 @@ namespace EAWS.Core.SilverBullet
         {
             foreach (KeyValuePair<OBJ1, OBJ2> entry in dict2)
             {
-                dict1[entry.Key] = entry.Value;   
+                dict1[entry.Key] = entry.Value;
             }
         }
 
@@ -846,9 +862,10 @@ namespace EAWS.Core.SilverBullet
             }
         }
 
-        private static string Find_DM2_Type (string input) {
-        
-            foreach(string[] current_lookup in Element_Lookup)
+        private static string Find_DM2_Type(string input)
+        {
+
+            foreach (string[] current_lookup in Element_Lookup)
             {
                 if (input == current_lookup[1])
                     return current_lookup[0];
@@ -887,7 +904,7 @@ namespace EAWS.Core.SilverBullet
             }
             return null;
         }
-        
+
         private static string Find_View_SA_Minor_Type(string input)
         {
 
@@ -899,48 +916,62 @@ namespace EAWS.Core.SilverBullet
             return null;
         }
 
-        //private static string Find_Symbol_Element_SA_Minor_Type(ref string input, string view)
-        //{
+        private static string Find_DIV2_Type(Thing input, ref Dictionary<string, List<Thing>> tt1, ref Dictionary<string, List<Thing>> tt2)
+        {
+            List<Thing> values;
+            List<Thing> values2;
 
-        //    foreach (string[] first_lookup in Element_Lookup)
-        //    {
-        //        if (input == first_lookup[1])
-        //        {
-        //            foreach (string[] second_lookup in SA_Element_View_Lookup)
-        //            {
-        //                if (view == second_lookup[0] && input == second_lookup[1])
-        //                {
-        //                    input = second_lookup[2];
-        //                    return second_lookup[3];
-        //                }
-        //            }
-        //            return first_lookup[3];
-        //        }
-                    
-        //    }
-        //    foreach (string[] current_lookup in SA_Element_Lookup)
-        //    {
-        //        if (input == current_lookup[1])
-        //            return current_lookup[3];
-        //    }
-        //    return null;
-        //}
+            if (tt2.TryGetValue(input.id, out values))
+                if (tt1.TryGetValue(input.id, out values2))
+                    return "Attribute";
+                else
+                    return "Data Element";
 
-        //private static string Find_Definition_Element_SA_Minor_Type(string input)
-        //{
+            return input.type;
+        }
 
-        //    foreach (string[] current_lookup in Element_Lookup)
-        //    {
-        //        if (input == current_lookup[1])
-        //            return current_lookup[4];
-        //    }
-        //    foreach (string[] current_lookup in SA_Element_Lookup)
-        //    {
-        //        if (input == current_lookup[1])
-        //            return current_lookup[4];
-        //    }
-        //    return null;
-        //}
+        private static string Find_Symbol_Element_SA_Minor_Type(ref string input, string view)
+        {
+
+            foreach (string[] first_lookup in Element_Lookup)
+            {
+                if (input == first_lookup[1])
+                {
+                    foreach (string[] second_lookup in SA_Element_View_Lookup)
+                    {
+                        if (view == second_lookup[0] && input == second_lookup[1])
+                        {
+                            input = second_lookup[2];
+                            return second_lookup[3];
+                        }
+                    }
+                    return first_lookup[3];
+                }
+
+            }
+            //foreach (string[] current_lookup in SA_Element_Lookup)
+            //{
+            //    if (input == current_lookup[1])
+            //        return current_lookup[3];
+            //}
+            return null;
+        }
+
+        private static string Find_Definition_Element_SA_Minor_Type(string input)
+        {
+
+            foreach (string[] current_lookup in Element_Lookup)
+            {
+                if (input == current_lookup[1])
+                    return current_lookup[4];
+            }
+            //foreach (string[] current_lookup in SA_Element_Lookup)
+            //{
+            //    if (input == current_lookup[1])
+            //        return current_lookup[4];
+            //}
+            return null;
+        }
 
         private static string Find_SA_Relationship_Type(string rela_type, string thing_type, string place)
         {
@@ -962,7 +993,7 @@ namespace EAWS.Core.SilverBullet
         private static bool Allowed_Element(string view, string id, ref Dictionary<string, Thing> dict)
         {
             Thing value;
-            if(dict.TryGetValue(id, out value))
+            if (dict.TryGetValue(id, out value))
                 return Allowed_Class(view, value.type);
 
             return false;
@@ -976,13 +1007,13 @@ namespace EAWS.Core.SilverBullet
                     if (Allowed_Element(view, thing.place1, ref dict) == false)
                         return false;
             }
-            
+
             return true;
         }
 
         private static bool Correct_Needline(List<Thing> values, List<Thing> view)
         {
-            
+
             int count = 0;
 
             foreach (Thing thing in values)
@@ -998,7 +1029,7 @@ namespace EAWS.Core.SilverBullet
                     }
 
                     if (place1 == true)
-                    count++;
+                        count++;
                 }
             }
 
@@ -1036,8 +1067,8 @@ namespace EAWS.Core.SilverBullet
             bool found = true;
             bool test = true;
             int count = 0;
-            
-            foreach (string[] current_lookup in Mandatory_Lookup)  
+
+            foreach (string[] current_lookup in Mandatory_Lookup)
             {
                 if (current_lookup[1] != type)
                     continue;
@@ -1049,7 +1080,7 @@ namespace EAWS.Core.SilverBullet
                     {
                         found = true;
                         break;
-                    }    
+                    }
                 }
 
                 if (found == false)
@@ -1082,15 +1113,15 @@ namespace EAWS.Core.SilverBullet
             return "$none$";
         }
 
-        private static void Add_Tuples(ref List<List<Thing>> input_list, ref List<List<Thing>> sorted_results, List<Thing> relationships, ref List<string> errors) 
+        private static void Add_Tuples(ref List<List<Thing>> input_list, ref List<List<Thing>> sorted_results, List<Thing> relationships, ref List<string> errors)
         {
             //List<List<Thing>> sorted_results = input_list_new;
             bool place1 = false;
             bool place2 = false;
             Thing value;
-            
+
             //foreach (List<Thing> old_view in input_list)
-            for(int i=0;i<input_list.Count;i++)
+            for (int i = 0; i < input_list.Count; i++)
             {
                 List<Thing> things_view = new List<Thing>();
                 List<Thing> new_view = new List<Thing>();
@@ -1105,7 +1136,7 @@ namespace EAWS.Core.SilverBullet
 
                 if (sorted_results.Count == i)
                 {
-                    
+
                     new_view.AddRange(input_list[i].Where(x => x.value == null).ToList());
                     new_view.AddRange(input_list[i].Where(x => x.value != null).Where(x => ((string)x.value).Substring(0, 1) == "_"));
 
@@ -1134,8 +1165,8 @@ namespace EAWS.Core.SilverBullet
 
                     dic = other_view.Where(x => x.place2 != null).ToDictionary(x => x.place2, x => x);
                 }
-                
-                
+
+
                 foreach (Thing rela in relationships)
                 {
                     place1 = false;
@@ -1149,7 +1180,19 @@ namespace EAWS.Core.SilverBullet
 
                     if (place1 && place2)
                     {
-                        new_view.Add(new Thing { place1 = value.place1, place2 = rela.id, value = rela.type, type = value.type, value_type="$none$" });
+                        if (rela.type == "OverlapType")
+                        {
+                            foreach (Thing overlap in input_list[i])
+                            {
+                                if (overlap.place2 == (string)rela.value)
+                                {
+                                    new_view.Add(new Thing { place1 = value.place1, place2 = rela.id, value = rela.type, type = value.type, value_type = "$none$" });
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                            new_view.Add(new Thing { place1 = value.place1, place2 = rela.id, value = rela.type, type = value.type, value_type = "$none$" });
                     }
                 }
 
@@ -1159,10 +1202,10 @@ namespace EAWS.Core.SilverBullet
                     sorted_results[i] = sorted_results[i].Union(new_view).ToList();
             }
 
-           // return sorted_results;
+            // return sorted_results;
         }
 
-        private static List<Thing> Add_Places(Dictionary<string,Thing> things, List<Thing> values)
+        private static List<Thing> Add_Places(Dictionary<string, Thing> things, List<Thing> values)
         {
             values = values.Distinct().ToList();
             IEnumerable<Thing> results = new List<Thing>(values);
@@ -1172,7 +1215,7 @@ namespace EAWS.Core.SilverBullet
             foreach (Thing rela in values)
             {
 
-                if(things.TryGetValue(rela.place1, out value))
+                if (things.TryGetValue(rela.place1, out value))
                     places.Add(value);
 
                 if (things.TryGetValue(rela.place2, out value))
@@ -1191,10 +1234,10 @@ namespace EAWS.Core.SilverBullet
             foreach (Thing rela in relationships)
             {
 
-                    if (input.id == rela.place1)
-                    {
-                        results.Add(new Thing { id = rela.id, type = Find_SA_Relationship_Type(rela.type, input.type,"1"), place1 = input.id, place2 = rela.place2, value = input, value_type = "$Thing$" });
-                    }                    
+                if (input.id == rela.place1)
+                {
+                    results.Add(new Thing { id = rela.id, type = Find_SA_Relationship_Type(rela.type, input.type, "1"), place1 = input.id, place2 = rela.place2, value = input, value_type = "$Thing$" });
+                }
             }
 
             return results.GroupBy(x => x.type).Select(group => group.Distinct().ToList()).ToList(); ;
@@ -1209,7 +1252,7 @@ namespace EAWS.Core.SilverBullet
 
                 if (input.id == rela.place2)
                 {
-                    results.Add(new Thing { id = rela.id, type = Find_SA_Relationship_Type(rela.type, input.type,"2"), place1 = input.id, place2 = rela.place1, value = input, value_type = "$Thing$" });
+                    results.Add(new Thing { id = rela.id, type = Find_SA_Relationship_Type(rela.type, input.type, "2"), place1 = input.id, place2 = rela.place1, value = input, value_type = "$Thing$" });
                 }
             }
 
@@ -1286,7 +1329,7 @@ namespace EAWS.Core.SilverBullet
             Dictionary<string, List<Thing>> aro;
             Dictionary<string, List<Thing>> aro2;
             XElement root = XElement.Load(new MemoryStream(input));
-            List<List<Thing>> sorted_results = new  List<List<Thing>>();
+            List<List<Thing>> sorted_results = new List<List<Thing>>();
             List<List<Thing>> sorted_results_new = new List<List<Thing>>();
             List<List<Thing>> view_holder = new List<List<Thing>>();
             bool representation_scheme = false;
@@ -1345,11 +1388,11 @@ namespace EAWS.Core.SilverBullet
 
             results_dic =
                 (from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol")
-                where (string)result.Attribute("SAObjMinorTypeName") == "Doc Block"
-                select new
-                {
-                        key = (string)result.Parent.Attribute("SAObjId"),
-                        value = new List<Thing> {new Thing
+                 where (string)result.Attribute("SAObjMinorTypeName") == "Doc Block"
+                 select new
+                 {
+                     key = (string)result.Parent.Attribute("SAObjId"),
+                     value = new List<Thing> {new Thing
                         {
                         type = "Information",
                         id = (string)result.Attribute("SAObjId")+"_1",
@@ -1358,7 +1401,7 @@ namespace EAWS.Core.SilverBullet
                         place1 = "$none$",
                         place2 = "$none$",
                         foundation = "IndividualType",
-                        value_type = "exemplar"
+                        value_type = "exemplarText"
                         },new Thing
                     {
                         type = "Information",
@@ -1368,7 +1411,7 @@ namespace EAWS.Core.SilverBullet
                         place1 = "$none$",
                         place2 = "$none$",
                         foundation = "IndividualType",
-                        value_type = "exemplar"
+                        value_type = "exemplarText"
                     },new Thing
                     {
                         type = "Information",
@@ -1378,7 +1421,7 @@ namespace EAWS.Core.SilverBullet
                         place1 = "$none$",
                         place2 = "$none$",
                         foundation = "IndividualType",
-                        value_type = "exemplar"
+                        value_type = "exemplarText"
                     },new Thing
                     {
                         type = "Information",
@@ -1388,11 +1431,11 @@ namespace EAWS.Core.SilverBullet
                         place1 = "$none$",
                         place2 = "$none$",
                         foundation = "IndividualType",
-                        value_type = "exemplar"
+                        value_type = "exemplarText"
                     }}
-                }).ToDictionary(a => a.key, a => a.value);
+                 }).ToDictionary(a => a.key, a => a.value);
 
-            if(results_dic.Count() > 0)
+            if (results_dic.Count() > 0)
             {
                 doc_blocks_data = new Dictionary<string, List<Thing>>(results_dic);
 
@@ -1403,22 +1446,28 @@ namespace EAWS.Core.SilverBullet
                     {
                         thing_list.Add(new Thing
                         {
-                            type = "describedBy", id = thing.id + entry.Key, foundation = "namedBy", place1 = entry.Key,
-                            place2 = thing.id, name = "$none$", value = "$none$", value_type = "$none$"
+                            type = "describedBy",
+                            id = thing.id + entry.Key,
+                            foundation = "namedBy",
+                            place1 = entry.Key,
+                            place2 = thing.id,
+                            name = "$none$",
+                            value = "$none$",
+                            value_type = "$none$"
                         });
                     }
                     tuples = tuples.Concat(thing_list);
 
-                    doc_blocks_views.Add(entry.Key,new List<Thing> (thing_list));
+                    doc_blocks_views.Add(entry.Key, new List<Thing>(thing_list));
                 }
 
                 results_dic =
                     (from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol")
-                        where (string)result.Attribute("SAObjMinorTypeName") == "Doc Block"
-                        select new
-                        {
-                            key = (string)result.Parent.Attribute("SAObjId"),
-                            value = new List<Thing> {new Thing
+                     where (string)result.Attribute("SAObjMinorTypeName") == "Doc Block"
+                     select new
+                     {
+                         key = (string)result.Parent.Attribute("SAObjId"),
+                         value = new List<Thing> {new Thing
                             {
                                 type = "Thing",
                                 id = (string)result.Attribute("SAObjId"),
@@ -1429,7 +1478,7 @@ namespace EAWS.Core.SilverBullet
                                 foundation = "Thing",
                                 value_type = "$none$"
                             }}
-                        }).ToDictionary(a => a.key, a => a.value);
+                     }).ToDictionary(a => a.key, a => a.value);
 
                 MergeDictionaries(doc_blocks_data, results_dic);
 
@@ -1440,7 +1489,7 @@ namespace EAWS.Core.SilverBullet
 
             //Regular Things
 
-            foreach(string[] current_lookup in Element_Lookup)
+            foreach (string[] current_lookup in Element_Lookup)
             {
 
                 results =
@@ -1479,7 +1528,7 @@ namespace EAWS.Core.SilverBullet
                                 place1 = (string)result.Parent.Attribute("SAObjId"),
                                 place2 = (string)result.Parent.Attribute("SAObjId") + "_9",
                                 foundation = "IndividualType",
-                                value_type = "exemplar"
+                                value_type = "exemplarText"
                             }
                         }
                          }).ToDictionary(a => a.key, a => a.value);
@@ -1510,20 +1559,20 @@ namespace EAWS.Core.SilverBullet
                 {
                     results =
                         from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                         where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == current_lookup[1]
-                         where (string)result.Parent.Attribute("SAPrpName") == "Description"
-                         
-                         select new Thing
-                            {
-                                type = "Information",
-                                id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity") + "_9",
-                                name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And ") + " Primary Key",
-                                value = (string)result.Attribute("SALinkIdentity"),
-                                place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                                place2 = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity") + "_9",
-                                foundation = "IndividualType",
-                                value_type = "exemplar"
-                            };
+                        where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == current_lookup[1]
+                        where (string)result.Parent.Attribute("SAPrpName") == "Description"
+
+                        select new Thing
+                           {
+                               type = "Information",
+                               id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity") + "_9",
+                               name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And ") + " Primary Key",
+                               value = (string)result.Attribute("SALinkIdentity"),
+                               place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
+                               place2 = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity") + "_9",
+                               foundation = "IndividualType",
+                               value_type = "exemplarText"
+                           };
 
                     things = things.Concat(results);
 
@@ -1562,24 +1611,24 @@ namespace EAWS.Core.SilverBullet
                 from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol").Elements("SAPicture")
                 where (string)result.Parent.Attribute("SAObjMinorTypeName") == "Picture"
                 where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "OV-01 High Level Operational Concept (DM2)"
-                select 
-                //new {
-                //    key = (string)result.Parent.Parent.Attribute("SAObjId"),
-                //    value = new List<Thing> {
+                select
+                    //new {
+                    //    key = (string)result.Parent.Parent.Attribute("SAObjId"),
+                    //    value = new List<Thing> {
                         new Thing
                     {
-                    type = "ArchitecturalDescription",
-                    id = (string)result.Parent.Attribute("SAObjId"),
-                    name = ((string)result.Parent.Attribute("SAObjName")).Replace("&", " And "),
-                    value = (string)result.Attribute("SAPictureData"),
-                    place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                    place2 = (string)result.Parent.Attribute("SAObjId"),
-                    foundation = "IndividualType",
-                    value_type = "exemplar"
+                        type = "ArchitecturalDescription",
+                        id = (string)result.Parent.Attribute("SAObjId"),
+                        name = ((string)result.Parent.Attribute("SAObjName")).Replace("&", " And "),
+                        value = (string)result.Attribute("SAPictureData"),
+                        place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
+                        place2 = (string)result.Parent.Attribute("SAObjId"),
+                        foundation = "IndividualType",
+                        value_type = "exemplarText"
                     };
-                //}}).ToDictionary(a => a.key, a => a.value);
+            //}}).ToDictionary(a => a.key, a => a.value);
 
-            OV1_pic_views = results.GroupBy(x=>x.place1).ToDictionary(x=>x.Key, x=>x.ToList());
+            OV1_pic_views = results.GroupBy(x => x.place1).ToDictionary(x => x.Key, x => x.ToList());
 
             if (OV1_pic_views.Count() > 0)
             {
@@ -1733,7 +1782,7 @@ namespace EAWS.Core.SilverBullet
                     tuple_types = tuple_types.Concat(results.ToList());
 
                 }
-                
+
             }
 
             tuple_types = tuple_types.GroupBy(x => x.id).Select(grp => grp.First());
@@ -1776,7 +1825,7 @@ namespace EAWS.Core.SilverBullet
 
                 things = things.Concat(values);
 
-                CV1_mandatory_views.Add(results.First().place1, values); 
+                CV1_mandatory_views.Add(results.First().place1, values);
             }
 
             foreach (Thing thing in results.ToList())
@@ -1967,7 +2016,7 @@ namespace EAWS.Core.SilverBullet
                     value_type = "$none$"
                 });
 
-                CV1_mandatory_views.Add(thing.place2, values);  
+                CV1_mandatory_views.Add(thing.place2, values);
             }
 
             //CV-4
@@ -2040,7 +2089,7 @@ namespace EAWS.Core.SilverBullet
                 });
 
                 values2 = new List<Thing>();
-                if(!CV1_optional_views.TryGetValue(thing.place2, out values2))
+                if (!CV1_optional_views.TryGetValue(thing.place2, out values2))
                     CV1_optional_views.Add(thing.place2, values);
 
                 values = new List<Thing>();
@@ -2121,7 +2170,7 @@ namespace EAWS.Core.SilverBullet
                    where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
                    from result4 in root.Elements("Class").Elements("SADefinition")
                    where (string)result3.Attribute("SALinkIdentity") == (string)result4.Attribute("SAObjId")
-                   
+
 
                    select new Thing
                    {
@@ -2136,7 +2185,7 @@ namespace EAWS.Core.SilverBullet
                    };
 
             tuple_types = tuple_types.Concat(results);
-            aro = results.GroupBy(x=>(string)x.value).ToDictionary(y => y.Key, y => y.ToList());
+            aro = results.GroupBy(x => (string)x.value).ToDictionary(y => y.Key, y => y.ToList());
             MergeDictionaries(OV5b_aro_mandatory_views, aro);
             aro2 = results.GroupBy(x => (string)x.value).ToDictionary(y => y.Key, y => y.ToList());
             MergeDictionaries(OV6c_aro_optional_views, aro2);
@@ -2308,7 +2357,7 @@ namespace EAWS.Core.SilverBullet
                 //    foundation = "CoupleType",
                 //    value_type = "$none$"
                 //});
-                
+
                 //tuple_types = tuple_types.Concat(values);
 
                 //results_dic = new Dictionary<string, List<Thing>>();
@@ -2367,7 +2416,7 @@ namespace EAWS.Core.SilverBullet
                 tuple_types = tuple_types.Concat(results.ToList());
 
                 values_dic = results.ToDictionary(x => x.id, x => x);
-                foreach (Thing thing in results_dic.Select(x=>x.Value.First()).ToList())
+                foreach (Thing thing in results_dic.Select(x => x.Value.First()).ToList())
                 {
                     if (!values_dic.TryGetValue(thing.id, out value))
                     {
@@ -2443,19 +2492,19 @@ namespace EAWS.Core.SilverBullet
                     if (!things_dic.TryGetValue(thing.place2, out value))
                     {
                         errors_list.Add(thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: Activity\r\n");
-                    //    value = new Thing
-                    //    {
-                    //        type = "Activity",
-                    //        id = thing.place2,
-                    //        name = thing.name,
-                    //        value = "$none$",
-                    //        place1 = "$none$",
-                    //        place2 = "$none$",
-                    //        foundation = "IndividualType",
-                    //        value_type = "$none$"
-                    //    };
-                    //    values.Add(value);
-                    //    things_dic.Add(thing.place2, value);
+                        //    value = new Thing
+                        //    {
+                        //        type = "Activity",
+                        //        id = thing.place2,
+                        //        name = thing.name,
+                        //        value = "$none$",
+                        //        place1 = "$none$",
+                        //        place2 = "$none$",
+                        //        foundation = "IndividualType",
+                        //        value_type = "$none$"
+                        //    };
+                        //    values.Add(value);
+                        //    things_dic.Add(thing.place2, value);
                     }
 
                     if (!things_dic.TryGetValue(thing.place1, out value))
@@ -2463,53 +2512,53 @@ namespace EAWS.Core.SilverBullet
                         if (((string)thing.value).Contains("Service"))
                         {
                             errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: Service\r\n");
-                    //        value = new Thing
-                    //        {
-                    //            type = "Service",
-                    //            id = thing.place1,
-                    //            name = thing.name,
-                    //            value = "$none$",
-                    //            place1 = "$none$",
-                    //            place2 = "$none$",
-                    //            foundation = "IndividualType",
-                    //            value_type = "$none$"
-                    //        };
-                    //        values.Add(value);
-                    //        things_dic.Add(thing.place1, value);
+                            //        value = new Thing
+                            //        {
+                            //            type = "Service",
+                            //            id = thing.place1,
+                            //            name = thing.name,
+                            //            value = "$none$",
+                            //            place1 = "$none$",
+                            //            place2 = "$none$",
+                            //            foundation = "IndividualType",
+                            //            value_type = "$none$"
+                            //        };
+                            //        values.Add(value);
+                            //        things_dic.Add(thing.place1, value);
                         }
                         else if (((string)thing.value).Contains("System"))
                         {
                             errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: System\r\n");
-                    //        value = new Thing
-                    //        {
-                    //            type = "System",
-                    //            id = thing.place1,
-                    //            name = thing.name,
-                    //            value = "$none$",
-                    //            place1 = "$none$",
-                    //            place2 = "$none$",
-                    //            foundation = "IndividualType",
-                    //            value_type = "$none$"
-                    //        };
-                    //        values.Add(value);
-                    //        things_dic.Add(thing.place1, value);
+                            //        value = new Thing
+                            //        {
+                            //            type = "System",
+                            //            id = thing.place1,
+                            //            name = thing.name,
+                            //            value = "$none$",
+                            //            place1 = "$none$",
+                            //            place2 = "$none$",
+                            //            foundation = "IndividualType",
+                            //            value_type = "$none$"
+                            //        };
+                            //        values.Add(value);
+                            //        things_dic.Add(thing.place1, value);
                         }
                         else
                         {
                             errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: Performer\r\n");
-                    //        value = new Thing
-                    //        {
-                    //            type = "Performer",
-                    //            id = thing.place1,
-                    //            name = thing.name,
-                    //            value = "$none$",
-                    //            place1 = "$none$",
-                    //            place2 = "$none$",
-                    //            foundation = "IndividualType",
-                    //            value_type = "$none$"
-                    //        };
-                    //        values.Add(value);
-                    //        things_dic.Add(thing.place1, value);
+                            //        value = new Thing
+                            //        {
+                            //            type = "Performer",
+                            //            id = thing.place1,
+                            //            name = thing.name,
+                            //            value = "$none$",
+                            //            place1 = "$none$",
+                            //            place2 = "$none$",
+                            //            foundation = "IndividualType",
+                            //            value_type = "$none$"
+                            //        };
+                            //        values.Add(value);
+                            //        things_dic.Add(thing.place1, value);
                         }
                     }
                 }
@@ -2744,6 +2793,21 @@ namespace EAWS.Core.SilverBullet
 
                         tuple_types = tuple_types.Concat(values);
 
+                        tuple_types = tuple_types.Concat(new List<Thing>()
+                                            {
+                                                new Thing
+                                                {
+                                                    type = "OverlapType",
+                                                    id = thing.foundation+"_DL1",
+                                                    name = thing.name,
+                                                    value = thing.id,
+                                                    place1 = thing.place1,
+                                                    place2 = thing.place2,
+                                                    foundation = "CoupleType",
+                                                    value_type = "$id$"
+                                                }
+                                            });
+
                     }
 
                 }
@@ -2973,6 +3037,21 @@ namespace EAWS.Core.SilverBullet
                             things = things.Concat(values2);
 
                         tuple_types = tuple_types.Concat(values);
+
+                        tuple_types = tuple_types.Concat(new List<Thing>()
+                                            {
+                                                new Thing
+                                                {
+                                                    type = "OverlapType",
+                                                    id = thing.foundation+"_DL1",
+                                                    name = thing.name,
+                                                    value = thing.id,
+                                                    place1 = thing.place1,
+                                                    place2 = thing.place2,
+                                                    foundation = "CoupleType",
+                                                    value_type = "$id$"
+                                                }
+                                            });
                     }
 
                 }
@@ -3019,7 +3098,7 @@ namespace EAWS.Core.SilverBullet
                     from result2 in root.Elements("Class").Elements("SADefinition")
                     where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "System Exchange (DM2rx)" && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "Operational Exchange (DM2rx)"
                         && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "System Data Flow (DM2rx)" && (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") != "Service Data Flow (DM2rx)"
-                    where (string)result.Parent.Attribute("SAPrpName") == "performerTarget" || (string)result.Parent.Attribute("SAPrpName") == "Target" || (string)result.Parent.Attribute("SAPrpName") == "Destination" 
+                    where (string)result.Parent.Attribute("SAPrpName") == "performerTarget" || (string)result.Parent.Attribute("SAPrpName") == "Target" || (string)result.Parent.Attribute("SAPrpName") == "Destination"
                     where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
                     select new Thing
                     {
@@ -3042,7 +3121,7 @@ namespace EAWS.Core.SilverBullet
                     add = true;
                     foreach (Thing app in values)
                     {
-                        if(aro.TryGetValue(app.place2,out values3))
+                        if (aro.TryGetValue(app.place2, out values3))
                         {
                             add = false;
                             //break;
@@ -3050,8 +3129,8 @@ namespace EAWS.Core.SilverBullet
                             values2.AddRange(values3);
                         }
                     }
-                    if(add)
-                        errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityConsumesResource\r\n");   
+                    if (add)
+                        errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: activityConsumesResource\r\n");
                 }
                 else
                 {
@@ -3065,7 +3144,7 @@ namespace EAWS.Core.SilverBullet
                 //    continue;
 
                 //values = new List<Thing>();
-                        
+
                 //values.Add(new Thing
                 //    {
                 //        type = "Activity",
@@ -3178,7 +3257,7 @@ namespace EAWS.Core.SilverBullet
                 //needline_mandatory_views.Add(thing.id, values);
             }
 
-            if (results_dic2.Count>0)
+            if (results_dic2.Count > 0)
             {
                 aro2 = tuple_types.Where(x => x.type == "activityProducesResource").GroupBy(x => x.place1).ToDictionary(x => x.Key, x => x.ToList());
 
@@ -3238,7 +3317,7 @@ namespace EAWS.Core.SilverBullet
                                         values2.AddRange(values6);
                                         foreach (Thing app2 in values6)
                                         {
-                                             value2 = things_dic[app2.place1];
+                                            value2 = things_dic[app2.place1];
                                             if (value2.type == "Performer")
                                                 values7.Add(value2);
                                             else
@@ -3249,13 +3328,13 @@ namespace EAWS.Core.SilverBullet
                                                 new Thing
                                                 {
                                                     type = "OverlapType",
-                                                    id = thing.id+"_NL1",
+                                                    id = thing.id+"_FL1",
                                                     name = thing.name,
-                                                    value = "$none$",
+                                                    value = thing.id,
                                                     place1 = app.place1,
                                                     place2 = app2.place1,
                                                     foundation = "CoupleType",
-                                                    value_type = "$none$"
+                                                    value_type = "$id$"
                                                 }
                                             });
                                         }
@@ -3274,7 +3353,7 @@ namespace EAWS.Core.SilverBullet
                     if (values2.Count > 0)
                         needline_mandatory_views.Add(thing.id, values2);
 
-                    if (values7.Count >0)
+                    if (values7.Count > 0)
                         needline_optional_views.Add(thing.id, values7);
 
                     //results_dic2 = new Dictionary<string, List<Thing>>();
@@ -3762,7 +3841,7 @@ namespace EAWS.Core.SilverBullet
 
             foreach (Thing thing in results)
             {
-                if(!values_dic.TryGetValue(thing.id,out value))
+                if (!values_dic.TryGetValue(thing.id, out value))
                     values3.Add(thing);
             }
 
@@ -3795,7 +3874,7 @@ namespace EAWS.Core.SilverBullet
             foreach (Thing thing in results)
             {
                 //if (!values_dic.TryGetValue(thing.id, out value))
-                    values3.Add(thing);
+                values3.Add(thing);
             }
 
             foreach (Thing thing in values3)
@@ -3969,17 +4048,17 @@ namespace EAWS.Core.SilverBullet
 
                 if ((string)thing.value == "$none$")
                 {
-                //    values.Add(new Thing
-                //    {
-                //        type = "Data",
-                //        id = thing.id + "_9",
-                //        name = thing.name,
-                //        value = "$none$",
-                //        place1 = "$none$",
-                //        place2 = "$none$",
-                //        foundation = "IndividualType",
-                //        value_type = "$none$"
-                //    });
+                    //    values.Add(new Thing
+                    //    {
+                    //        type = "Data",
+                    //        id = thing.id + "_9",
+                    //        name = thing.name,
+                    //        value = "$none$",
+                    //        place1 = "$none$",
+                    //        place2 = "$none$",
+                    //        foundation = "IndividualType",
+                    //        value_type = "$none$"
+                    //    });
 
                     values.Add(new Thing
                     {
@@ -4336,20 +4415,20 @@ namespace EAWS.Core.SilverBullet
                     });
                 }
 
-                    values.Add(new Thing
-                    {
-                        type = "Activity",
-                        id = thing.id + "_4",
-                        name = thing.name,
-                        value = "$none$",
-                        place1 = "$none$",
-                        place2 = "$none$",
-                        foundation = "IndividualType",
-                        value_type = "$none$"
-                    });
-                
+                values.Add(new Thing
+                {
+                    type = "Activity",
+                    id = thing.id + "_4",
+                    name = thing.name,
+                    value = "$none$",
+                    place1 = "$none$",
+                    place2 = "$none$",
+                    foundation = "IndividualType",
+                    value_type = "$none$"
+                });
 
-                 MergeDictionaries(DIV2_3_optional, new Dictionary<string,List<Thing>>(){{thing.id,values}});
+
+                MergeDictionaries(DIV2_3_optional, new Dictionary<string, List<Thing>>() { { thing.id, values } });
             }
 
             //State transition
@@ -4453,24 +4532,24 @@ namespace EAWS.Core.SilverBullet
                             value_type = "$none$"
                         };
 
-                values = results.ToList();
+            values = results.ToList();
 
-                results =
-                            from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                            where (string)result.Parent.Attribute("SAPrpName") == "Project"
-                            select new Thing
-                            {
-                                type = "activityPartOfProjectType",
-                                id = (string)result.Attribute("SALinkIdentity") + (string)result.Parent.Parent.Attribute("SAObjId") + "_1",
-                                name = "$none$",
-                                value = "$none$",
-                                place2 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                                place1 = (string)result.Attribute("SALinkIdentity"),
-                                foundation = "WholePartType",
-                                value_type = "$none$"
-                            };
+            results =
+                        from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+                        where (string)result.Parent.Attribute("SAPrpName") == "Project"
+                        select new Thing
+                        {
+                            type = "activityPartOfProjectType",
+                            id = (string)result.Attribute("SALinkIdentity") + (string)result.Parent.Parent.Attribute("SAObjId") + "_1",
+                            name = "$none$",
+                            value = "$none$",
+                            place2 = (string)result.Parent.Parent.Attribute("SAObjId"),
+                            place1 = (string)result.Attribute("SALinkIdentity"),
+                            foundation = "WholePartType",
+                            value_type = "$none$"
+                        };
 
-                values.AddRange(results.ToList());
+            values.AddRange(results.ToList());
 
             tuple_types = tuple_types.Concat(values.GroupBy(x => x.id).Select(grp => grp.First()));
 
@@ -4680,7 +4759,7 @@ namespace EAWS.Core.SilverBullet
 
                 //values.Add(thing);
 
-                datatype_optional_dic.Add(thing.place2, new List<Thing>(){thing});
+                datatype_optional_dic.Add(thing.place2, new List<Thing>() { thing });
                 datatype_mandatory_dic.Add(thing.place2, values);
             }
 
@@ -4696,7 +4775,7 @@ namespace EAWS.Core.SilverBullet
                     where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
                     from result4 in root.Elements("Class").Elements("SADefinition")
                     where (string)result3.Attribute("SALinkIdentity") == (string)result4.Attribute("SAObjId")
-                    
+
 
                     select new Thing
                     {
@@ -4797,7 +4876,7 @@ namespace EAWS.Core.SilverBullet
                         value_type = "$flow$"
                     };
 
-            values_dic = results.ToDictionary(x=>x.id,x=>x);
+            values_dic = results.ToDictionary(x => x.id, x => x);
 
             results =
                    from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
@@ -4819,11 +4898,11 @@ namespace EAWS.Core.SilverBullet
                        value_type = "$none$"
                    };
 
-             foreach (Thing thing in results)
-             {
-                 if(!values_dic.TryGetValue(thing.id,out value))
-                     errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: System Resource Flow\r\n");
-             }
+            foreach (Thing thing in results)
+            {
+                if (!values_dic.TryGetValue(thing.id, out value))
+                    errors_list.Add("Definition error," + thing.id + "," + thing.name + "," + thing.type + ",Missing Mandatory Element: System Resource Flow\r\n");
+            }
 
             //values_dic = tuple_types.Where(x => x.type == "activityPerformedByPerformer").ToDictionary(x => x.id, x => x);
 
@@ -4937,7 +5016,7 @@ namespace EAWS.Core.SilverBullet
                         {
                             type = "activityPerformedByPerformer",
                             id = (string)result2.Attribute("SALinkIdentity") + (string)result.Attribute("SALinkIdentity"),
-                            name = ((string)result2.Attribute("SALinkName")).Replace("&quot","").Replace("\"",""),
+                            name = ((string)result2.Attribute("SALinkName")).Replace("&quot", "").Replace("\"", ""),
                             //value = new Tuple<string, string>((string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjId"), (string)result.Parent.Parent.Attribute("SAObjId")),
                             value = (string)result.Parent.Parent.Attribute("SAObjId"),
                             place2 = (string)result.Attribute("SALinkIdentity"),
@@ -5041,14 +5120,14 @@ namespace EAWS.Core.SilverBullet
                     PV1_mandatory_views.Add(view.First().place1, values2);
                 }
             }
-                    //PV1_mandatory_views = tuple_types_temp_new.GroupBy(y => ((Tuple<string, string>)y.value).Item1).ToDictionary(z => ((Tuple<string, string>)z.First().value).Item1, z => z.ToList());
+            //PV1_mandatory_views = tuple_types_temp_new.GroupBy(y => ((Tuple<string, string>)y.value).Item1).ToDictionary(z => ((Tuple<string, string>)z.First().value).Item1, z => z.ToList());
 
             //BPMN Lookup
 
             results =
                           from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                          where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Call Activity" 
-                            //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
+                          where (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Call Activity"
+                          //|| (string)result.Parent.Parent.Attribute("SAObjMinorTypeName") == "Sequence Flow"
 
                           select new Thing
                           {
@@ -5058,7 +5137,7 @@ namespace EAWS.Core.SilverBullet
                               foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                           };
 
-            bpmn_lookup = results.ToDictionary(x => x.foundation, x => new List<Thing>() {x});
+            bpmn_lookup = results.ToDictionary(x => x.foundation, x => new List<Thing>() { x });
 
             results =
                           from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
@@ -5073,7 +5152,7 @@ namespace EAWS.Core.SilverBullet
                               foundation = (string)result.Parent.Parent.Attribute("SAObjId"),
                           };
 
-            MergeDictionaries(bpmn_lookup,results.ToDictionary(x => x.foundation, x => new List<Thing>() { x }));
+            MergeDictionaries(bpmn_lookup, results.ToDictionary(x => x.foundation, x => new List<Thing>() { x }));
 
             //values = new List<Thing>();
             foreach (Thing thing in results)
@@ -5142,7 +5221,7 @@ namespace EAWS.Core.SilverBullet
                           where (string)result3.Parent.Attribute("SAPrpName") == "producingActivity"
                           where (string)result3.Parent.Parent.Attribute("SAObjId") == (string)result.Attribute("SALinkIdentity")
                           where result.Parent.Parent.Parent.Elements("SADiagram") != null
-                            
+
                           select new Thing
                           {
                               type = "temp",
@@ -5154,15 +5233,15 @@ namespace EAWS.Core.SilverBullet
                               value = (string)result.Parent.Parent.Parent.Element("SADiagram").Attribute("SAObjId"),
                               value_type = "$view_id$"
                           };
-          
 
-            foreach(Thing thing in results)
+
+            foreach (Thing thing in results)
             {
-            //if(values_dic.TryGetValue(thing.value + thing.place1,out value)
-            //    && values_dic.TryGetValue(thing.value + thing.place2,out value2))
-            //    bpmn_lookup.Add(thing.foundation,thing); 
-            //else
-            //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Sequence Flow Ignored: " + thing.foundation + "\r\n");
+                //if(values_dic.TryGetValue(thing.value + thing.place1,out value)
+                //    && values_dic.TryGetValue(thing.value + thing.place2,out value2))
+                //    bpmn_lookup.Add(thing.foundation,thing); 
+                //else
+                //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Sequence Flow Ignored: " + thing.foundation + "\r\n");
 
                 value = new Thing
                     {
@@ -5176,13 +5255,13 @@ namespace EAWS.Core.SilverBullet
                         value_type = "$none$"
                     };
 
-                tuple_types = tuple_types.Concat(new List<Thing>(){value});
+                tuple_types = tuple_types.Concat(new List<Thing>() { value });
 
                 values = new List<Thing>();
 
                 values.Add(thing);
                 values.Add(value);
-                bpmn_lookup.Add(thing.foundation,values);
+                bpmn_lookup.Add(thing.foundation, values);
 
             }
 
@@ -5213,7 +5292,7 @@ namespace EAWS.Core.SilverBullet
             {
                 //if (values_dic.TryGetValue(thing.value + thing.place1, out value)
                 //    && values_dic.TryGetValue(thing.value + thing.place2, out value2))
-                    bpmn_lookup.Add(thing.foundation, new List<Thing>() {thing});
+                bpmn_lookup.Add(thing.foundation, new List<Thing>() { thing });
                 //else
                 //    errors_list.Add("Diagram error," + thing.value + "," + thing.name + ",OV-6c, Related ARO error - Message Flow Ignored: " + thing.foundation + "\r\n");
             }
@@ -5254,14 +5333,17 @@ namespace EAWS.Core.SilverBullet
             }
 
             //ToLists
-                    values3 = tuples.ToList();
-                    values4 = tuple_types.ToList();
-                    values5 = new List<Thing>();
-                    values6 = new List<Thing>();
-                    values7 = new List<Thing>();
-                    things = null;
-                    tuples = null;
-                    tuple_types = null;
+            things = things.GroupBy(x => x.id).Select(grp => grp.First());
+            tuples = tuples.GroupBy(x => x.id).Select(grp => grp.First());
+            tuple_types = tuple_types.GroupBy(x => x.id).Select(grp => grp.First());
+            values3 = tuples.ToList();
+            values4 = tuple_types.ToList();
+            values5 = new List<Thing>();
+            values6 = new List<Thing>();
+            values7 = new List<Thing>();
+            things = null;
+            tuples = null;
+            tuple_types = null;
 
             //Derived Views
 
@@ -5273,8 +5355,8 @@ namespace EAWS.Core.SilverBullet
 
             foreach (Thing thing in things_dic.Select(kvp => kvp.Value).ToList().OrderBy(x => x.type).ToList())
             {
-                optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$"});
-                values.Add(new Thing { id = "_1", type = "AV-2", place2 = thing.id, value = thing.type, place1 = "_1"});
+                optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
+                values.Add(new Thing { id = "_1", type = "AV-2", place2 = thing.id, value = thing.type, place1 = "_1" });
             }
 
             sorted_results.Add(values);
@@ -5862,7 +5944,7 @@ namespace EAWS.Core.SilverBullet
 
             //View Compilation
 
-            values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").ToDictionary(x=>x.id,x=>x);
+            values_dic2 = values4.Where(x => x.type == "activityPerformedByPerformer").ToDictionary(x => x.id, x => x);
 
             foreach (string[] current_lookup in View_Lookup)
             {
@@ -5930,7 +6012,7 @@ namespace EAWS.Core.SilverBullet
                         if (thing.type == "DIV-3" || thing.type == "DIV-2")
                         {
                             values2 = new List<Thing>();
-                            
+
                             if (results_dic.TryGetValue(thing.place2, out values2))
                             {
                                 foreach (Thing item in values2)
@@ -5987,7 +6069,7 @@ namespace EAWS.Core.SilverBullet
 
                         if (thing.place2 != null)
                         {
-                           
+
                             if (values_dic2.TryGetValue(thing.place2, out value))
                             {
                                 values = new List<Thing>();
@@ -6019,8 +6101,13 @@ namespace EAWS.Core.SilverBullet
                                     mandatory_list.AddRange(values);
                                     //if (!view.First().type.Contains("SV-4") && !view.First().type.Contains("SvcV-4") && !view.First().type.Contains("SV-10b"))
                                     if (needline_optional_views.TryGetValue(thing.place2, out values2))
-                                        optional_list.AddRange(values2);
-                                        //optional_list.AddRange(needline_optional_views[thing.place2]);
+                                    {
+                                        if (thing.type.Contains("SvcV-4") || thing.type.Contains("SV-4"))
+                                            mandatory_list.AddRange(values2);
+                                        else
+                                            optional_list.AddRange(values2);
+                                    }
+                                    //optional_list.AddRange(needline_optional_views[thing.place2]);
                                 }
                             }
 
@@ -6145,7 +6232,7 @@ namespace EAWS.Core.SilverBullet
                             {
                                 values = new List<Thing>();
                                 if (OV4_support_optional_views.TryGetValue(thing.place2, out values))
-                                    if (Allowed_Class("OV-4",(string)thing.value))
+                                    if (Allowed_Class("OV-4", (string)thing.value))
                                         optional_list.AddRange(values);
                             }
                             else if (thing.type == "OV-2")
@@ -6315,7 +6402,7 @@ namespace EAWS.Core.SilverBullet
                                 if (CV4_optional_views.TryGetValue(thing.place2, out values))
                                     optional_list.AddRange(values);
                             }
-                          
+
                         }
                     }
 
@@ -6323,17 +6410,17 @@ namespace EAWS.Core.SilverBullet
                     optional_list = optional_list.GroupBy(x => x.id).Select(grp => grp.First()).ToList();
 
                     values = new List<Thing>();
-                    if(doc_blocks_views.TryGetValue(view.First().place1, out values))
+                    if (doc_blocks_views.TryGetValue(view.First().place1, out values))
                         optional_list.AddRange(values);
 
                     values = new List<Thing>();
                     if (OV1_pic_views.TryGetValue(view.First().place1, out values))
-                            mandatory_list.AddRange(values);
+                        mandatory_list.AddRange(values);
 
                     mandatory_list = mandatory_list.OrderBy(x => x.type).ToList();
                     optional_list = optional_list.OrderBy(x => x.type).ToList();
 
-                    if (Proper_View(mandatory_list, view.First().name,view.First().type, view.First().place1, ref errors_list))
+                    if (Proper_View(mandatory_list, view.First().name, view.First().type, view.First().place1, ref errors_list))
                         views.Add(new View { type = view.First().type, id = view.First().place1, name = view.First().name, mandatory = mandatory_list, optional = optional_list });
                     //else
                     //{
@@ -6460,2055 +6547,864 @@ namespace EAWS.Core.SilverBullet
         ////////////////////
         ////////////////////
 
-        public static string PES2SA(byte[] input)
+        public static bool PES2SA(byte[] input, ref string output, ref string errors)
         {
-            return null;
-        //    Dictionary<string,Thing> things = new Dictionary<string,Thing>();
-        //    Dictionary<string, Thing> results_dic;
-        //    Dictionary<string, Location> location_dic = new Dictionary<string, Location>();
-        //    IEnumerable<Thing> tuple_types = new List<Thing>();
-        //    IEnumerable<Thing> tuples = new List<Thing>();
-        //    IEnumerable<Thing> results;
-        //    List<View> views = new List<View>();
-        //    string temp="";
-        //    string temp2="";
-        //    string temp3="";
-        //    string date = DateTime.Now.ToString("d");
-        //    string time = DateTime.Now.ToString("T");
-        //    string prop_date = DateTime.Now.ToString("yyyyMMdd");
-        //    string prop_time = DateTime.Now.ToString("HHmmss");
-        //    string minor_type;
-        //    string minor_type_name;
-        //    Guid view_GUID;
-        //    Guid thing_GUID;
-        //    Guid temp_GUID;
-        //    Dictionary<string, Guid> thing_GUIDs = new Dictionary<string, Guid>();
-        //    Dictionary<string, Thing> OV1_pic_views;
-        //    Dictionary<string, List<Thing>> CV4_CD_views;
-        //    Dictionary<string, List<Thing>> ARO_views;
-        //    Dictionary<string, Thing> doc_block_views;
-        //    Dictionary<string, List<Thing>> support_views;
-        //    Dictionary<string, List<Thing>> needline_views;
-        //    List<string> SA_Def_elements = new List<string>();
-        //    XElement root = XElement.Load(new MemoryStream(input));
-        //    List<List<Thing>> sorted_results;
-        //    //bool representation_scheme = false;
-        //    int count = 0;
-        //    int count2 = 0;
-        //    string loc_x, loc_y, size_x, size_y;
-        //    Thing value;
-        //    List<Thing> values;
-        //    XNamespace ns = "http://www.ideasgroup.org/xsd";
-        //    Location location;
-        //    List<string> errors_list = new List<string>();
-
-        //    // regular Things
-
-        //    foreach (string[] current_lookup in Element_Lookup)
-        //    {
-        //        if (current_lookup[5] != "default")
-        //            continue;
-        //        //if (current_lookup[0] == "ArchitecturalDescription")
-        //        //{
-        //        //    results =
-        //        //      from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol").Elements("SAPicture")
-        //        //      where (string)result.Parent.Attribute("SAObjMinorTypeName") == "Picture"
-        //        //      where (from diagram in result.Parent.Parent.Parent.Elements("SADefinition")
-        //        //             where (string)diagram.Attribute("SAObjId") == (string)result.Parent.Attribute("SASymIdDef")
-        //        //             select diagram
-        //        //         ).Any()
-        //        //      select new Thing
-        //        //      {
-        //        //          type = "ArchitecturalDescription",
-        //        //          id = (string)result.Parent.Attribute("SASymIdDef"),
-        //        //          name = (string)result.Parent.Attribute("SAObjName"),
-        //        //          value = (string)result.Attribute("SAPictureData"),
-        //        //          place1 = "$none$",
-        //        //          place2 = "$none$",
-        //        //          foundation = "IndividualType",
-        //        //          value_type = "exemplar"
-        //        //      };
-
-        //        //    //if (results.Count() > 0)
-        //        //        //representation_scheme = true;
-        //        //}
-        //        //else
-        //        //{
-
-        //        results =
-        //            from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-        //            where (string)result.Parent.Name.ToString() == current_lookup[0]
-        //            select new Thing
-        //                {
-        //                    type = current_lookup[0],
-        //                    id = ((string)result.Parent.Attribute("id")).Substring(2),
-        //                    name = (string)result.Attribute("exemplarText"),
-        //                    value = current_lookup[1],
-        //                    place1 = "$none$",
-        //                    place2 = "$none$",
-        //                    foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-        //                    value_type = "SAObjMinorTypeName"
-        //                };
-
-        //        results_dic =
-        //            (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-        //             where (string)result.Parent.Name.ToString() == current_lookup[0]
-        //             select new
-        //             {
-        //                 key = ((string)result.Parent.Attribute("id")).Substring(2),
-        //                 value = new Thing
-        //                 {
-        //                     type = current_lookup[0],
-        //                     id = ((string)result.Parent.Attribute("id")).Substring(2),
-        //                     name = (string)result.Attribute("exemplarText"),
-        //                     value = current_lookup[1],
-        //                     place1 = "$none$",
-        //                     place2 = "$none$",
-        //                     foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-        //                     value_type = "SAObjMinorTypeName"
-        //                 }
-        //             }).ToDictionary(a => a.key, a => a.value);
-        //        //}
-
-        //        if (results_dic.Count() > 0)
-        //            MergeDictionaries(things, results_dic);
-        //    }
-
-        //    //  diagramming
-
-        //    results =
-        //             from result in root.Elements("IdeasData").Elements("SpatialMeasure").Elements(ns + "Name")
-        //             select new Thing
-        //                 {
-        //                     id = ((string)result.Parent.Attribute("id")).Substring(2,((string)result.Parent.Attribute("id")).Length-5),
-        //                     name = (string)result.Attribute("exemplarText"),
-        //                     value = (string)result.Parent.Attribute("numericValue"),
-        //                     place1 = "$none$",
-        //                     place2 = "$none$",
-        //                     foundation = "$none$",
-        //                     value_type = "diagramming"
-        //                 };
-
-        //    sorted_results = results.GroupBy(x => x.id).Select(group => group.OrderBy(x => x.name).ToList()).ToList();
-
-        //    foreach (List<Thing> coords in sorted_results)
-        //    {
-        //        location_dic.Add(coords.First().id, 
-        //            new Location {
-        //                id = coords.First().id,
-        //                bottom_right_x = (string)coords[0].value,
-        //                bottom_right_y = (string)coords[1].value,
-        //                bottom_right_z ="0",
-        //                top_left_x = (string)coords[3].value,
-        //                top_left_y = (string)coords[4].value,
-        //                top_left_z = "0",
-        //            });
-        //    }
-
-        //    // doc block
-
-        //    results =
-        //            from result in root.Elements("IdeasData").Elements("Information")
-        //            from result2 in root.Elements("IdeasData").Elements("describedBy")
-        //            where ((string)result2.Attribute("tuplePlace2")).Substring(2) == ((string)result.Attribute("id")).Substring(2)
-        //            select new Thing
-        //            {
-        //                  type = "Information",
-        //                  id = ((string)result.Attribute("id")).Substring(2),
-        //                  name = (string)result.Attribute("exemplar"),
-        //                  value = "$none$",
-        //                  place1 = "$none$",
-        //                  place2 = "$none$",
-        //                  foundation = "IndividualType",
-        //                  value_type = "$none$"
-        //              };
-        //    if (results.Count() > 0)
-        //    {
-        //        foreach (Thing thing in results)
-        //        {
-        //            things.Remove(thing.id);
-        //        }
-        //    }
-
-        //    doc_block_views =
-        //           (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-        //            where (string)result.Attribute("exemplarText") == "Doc Block Comment"
-        //            from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-        //            where (string)result2.Parent.Parent.Name.ToString() != "AV-2"
-        //            where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-        //            select new
-        //            {
-        //                key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
-        //                value = new Thing
-        //                {
-        //                    type = "$none$",
-        //                    id = ((string)result.Parent.Attribute("id")).Substring(2),
-        //                    name = (string)result.Attribute("exemplarText"),
-        //                    value = ((string)result.Parent.Attribute("exemplar")),
-        //                    place1 = "$none$",
-        //                    place2 = "$none$",
-        //                    foundation = "$none$",
-        //                    value_type = "Comment"
-        //                }
-        //            }).ToDictionary(a => a.key, a => a.value);
-
-        //    //Support
-
-        //    results =
-        //             from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
-        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
-        //             from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
-        //             where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Attribute("place1Type")).Substring(2)
-        //             from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
-        //             where ((string)result2.Attribute("exemplarText") == "Support")
-        //             where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
-        //             from result6 in root.Elements("IdeasData").Elements("Resource")
-        //             where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-        //             from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
-        //             where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
-        //             from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
-        //             where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
-                     
-        //             select new Thing
-        //            {
-        //                type = "SupportedBy",
-        //                id = ((string)result.Attribute("place1Type")).Substring(2) + ((string)result4.Attribute("place1Type")).Substring(2),
-        //                name = "$none$",
-        //                value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
-        //                place1 = ((string)result.Attribute("place1Type")).Substring(2),
-        //                place2 = ((string)result4.Attribute("place1Type")).Substring(2),
-        //                foundation = "$none$",
-        //                value_type = "View ID"
-        //            };
-
-        //    support_views = results.GroupBy(x => (string)x.value)
-        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
-
-        //    if (results.Count() > 0)
-        //    {
-        //        foreach (Thing thing in results)
-        //        {
-        //            things.Remove(thing.place1 + "_2");
-        //            things.Remove(thing.place2 + "_2");
-        //            things.Remove(thing.place1 + "_3");
-        //            things.Remove(thing.place2 + "_3");
-        //        }
-        //    }
-
-        //    // Needlines and System Resource Flow
-
-        //    results =
-        //             from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
-        //             where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
-        //             from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer").Elements(ns + "Name")
-        //             where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("place1Type")).Substring(2)
-        //             from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
-        //             where ((string)result2.Attribute("exemplarText") == "Needline") || ((string)result2.Attribute("exemplarText") == "SF")
-        //             where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
-        //             from result6 in root.Elements("IdeasData").Elements("Resource")
-        //             where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-        //             from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
-        //             where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
-        //             from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
-        //             where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
-                     
-        //             select new Thing
-        //             {
-        //                 type = 
-        //                 Resource_Flow_Type(
-        //                 (string)result2.Attribute("exemplarText"), (string)result5.Parent.Parent.Name.ToString(), ((string)result.Parent.Attribute("place1Type")).Substring(2), ((string)result4.Attribute("place1Type")).Substring(2), things
-        //                 ),
-        //                 id = ((string)result2.Attribute("id")).Substring(1,((string)result2.Attribute("id")).Length-3),
-        //                 name = ((string)result.Attribute("exemplarText")),
-        //                 value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
-        //                 place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
-        //                 place2 = ((string)result4.Attribute("place1Type")).Substring(2),
-        //                 foundation = "$none$",
-        //                 value_type = "View ID"
-        //             };
-
-        //    needline_views = results.GroupBy(x => (string)x.value)
-        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
-
-        //    if (results.Count() > 0)
-        //    {
-        //        foreach (Thing thing in needline_views.First().Value)
-        //        {
-        //            things.Remove(thing.id + "_1");
-        //            things.Remove(thing.id + "_2");
-        //            things.Remove(thing.id + "_4");
-        //            things.Add(thing.id,thing);
-        //        }
-        //    }
-
-        //    // Capability Dependency
-
-        //    results =
-        //           from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-        //           where (string)result2.Name.ToString() == "CV-4_BeforeAfterType"
-        //           from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-        //           where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-        //           select new Thing
-        //               {
-        //                   type = "Capability Dependency (DM2rx)",
-        //                   id = ((string)result.Parent.Attribute("id")).Substring(2),
-        //                   name = (string)result.Attribute("exemplarText"),
-        //                   value = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
-        //                   place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
-        //                   place2 = ((string)result.Parent.Attribute("place2Type")).Substring(2),
-        //                   foundation = "$none$",
-        //                   value_type = "View ID"
-        //               };
-                
-        //    CV4_CD_views = results.GroupBy(x => (string)x.value)
-        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
-            
-        //    if (CV4_CD_views.Count() > 0)
-        //    {
-        //        foreach (Thing thing in CV4_CD_views.First().Value)
-        //        {
-        //            things.Remove(thing.id);
-        //        }
-        //    }
-
-        //    //ARO
-
-        //    results =
-        //           from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-        //           where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
-        //           where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
-        //           from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
-        //           where ((string)result2.Attribute("exemplarText") == "ARO")
-        //           where ((string)result5.Attribute("ref")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-        //           from result6 in root.Elements("IdeasData").Elements("Resource").Elements(ns + "Name")
-        //           where ((string)result6.Parent.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
-        //           from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
-        //           where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
-        //           select new Thing
-        //           {
-        //               type = "ActivityResourceOverlap (DM2r)",
-        //               id = ((string)result3.Attribute("id")).Substring(2, ((string)result3.Attribute("id")).Length - 4),
-        //               name = ((string)result6.Attribute("exemplarText")),
-        //               value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
-        //               place1 = ((string)result3.Attribute("place1Type")).Substring(2),
-        //               place2 = ((string)result2.Parent.Attribute("place2Type")).Substring(2),
-        //               foundation = "$none$",
-        //               value_type = "View ID"
-        //           };
-
-        //    ARO_views = results.GroupBy(x => (string)x.value)
-        //                     .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
-
-        //    if (ARO_views.Count() > 0)
-        //    {
-        //        foreach (Thing thing in ARO_views.First().Value)
-        //        {
-        //            things.Remove(thing.id + "_1");
-        //            things.Remove(thing.id + "_2");
-        //            things.Remove(thing.id + "_3");
-        //        }
-        //    }
-
-        //    // OV-1 Pic
-
-        //    OV1_pic_views =
-        //           (
-        //            from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-        //            where (string)result2.Name.ToString() == "OV-1_ArchitecturalDescription"
-        //            from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-        //            where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-        //            from result3 in root.Elements("IdeasData").Elements("representationSchemeInstance")
-        //            //where (string)result.Parent.Name.ToString() == "ArchitecturalDescription"
-        //            where ((string)result3.Attribute("tuplePlace2")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-        //            select new
-        //            {
-        //                key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
-        //                value = new Thing
-        //                {
-        //                    type = "ArchitecturalDescription",
-        //                    id = ((string)result.Parent.Attribute("id")).Substring(2),
-        //                    name = (string)result.Attribute("exemplarText"),
-        //                    value = ((string)result.Parent.Attribute("exemplar")),
-        //                    place1 = "$none$",
-        //                    place2 = "$none$",
-        //                    foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-        //                    value_type = "Picture"
-        //                }
-        //            }).ToDictionary(a => a.key, a => a.value);
-
-        //    if (OV1_pic_views.Count() > 0)
-        //    {
-        //        foreach (Thing thing in OV1_pic_views.Values.ToList())
-        //        {
-        //            things.Remove(thing.id);
-        //        }
-        //    }
-
-        //    // regular tuples
-
-        //    foreach (string[] current_lookup in Tuple_Lookup)
-        //    {
-        //        if (current_lookup[3] != "1" && current_lookup[3] != "5")
-        //            continue;
-
-        //        results =
-        //            from result in root.Elements("IdeasData").Descendants()
-        //            where (string)result.Name.ToString() == current_lookup[0]
-        //            from result2 in root.Elements("IdeasData").Descendants()
-        //            where ((string)result.Attribute("tuplePlace1")) == ((string)result2.Attribute("id"))
-        //            where (string)result2.Name.ToString() == current_lookup[5]
-        //            select new Thing
-        //            {
-        //                type = current_lookup[0],
-        //                id = ((string)result.Attribute("id")).Substring(2),
-        //                name = "$none$",
-        //                value = (string)result2.Name.ToString(),
-        //                place1 = ((string)result.Attribute("tuplePlace1")).Substring(2),
-        //                place2 = ((string)result.Attribute("tuplePlace2")).Substring(2),
-        //                foundation = current_lookup[2],
-        //                value_type = "element type"
-        //            };
-
-        //        tuples = tuples.Concat(results.ToList());
-        //    }
-
-        //    // regular tuple types
-
-        //    foreach (string[] current_lookup in Tuple_Type_Lookup)
-        //    {
-
-        //        if (current_lookup[3] != "1" && current_lookup[3] != "5")
-        //            continue;
-
-        //        results =
-        //            from result in root.Elements("IdeasData").Descendants()
-        //            where (string)result.Name.ToString() == current_lookup[0]
-        //            from result2 in root.Elements("IdeasData").Descendants()
-        //            where ((string)result.Attribute("place1Type")) == ((string)result2.Attribute("id"))
-        //            where (string)result2.Name.ToString() == current_lookup[5]
-
-        //            select new Thing
-        //            {
-        //                type = current_lookup[0],
-        //                id = ((string)result.Attribute("id")).Substring(2),
-        //                name = "$none$",
-        //                value = (string)result2.Name.ToString(),
-        //                place1 = ((string)result.Attribute("place1Type")).Substring(2),
-        //                place2 = ((string)result.Attribute("place2Type")).Substring(2),
-        //                foundation = current_lookup[2],
-        //                value_type = "element type"
-        //            };
-
-        //        tuple_types = tuple_types.Concat(results.ToList());
-        //    }
-
-        //    // views
-
-        //    foreach (string[] current_lookup in View_Lookup)
-        //    {
-        //        if (current_lookup[3] != "default")
-        //            continue;
-        //        results =
-        //            from result in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-        //            where (string)result.Parent.Parent.Name.ToString() == current_lookup[0]
-        //            select new Thing
-        //            {
-        //                type = current_lookup[0],
-        //                id = ((string)result.Parent.Parent.Attribute("id")).Substring(2) + ((string)result.Attribute("ref")).Substring(2),
-        //                name = ((string)result.Parent.Parent.Attribute("name")).Replace("&", " And "),
-        //                place1 = ((string)result.Parent.Parent.Attribute("id")).Substring(2),
-        //                place2 = ((string)result.Attribute("ref")).Substring(2),
-        //                value = (things.TryGetValue(((string)result.Attribute("ref")).Substring(2), out value)) ? value : new Thing {type="$none$"},
-        //                foundation = "$none$",
-        //                value_type = "Thing"
-        //            };
-
-
-        //        sorted_results = results.GroupBy(x => x.name).Select(group => group.Distinct().ToList()).ToList();
-        //        //sorted_results = Add_Tuples(sorted_results, tuples);
-        //        //sorted_results = Add_Tuples(sorted_results, tuple_types);
-
-        //        foreach (List<Thing> view in sorted_results)
-        //        {
-        //            List<Thing> mandatory_list = new List<Thing>();
-        //            List<Thing> optional_list = new List<Thing>();
-
-        //            foreach (Thing thing in view)
-        //            {
-
-        //                temp = Find_Mandatory_Optional((string)((Thing)thing.value).type, view.First().name, thing.type, thing.place1, ref errors_list);
-        //                if (temp == "Mandatory")
-        //                {
-        //                    mandatory_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
-        //                }
-        //                if (temp == "Optional")
-        //                {
-        //                    optional_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
-        //                }
-        //            }
-
-        //            mandatory_list = mandatory_list.OrderBy(x => x.type).ToList();
-        //            optional_list = optional_list.OrderBy(x => x.type).ToList();
-
-        //            if (needline_views.TryGetValue(view.First().place1, out values))
-        //                optional_list.AddRange(values);
-
-        //            if (CV4_CD_views.TryGetValue(view.First().place1, out values))
-        //                optional_list.AddRange(values);
-
-        //            if (ARO_views.TryGetValue(view.First().place1, out values))
-        //                optional_list.AddRange(values);
-
-        //            //if (Proper_View(mandatory_list, view.First().type))
-        //            views.Add(new View { type = current_lookup[1], id = view.First().place1, name = view.First().name, mandatory = mandatory_list, optional = optional_list });
-        //        }
-        //    }
-
-        //    // output
-
-        //    foreach (string thing in things.Keys)
-        //    {
-        //            thing_GUID = Guid.NewGuid();
-        //            thing_GUIDs.Add(thing, thing_GUID);
-        //    }
-
-        //    using (var sw = new Utf8StringWriter())
-        //    {
-        //        using (var writer = XmlWriter.Create(sw))
-        //        {
-
-        //            writer.WriteRaw(@"<Classes>");
-
-        //            foreach (View view in views)
-        //            {
-        //                count2 = 0;
-        //                count++;
-        //                view_GUID = Guid.NewGuid();
-        //                minor_type = Find_View_SA_Minor_Type(view.type);
-
-        //                writer.WriteRaw("<Class><SADiagram SAObjId=\"" + view.id + "\" SAObjName=\"" + view.name + "\" SAObjMinorTypeName=\"" + view.type
-        //                    + "\" SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"1\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\""
-        //                    + date + "\" SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"" + view.name + "\" "
-        //                    + "SADgmCLevelNumber=\"\" SADgmSnapGridEnt=\"0\" SADgmSnapGridLin=\"0\" SADgmPGridNumEnt=\"4 4\" SADgmPGridNumLin=\"10 10\""
-        //                    + " SADgmPGridSizeEnt=\"25 25\" SADgmPGridSizeLin=\"10 10\" SADgmGridUnit100=\"100 100\" SADgmBPresentationMenu=\"0\""
-        //                    + " SADgmBShowPages=\"0\" SADgmBShowRuler=\"0\" SADgmBShowGrid=\"-1\" SADgmBShowScroll=\"-1\" SADgmBShowNodeShadow=\"-1\""
-        //                    + " SADgmBShowLineShadow=\"0\" SADgmBShowTextShadow=\"0\" SADgmPShadowDelta=\"5 5\" SADgmRGBShadowColor=\"0x00c0c0c0\""
-        //                    + " SADgmRMargin=\"50 50 50 50\" SADgmBBorder=\"0\" SADgmBorderOffset=\"-13\" SADgmWBorderPenStyle=\"0x0010\" SADgmBDgmBorder=\"0\""
-        //                    + " SADgmIDgmForm=\"0\" SADgmWOrientation=\"0x0003\" SADgmBDgmPDefault=\"1\" SADgmBIsHierarchy=\"0\" SADgmBBackgroundColorOn=\"0\""
-        //                    + " SADgmRGBBackgroundColor=\"0x00ffffff\" SADgmWLinePenStyle=\"0x0103\">");
-
-        //                writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"1\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                    + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                    + "<SAProperty SAPrpName=\"Use Automatic Gradient Fills\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-        //                    + "<SAProperty SAPrpName=\"DGX File Name\" SAPrpValue=\"D" + count.ToString("D7") + ".DGX\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                    //+ ((minor_type == "283") ? "" : "<SAProperty SAPrpName=\"Hierarchical Numbering\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>") 
-        //                    + "<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-        //                    + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-        //                    + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
-        //                    + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + view_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
-        //                    // + "<SAProperty SAPrpName=\"Description\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Vertical Pools and Lanes\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Check Connections\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Auto-create/update 1380\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Auto-populate Where of APBP\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Peers\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Diagram\"" 
-        //                    //+ " SAPrpEditDefMinorType=\"" + view.type + "\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Architecture Type\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Related Architecture Description\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\""
-        //                    //+ " SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"ArchitecturalDescription (DM2)\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"OSLCLink\" SAPrpValue=\"\" SAPrpEditType=\"8\" SAPrpLength=\"4074\" SAPrpEditDefMajorType=\"Definition\""
-        //                    //+ " SAPrpEditDefMinorType=\"OSLC Link\"/>"
-        //                    //+ "<SAProperty SAPrpName=\"Reference Documents\" SAPrpValue=\"\" SAPrpEditType=\"18\" SAPrpLength=\"1024\"/>"
-        //                    + "<SAProperty SAPrpName=\"SA VISIO Last Modified By\" SAPrpValue=\"SA\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                    + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + DateTime.Now.ToString("yyyyMMdd") + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-        //                    + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + DateTime.Now.ToString("HHmmss") + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-        //                    + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>");
-
-        //                List<Thing> thing_list = new List<Thing>(view.mandatory);
-        //                thing_list.AddRange(view.optional);
-
-        //                foreach (Thing thing in thing_list)
-        //                {
-
-        //                    if (thing_GUIDs.TryGetValue(thing.id, out thing_GUID) == false)
-        //                    {
-        //                        thing_GUID = Guid.NewGuid();
-        //                        thing_GUIDs.Add(thing.id, thing_GUID);
-        //                    }
-
-        //                    if (location_dic.TryGetValue(view.id + thing.id, out location) == true)
-        //                    {
-        //                        loc_x = location.top_left_x;
-        //                        loc_y = location.top_left_y;
-        //                        size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
-        //                        size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
-        //                    }
-        //                    else
-        //                    {
-        //                        loc_x = "574";
-        //                        loc_y = "203";
-        //                        size_x = "125";
-        //                        size_y = "55";
-        //                    }
-
-        //                    minor_type_name = thing.type;
-        //                    minor_type = Find_Symbol_Element_SA_Minor_Type(ref minor_type_name, view.type);
-
-        //                    writer.WriteRaw("<SASymbol SAObjId=\"" + thing.id + view.id.Substring(1) + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + minor_type_name + "\""
-        //                        + " SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\""
-        //                        + " SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;.&quot;" + thing.name + "&quot;\" SASymIdDgm=\"" + view.id + "\" SASymIdDef=\"" + thing.id + "\""
-        //                        //other
-        //                        + " SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"" + count2 + "\""
-        //                        + " SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\""
-        //                        + " SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\""
-        //                        + " SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x082a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\""
-        //                        + " SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\""
-        //                        + " SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0007\" SASymSeqNum=\"0\""
-        //                        + " SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\""
-        //                        + " SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\""
-        //                        + " SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\""
-        //                        + " SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"1\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\""
-        //                        + " SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"572\""
-        //                        + " SASymNameLocY=\"168\" SASymNameSizeX=\"121\" SASymNameSizeY=\"18\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\""
-        //                        + " SASymDescSizeY=\"0\">");
-
-        //                    writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                        + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                        + "<SAProperty SAPrpName=\"Object Class Number\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                        + "<SAProperty SAPrpName=\"Object Type Number\" SAPrpValue=\"" + Find_Definition_Element_SA_Minor_Type(thing.type) + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                        + "<SAProperty SAPrpName=\"Symbol Represents\" SAPrpValue=\"" + thing.type + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
-        //                        + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                        //+ "<SARelation SARelId=\"_1982\" SARelTypeNum=\"6\" SARelTypeName=\"connects\"/>"
-        //                        //+ "<SARelation SARelId=\"_1980\" SARelTypeNum=\"8\" SARelTypeName=\"connects\"/>"
-        //                        //+ "<SARelation SARelId=\"_1979\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
-        //                        //+ "<SARelation SARelId=\"_1991\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
-        //                        + "</SASymbol>");
-                            
-        //                    count2++;
-        //                }
-
-        //                if (OV1_pic_views.TryGetValue(view.id, out value))
-        //                {
-                            
-        //                    if (location_dic.TryGetValue(view.id + value.id, out location) == true)
-        //                    {
-        //                        loc_x = location.top_left_x;
-        //                        loc_y = location.top_left_y;
-        //                        size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
-        //                        size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
-        //                    }
-        //                    else
-        //                    {
-        //                        loc_x = "574";
-        //                        loc_y = "203";
-        //                        size_x = "125";
-        //                        size_y = "55";
-        //                    }
-
-        //                    writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"" + value.name + "\" SAObjMinorTypeName=\"Picture\" SAObjMinorTypeNum=\"11\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"ir\""
-        //                        + " SAObjUpdateDate=\"2/5/2015\" SAObjUpdateTime=\"10:00:16 AM\" SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\""
-        //                        + " SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"1\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\""
-        //                        + " SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\""
-        //                        + " SASymFlags3=\"0x0000\" SASymTextFlags=\"0x003a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\""
-        //                        + " SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\""
-        //                        + " SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\""
-        //                        + " SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\""
-        //                        + " SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\""
-        //                        + " SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"-150\" SASymNameLocY=\"-100\" SASymNameSizeX=\"0\" SASymNameSizeY=\"0\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\" SASymDescSizeY=\"0\""
-        //                        + " SASymZPPicFile=\"P" + count.ToString("D7") + ".BMP\" SASymZPPicType=\"0x0101\">");
-
-        //                    writer.WriteRaw("<SAPicture SAPictureEncodingMethod=\"Hex\" SAPictureEncodingVersion=\"1.0\" SAOriginalFile=\"P" + count.ToString("D7") + ".BMP\" SAOriginalFileLength=\"152054\" SAPictureData=\"" + value.value + "\"/>"
-        //                        + " <SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"~T~\" SAPrpValue=\"11\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/></SASymbol>");
-        //                }
-
-        //                if (doc_block_views.TryGetValue(view.id, out value))
-        //                {
-        //                    if (location_dic.TryGetValue(view.id, out location) == true)
-        //                    {
-        //                        loc_x = location.top_left_x;
-        //                        loc_y = location.top_left_y;
-        //                        size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
-        //                        size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
-        //                    }
-        //                    else
-        //                    {
-        //                        loc_x = "574";
-        //                        loc_y = "203";
-        //                        size_x = "125";
-        //                        size_y = "55";
-        //                    }
-
-        //                    writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"\" SAObjMinorTypeName=\"Doc Block\" SAObjMinorTypeNum=\"4\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"SAS\" SAObjUpdateDate=\"1/29/2015\" SAObjUpdateTime=\"3:01:32 PM\""
-        //                    + " SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"3\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"0\""
-        //                    + " SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x000a\""
-        //                    + " SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\""
-        //                    + " SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\""
-        //                    + " SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\""
-        //                    + " SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"569\" SASymNameLocY=\"166\" SASymNameSizeX=\"393\" SASymNameSizeY=\"51\""
-        //                    + " SASymDescLocX=\"620\" SASymDescLocY=\"367\" SASymDescSizeX=\"273\" SASymDescSizeY=\"17\" SASymZPDesc=\"" + value.value + "\"><SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                    + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"4\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"Description\" SAPrpValue=\"" + value.value + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/></SASymbol>");
-        //                }
-
-        //                writer.WriteRaw(@"</SADiagram>");
-
-        //                foreach (Thing thing in thing_list)
-        //                {
-        //                    if (!SA_Def_elements.Contains(thing.id))
-        //                    {
-        //                        SA_Def_elements.Add(thing.id);
-        //                        thing_GUID = thing_GUIDs[thing.id];
-
-        //                        minor_type = Find_Definition_Element_SA_Minor_Type(thing.type);
-
-        //                        writer.WriteRaw("<SADefinition SAObjId=\"" + thing.id + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + thing.type + "\" "
-        //                            + "SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"3\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\" "
-        //                            + "SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;." + thing.name + "\">"
-        //                            + "<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                            + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
-        //                            + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
-        //                            + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"80\"/>"
-        //                            + "<SAProperty SAPrpName=\"Is Instance\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
-        //                            + ((minor_type == "1327") ? "" : "<SAProperty SAPrpName=\"To Line End\" SAPrpValue=\"LineEnd1\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"));
-
-        //                        //
-
-        //                        //<SAProperty SAPrpName="Parent Of Capability" SAPrpValue="Definition:&quot;Capability (DM2)&quot;:&quot;99be13e4-03b9-43f1-bf82-0d508bea5cc3&quot;.&quot;(JCA 1.0) Force Support&quot;
-        //                        //    Definition:&quot;Capability (DM2)&quot;:a697273a-8c0e-4f84-b18e-7c6876dd0742.&quot;(JCA 2.0) Battlespace Awareness&quot;
-        //                        //    Definition:&quot;Capability (DM2)&quot;:&quot;3f98f92e-fe73-43e6-b506-7e4e86f861db&quot;.&quot;(JCA 3.0) Force Application&quot;
-        //                        //    Definition:&quot;Capability (DM2)&quot;:cd8cef3b-87a6-402f-9205-70e0794766c8.&quot;(JCA 4.0) Logistics&quot;
-        //                        //    Definition:&quot;Capability (DM2)&quot;:c5376ccf-5b8f-4a10-9d94-ef39ae03b453.&quot;(JCA 5.0) Command and Control&quot;
-        //                        //    Definition:&quot;Capability (DM2)&quot;:&quot;0f6cfd54-7aca-4c75-98b2-c7a785ad9fb6&quot;.&quot;(JCA 6.0) Net-Centric&quot;" SAPrpEditType="14" SAPrpLength="1200" SAPrpEditDefMajorType="Definition" SAPrpEditDefMinorType="Capability (DM2)">
-        //                        //    <SALink SALinkName="&quot;(JCA 1.0) Force Support&quot;" SALinkIdentity="_15647"/>
-        //                        //    <SALink SALinkName="&quot;(JCA 2.0) Battlespace Awareness&quot;" SALinkIdentity="_15639"/>
-        //                        //    <SALink SALinkName="&quot;(JCA 3.0) Force Application&quot;" SALinkIdentity="_15644"/>
-        //                        //    <SALink SALinkName="&quot;(JCA 4.0) Logistics&quot;" SALinkIdentity="_15648"/>
-        //                        //    <SALink SALinkName="&quot;(JCA 5.0) Command and Control&quot;" SALinkIdentity="_15643"/>
-        //                        //    <SALink SALinkName="&quot;(JCA 6.0) Net-Centric&quot;" SALinkIdentity="_15642"/>
-        //                        //</SAProperty>
-
-        //                        //
-
-        //                        sorted_results = Get_Tuples_place1(thing, tuples);
-        //                        sorted_results.AddRange(Get_Tuples_place1(thing, tuple_types));
-        //                        sorted_results.AddRange(Get_Tuples_place2(thing, tuples));
-        //                        sorted_results.AddRange(Get_Tuples_place2(thing, tuple_types));
-        //                        values = new List<Thing>();
-        //                        if(support_views.TryGetValue(view.id, out values))
-        //                            sorted_results.AddRange(Get_Tuples_place1(thing, values));
-        //                        values = new List<Thing>();
-        //                        if (needline_views.TryGetValue(view.id, out values))
-        //                            sorted_results.AddRange(Get_Tuples_id(thing, values));
-
-
-        //                        if (sorted_results.Count() > 0)
-        //                        {
-        //                            foreach (List<Thing> list in sorted_results)
-        //                            {
-        //                                count2 = 0;
-                                        
-        //                                foreach (Thing rela in list)
-        //                                {
-                                            
-        //                                    if (thing_GUIDs.TryGetValue(rela.place2, out temp_GUID))
-        //                                    {
-        //                                        if (count2 == 0)
-        //                                        {
-        //                                            temp = "<SAProperty SAPrpName=\"" + list.First().type + "\" SAPrpValue=\"";
-        //                                            temp3 = "";
-        //                                            temp2 = "";
-        //                                            count2++;
-        //                                        }
-
-        //                                        if (things.TryGetValue(rela.place2, out value))
-        //                                        {
-        //                                            temp = temp + "Definition:&quot;" + value.value + "&quot;:&quot;" + temp_GUID + ".&quot;" + value.name + "&quot;";
-        //                                            temp2 = "\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"" + value.value + "\">";
-        //                                            temp3 = temp3 + "<SALink SALinkName=\"&quot;" + value.name + "&quot;\" SALinkIdentity=\"" + value.id + "\"/>";
-        //                                        }
-        //                                    }
-        //                                }
-
-        //                                if (count2 > 0)
-        //                                    writer.WriteRaw(temp + temp2 + temp3 + "</SAProperty>");  
-        //                            }
-        //                        }
-
-        //                        //
-
-        //                        writer.WriteRaw("<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-        //                       + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-        //                       + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
-        //                       + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
-        //                       + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
-        //                       + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
-        //                       + "</SADefinition>");
-        //                    }
-        //                }
-        //                //writer.WriteRaw(@"<MandatoryElements>");
-
-        //                //foreach (Thing thing in view.mandatory)
-        //                //{
-        //                //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
-        //                //}
-
-        //                //writer.WriteRaw(@"</MandatoryElements>");
-        //                //writer.WriteRaw(@"<OptionalElements>");
-
-        //                //foreach (Thing thing in view.optional)
-        //                //{
-        //                //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
-        //                //}
-
-        //                //writer.WriteRaw(@"</OptionalElements>");
-        //                //writer.WriteRaw("</" + view.type + ">");
-        //                writer.WriteRaw(@"</Class>");
-        //            }
-
-        //            //foreach (Thing thing in things)
-        //            //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id + "\" "
-        //            //        + (((string)thing.value == "$none$") ? "" : thing.value_type + "=\"" + (string)thing.value + "\"") + ">" + "<ideas:Name exemplarText=\"" + thing.name
-        //            //        + "\" namingScheme=\"ns1\" id=\"n" + thing.id + "\"/></" + thing.type + ">");
-
-        //            //foreach (Thing thing in tuple_types)
-        //            //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
-        //            //    + "\" place1Type=\"id" + thing.place1 + "\" place2Type=\"id" + thing.place2 + "\"/>");
-
-        //            //foreach (Thing thing in tuples)
-        //            //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
-        //            //    + "\" tuplePlace1=\"id" + thing.place1 + "\" tuplePlace2=\"id" + thing.place2 + "\"/>");
-
-        //            //writer.WriteRaw(@"</IdeasData>");
-
-        //            //writer.WriteRaw(@"<IdeasViews frameworkVersion=""DM2.02_Chg_1"" framework=""DoDAF"">");
-
-        //            writer.WriteRaw(@"</Classes>");
-
-        //            writer.Flush();
-        //        }
-        //        return sw.ToString();
-        //    }
-        //}
-
-//        /////////RSA
-
-//        public static string RSA2PES(byte[] input)
-//        {
-//            IEnumerable<Location> locations = new List<Location>();
-//            IEnumerable<Thing> things = new List<Thing>();
-//            IEnumerable<Thing> tuple_types = new List<Thing>();
-//            IEnumerable<Thing> tuples = new List<Thing>();
-//            IEnumerable<Thing> results;
-//            IEnumerable<Location> results_loc;
-//            IEnumerable<Thing> view_elements = new List<Thing>();
-//            List<View> views = new List<View>();
-//            List<Thing> mandatory_list = new List<Thing>();
-//            List<Thing> optional_list = new List<Thing>();
-//            string temp;
-//           // Dictionary<string, List<Thing>> doc_blocks_data;
-//            Dictionary<string, List<Thing>> doc_blocks_views = new Dictionary<string, List<Thing>>();
-//            Dictionary<string, Thing> OV1_pic_views = new Dictionary<string, Thing>();
-//            Dictionary<string, List<Thing>> needline_mandatory_views = new Dictionary<string, List<Thing>>();
-//            Dictionary<string, List<Thing>> needline_optional_views = new Dictionary<string, List<Thing>>();
-//            //Dictionary<string, List<Thing>> results_dic;
-//            XElement root = XElement.Load(new MemoryStream(input));
-//            List<List<Thing>> sorted_results = new List<List<Thing>>();
-//            List<List<Thing>> sorted_results_new = new List<List<Thing>>();
-//            bool representation_scheme = false;
-//            List<Thing> values = new List<Thing>();
-//            XNamespace ns = "http:///schemas/UPIA/_7hv4kEc6Ed-f1uPQXF_0HA/563";
-//            XNamespace ns2 = "http://www.omg.org/XMI";
-//            XNamespace ns3 = "http://schema.omg.org/spec/UML/2.2";
-//            Thing value;
-//            List<string> errors_list = new List<string>();
-
-//            //Regular Things
-
-//            foreach (string[] current_lookup in RSA_Element_Lookup)
-//            {
-
-//                results =
-//                    from result in root.Elements(ns + current_lookup[1])
-//                    //from result3 in root.Elements(ns + "View")
-//                    //from result4 in root.Descendants()
-//                    from result2 in root.Descendants()
-//                    //from result2 in root.Elements(ns3 + "Package").Elements("packagedElement")
-//                    //where result2.Attribute("name") != null
-//                    where (string)result.LastAttribute == (string)result2.Attribute(ns2 + "id")
-//                    //where (string)result3.LastAttribute == (string)result4.Attribute(ns2 + "id")
-//                    select new Thing
-//                    {
-//                        type = current_lookup[0],
-//                        id = (string)result.LastAttribute,// + "///" +*/ (string)result.LastAttribute,//Attribute("base_Operation"),
-//                        name = (string)result2.Attribute("name"),//*/ (string)result.FirstAttribute,//Attribute(ns2 + "id"),
-//                        value = "$none$",
-//                        place1 = (string)result.Attribute(ns2 + "id"),
-//                        place2 = (string)result.LastAttribute,
-//                        foundation = current_lookup[2],
-//                        value_type = "$none$"
-//                    };
-
-//                things = things.Concat(results.ToList());
-//            }
-
-//            //SuperSubtupe
-
-//            results =
-//                from result in root.Descendants().Elements("generalization")
-//                //from result3 in root.Elements(ns + "View")
-//                //from result4 in root.Descendants()
-//                //from result2 in root.Descendants()
-//                //from result2 in root.Elements(ns3 + "Package").Elements("packagedElement")
-//                //where result2.Attribute("name") != null
-//                //where (string)result.Attribute == (string)result2.Attribute(ns2 + "id")
-//                //where (string)result3.LastAttribute == (string)result4.Attribute(ns2 + "id")
-//                select new Thing
-//                {
-//                    type = "superSubtype",
-//                    id = (string)result.Attribute("general") + (string)result.Parent.Attribute(ns2 + "id"),
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = (string)result.Attribute("general"),
-//                    place2 = (string)result.Parent.Attribute(ns2 + "id"),
-//                    foundation = "superSubtype",
-//                    value_type = "$none$"
-//                };
-
-//            tuples = tuples.Concat(results.ToList());
-
-//            //WholePartType
-
-//            results =
-//                from result in root.Descendants().Elements("ownedAttribute")
-//                //from result3 in root.Elements(ns + "View")
-//                //from result4 in root.Descendants()
-//                //from result2 in root.Descendants()
-//                //from result2 in root.Elements(ns3 + "Package").Elements("packagedElement")
-//                where (string)result.Attribute("aggregation") == "composite"
-//                //where (string)result.Attribute == (string)result2.Attribute(ns2 + "id")
-//                //where (string)result3.LastAttribute == (string)result4.Attribute(ns2 + "id")
-//                select new Thing
-//                {
-//                    type = "WholePartType",
-//                    id = (string)result.Attribute("type") + (string)result.Parent.Attribute(ns2 + "id"),
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = (string)result.Attribute("type"),
-//                    place2 = (string)result.Parent.Attribute(ns2 + "id"),
-//                    foundation = "WholePartType",
-//                    value_type = "$none$"
-//                };
-
-//            tuple_types = tuple_types.Concat(results.ToList());
-
-//            // OV-1 Pic
-
-//            OV1_pic_views =
-//                   (
-//                    from result in root.Descendants().Elements("styles")
-//                    where (string)result.Attribute("figureImageURI") != null
-
-//                    select new
-//                    {
-//                        key = ((string)result.Parent.Parent.Attribute(ns2 + "id")).Substring(2),
-//                        value = new Thing
-//                        {
-//                            type = "ArchitecturalDescription",
-//                            id = ((string)result.Attribute(ns2 + "id")).Substring(2),
-//                            name = (string)result.Attribute("figureImageURI"),
-//                            value = Encode((string)result.Attribute("figureImageURI")),
-//                            place1 = "$none$",
-//                            place2 = "$none$",
-//                            foundation = "IndividualType",
-//                            value_type = "Picture"
-//                        }
-//                    }).ToDictionary(a => a.key, a => a.value);
-
-            
-//            //Diagramming
-
-//            foreach (Thing thing in things)
-//            {
-
-//                results_loc =
-//                    from result in root.Descendants().Elements("children")
-//                    //from result3 in root.Elements(ns + "View")
-//                    //from result4 in root.Descendants()
-//                    //from result2 in root.Descendants()
-//                    from result2 in result.Elements("layoutConstraint")
-//                    //where result2.Attribute("name") != null
-//                    where (string)result.Attribute("element") == thing.place2
-//                    //where (string)result3.LastAttribute == (string)result4.Attribute(ns2 + "id")
-//                    select new Location
-//                    {
-//                        id = (string)result.Attribute("element"),
-//                        top_left_x = (string)result2.Attribute("x"),
-//                        top_left_y = ((int)result2.Attribute("y") + ((result2.Attribute("height") == null) ? 1000 : (int)result2.Attribute("height"))).ToString(),
-//                        bottom_right_x = ((int)result2.Attribute("x") + ((result2.Attribute("width") == null) ? 1000 : (int)result2.Attribute("width"))).ToString(),
-//                        bottom_right_y = (string)result2.Attribute("y")
-
-//                    };
-
-//                locations = locations.Concat(results_loc.ToList());
-
-//            }
-
-//            foreach (Location location in locations)
-//            {
-//                values = new List<Thing>();
-
-//                values.Add(new Thing
-//                {
-//                    type = "Information",
-//                    id = location.id + "_12",
-//                    name = "Diagramming Information",
-//                    value = "$none$",
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "Point",
-//                    id = location.id + "_16",
-//                    name = "Top Left Location",
-//                    value = "$none$",
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "PointType",
-//                    id = location.id + "_14",
-//                    name = "Top Left LocationType",
-//                    value = "$none$",
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "Point",
-//                    id = location.id + "_26",
-//                    name = "Bottome Right Location",
-//                    value = "$none$",
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "PointType",
-//                    id = location.id + "_24",
-//                    name = "Bottome Right LocationType",
-//                    value = "$none$",
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "SpatialMeasure",
-//                    id = location.id + "_18",
-//                    name = "Top Left X Location",
-//                    value = location.top_left_x,
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType",
-//                    value_type = "numericValue"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "SpatialMeasure",
-//                    id = location.id + "_20",
-//                    name = "Top Left Y Location",
-//                    value = location.top_left_y,
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType",
-//                    value_type = "numericValue"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "SpatialMeasure",
-//                    id = location.id + "_22",
-//                    name = "Top Left Z Location",
-//                    value = "0",
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType",
-//                    value_type = "numericValue"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "SpatialMeasure",
-//                    id = location.id + "_28",
-//                    name = "Bottom Right X Location",
-//                    value = location.bottom_right_x,
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType",
-//                    value_type = "numericValue"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "SpatialMeasure",
-//                    id = location.id + "_30",
-//                    name = "Bottom Right Y Location",
-//                    value = location.bottom_right_y,
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType",
-//                    value_type = "numericValue"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "SpatialMeasure",
-//                    id = location.id + "_32",
-//                    name = "Bottom Right Z Location",
-//                    value = "0",
-//                    place1 = "$none$",
-//                    place2 = "$none$",
-//                    foundation = "IndividualType",
-//                    value_type = "numericValue"
-//                });
-
-//                things = things.Concat(values);
-
-//                values = new List<Thing>();
-
-//                values.Add(new Thing
-//                {
-//                    type = "describedBy",
-//                    id = location.id + "_11",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id,
-//                    place2 = location.id + "_12",
-//                    foundation = "namedBy"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "typeInstance",
-//                    id = location.id + "_15",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_14",
-//                    place2 = location.id + "_16",
-//                    foundation = "typeInstance"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "typeInstance",
-//                    id = location.id + "_25",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_24",
-//                    place2 = location.id + "_26",
-//                    foundation = "typeInstance"
-//                });
-
-
-//                values.Add(new Thing
-//                {
-//                    type = "measureOfIndividualPoint",
-//                    id = location.id + "_17",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_18",
-//                    place2 = location.id + "_16",
-//                    foundation = "typeInstance"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "measureOfIndividualPoint",
-//                    id = location.id + "_19",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_20",
-//                    place2 = location.id + "_16",
-//                    foundation = "typeInstance"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "measureOfIndividualPoint",
-//                    id = location.id + "_21",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_22",
-//                    place2 = location.id + "_16",
-//                    foundation = "typeInstance"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "measureOfIndividualPoint",
-//                    id = location.id + "_27",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_28",
-//                    place2 = location.id + "_26",
-//                    foundation = "typeInstance"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "measureOfIndividualPoint",
-//                    id = location.id + "_29",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_30",
-//                    place2 = location.id + "_26",
-//                    foundation = "typeInstance"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "measureOfIndividualPoint",
-//                    id = location.id + "_31",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_32",
-//                    place2 = location.id + "_26",
-//                    foundation = "typeInstance"
-//                });
-
-//                tuples = tuples.Concat(values);
-
-//                values = new List<Thing>();
-
-//                values.Add(new Thing
-//                {
-//                    type = "resourceInLocationType",
-//                    id = location.id + "_13",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_12",
-//                    place2 = location.id + "_14",
-//                    foundation = "CoupleType"
-//                });
-
-//                values.Add(new Thing
-//                {
-//                    type = "resourceInLocationType",
-//                    id = location.id + "_23",
-//                    name = "$none$",
-//                    value = "$none$",
-//                    place1 = location.id + "_12",
-//                    place2 = location.id + "_24",
-//                    foundation = "CoupleType"
-//                });
-
-//                tuple_types = tuple_types.Concat(values);
-//            }
-
-//            //Views
-
-//            foreach (string[] current_lookup in View_Lookup)
-//            {
-//                results =
-//                    from result in root.Descendants().Elements("contents").Elements("children")
-//                    //from result3 in root.Elements(ns + "View")
-//                    from result2 in root.Descendants()
-//                    //from result3 in root.Descendants()
-//                    //from result2 in root.Elements(ns3 + "Package").Elements("packagedElement")
-//                    //where result2.Attribute("name") != null
-//                    where (string)result2.LastAttribute == (string)result.Attribute("element")
-//                    where (string)result.Parent.Attribute("name") == current_lookup[0]
-//                    select new Thing
-//                    {
-//                        type = current_lookup[0],
-//                        id = (string)result.Parent.Attribute(ns2 + "id") + (string)result.Attribute("element"),// + "///" +*/ (string)result.LastAttribute,//Attribute("base_Operation"),
-//                        name = ((string)result.Parent.Attribute("name")).Replace("&", " And "),//*/ (string)result.FirstAttribute,//Attribute(ns2 + "id"),
-//                        value = Find_DM2_Type_RSA((string)result2.Name.LocalName.ToString()),
-//                        place1 = (string)result.Parent.Attribute(ns2 + "id"),
-//                        place2 = (string)result.Attribute("element"),
-//                        foundation = "$none$",
-//                        value_type = "element_type"
-//                    };
-
-//                sorted_results = results.GroupBy(x => x.name).Select(group => group.Distinct().ToList()).ToList();
-
-//                sorted_results_new = new List<List<Thing>>();
-//                Add_Tuples(ref sorted_results, ref sorted_results_new, tuples.ToList(), ref errors_list);
-//                Add_Tuples(ref sorted_results, ref sorted_results_new, tuple_types.ToList(), ref errors_list);
-//                sorted_results = sorted_results_new;
-
-//                foreach (List<Thing> view in sorted_results)
-//                {
-
-//                    mandatory_list = new List<Thing>();
-//                    optional_list = new List<Thing>();
-
-
-//                    foreach (Thing thing in view)
-//                    {
-//                        if (thing.place2 != null)
-//                        {
-//                            temp = Find_Mandatory_Optional((string)thing.value, view.First().name, thing.type, thing.place1, ref errors_list);
-//                            if (temp == "Mandatory")
-//                            {
-//                                mandatory_list.Add(new Thing { id = thing.place2, type = (string)thing.value });
-//                            }
-//                            if (temp == "Optional")
-//                            {
-//                                optional_list.Add(new Thing { id = thing.place2, type = (string)thing.value });
-//                            }
-
-//                            if (needline_mandatory_views.TryGetValue(thing.place2, out values))
-//                                mandatory_list.AddRange(values);
-
-//                            if (needline_optional_views.TryGetValue(thing.place2, out values))
-//                                optional_list.AddRange(values);
-//                        }
-//                    }
-
-//                    if (doc_blocks_views.TryGetValue(view.First().place1, out values))
-//                        optional_list.AddRange(values);
-
-//                    if (OV1_pic_views.TryGetValue(view.First().place1, out value))
-//                        mandatory_list.Add(value);
-
-//                    mandatory_list = mandatory_list.OrderBy(x => x.type).ToList();
-//                    optional_list = optional_list.OrderBy(x => x.type).ToList();
-
-//                    if (Proper_View(mandatory_list, view.First().name, view.First().type, view.First().place1, ref errors_list))
-//                        views.Add(new View { type = view.First().type, id = view.First().place1, name = view.First().name, mandatory = mandatory_list, optional = optional_list });
-//                }
-//            }
-
-//            using (var sw = new Utf8StringWriter())
-//            {
-//                using (var writer = XmlWriter.Create(sw))
-//                {
-
-//                    writer.WriteRaw(@"<IdeasEnvelope OriginatingNationISO3166TwoLetterCode=""String"" ism:ownerProducer=""NMTOKEN"" ism:classification=""U""
-//                    xsi:schemaLocation=""http://cio.defense.gov/xsd/dm2 DM2_PES_v2.02_Chg_1.XSD""
-//                    xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:ism=""urn:us:gov:ic:ism:v2"" xmlns:ideas=""http://www.ideasgroup.org/xsd""
-//                    xmlns:dm2=""http://www.ideasgroup.org/dm2""><IdeasData XMLTagsBoundToNamingScheme=""DM2Names"" ontologyVersion=""2.02_Chg_1"" ontology=""DM2"">
-//		            <NamingScheme ideas:FoundationCategory=""NamingScheme"" id=""ns1""><ideas:Name namingScheme=""ns1"" id=""NamingScheme"" exemplarText=""DM2Names""/>
-//		            </NamingScheme>");
-//                    if (representation_scheme)
-//                        writer.WriteRaw(@"<RepresentationScheme ideas:FoundationCategory=""Type"" id=""id_rs1"">
-//			            <ideas:Name id=""RepresentationScheme"" namingScheme=""ns1"" exemplarText=""Base64 Encoded Image""/>
-//		                </RepresentationScheme>");
-
-//                    foreach (Thing thing in things)
-//                        writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id + "\" "
-//                            + (((string)thing.value == "$none$") ? "" : thing.value_type + "=\"" + (string)thing.value + "\"") + ">" + "<ideas:Name exemplarText=\"" + thing.name
-//                            + "\" namingScheme=\"ns1\" id=\"n" + thing.id + "\"/></" + thing.type + ">");
-
-//                    foreach (Thing thing in tuple_types)
-//                        writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
-//                        + "\" place1Type=\"id" + thing.place1 + "\" place2Type=\"id" + thing.place2 + "\"/>");
-
-//                    foreach (Thing thing in tuples)
-//                        writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
-//                        + "\" tuplePlace1=\"id" + thing.place1 + "\" tuplePlace2=\"id" + thing.place2 + "\"/>");
-
-//                    writer.WriteRaw(@"</IdeasData>");
-
-//                    writer.WriteRaw(@"<IdeasViews frameworkVersion=""DM2.02_Chg_1"" framework=""DoDAF"">");
-
-//                    foreach (View view in views)
-//                    {
-//                        writer.WriteRaw("<" + view.type + " id=\"id" + view.id + "\" name=\"" + view.name + "\">");
-
-//                        writer.WriteRaw(@"<MandatoryElements>");
-
-//                        foreach (Thing thing in view.mandatory)
-//                        {
-//                            writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
-//                        }
-
-//                        writer.WriteRaw(@"</MandatoryElements>");
-//                        writer.WriteRaw(@"<OptionalElements>");
-
-//                        foreach (Thing thing in view.optional)
-//                        {
-//                            writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
-//                        }
-
-//                        writer.WriteRaw(@"</OptionalElements>");
-//                        writer.WriteRaw("</" + view.type + ">");
-//                    }
-
-//                    writer.WriteRaw(@"</IdeasViews>");
-
-//                    writer.WriteRaw(@"</IdeasEnvelope>");
-
-//                    writer.Flush();
-//                }
-//                return sw.ToString();
-//            }
+            bool test = true;
+            Dictionary<string, Thing> things = new Dictionary<string, Thing>();
+            Dictionary<string, Thing> results_dic;
+            Dictionary<string, Location> location_dic = new Dictionary<string, Location>();
+            IEnumerable<Thing> tuple_types = new List<Thing>();
+            IEnumerable<Thing> tuples = new List<Thing>();
+            IEnumerable<Thing> results;
+            List<View> views = new List<View>();
+            string temp = "";
+            string temp2 = "";
+            string temp3 = "";
+            string date = DateTime.Now.ToString("d");
+            string time = DateTime.Now.ToString("T");
+            string prop_date = DateTime.Now.ToString("yyyyMMdd");
+            string prop_time = DateTime.Now.ToString("HHmmss");
+            string minor_type;
+            string minor_type_name;
+            Guid view_GUID;
+            Guid thing_GUID;
+            Guid temp_GUID;
+            Dictionary<string, Guid> thing_GUIDs = new Dictionary<string, Guid>();
+            Dictionary<string, Thing> OV1_pic_views;
+            Dictionary<string, List<Thing>> CV4_CD_views;
+            Dictionary<string, List<Thing>> ARO_views;
+            Dictionary<string, Thing> doc_block_views;
+            Dictionary<string, List<Thing>> support_views;
+            Dictionary<string, List<Thing>> needline_views;
+            List<string> SA_Def_elements = new List<string>();
+            XElement root = XElement.Load(new MemoryStream(input));
+            List<List<Thing>> sorted_results;
+            //bool representation_scheme = false;
+            int count = 0;
+            int count2 = 0;
+            string loc_x, loc_y, size_x, size_y;
+            Thing value;
+            List<Thing> values;
+            XNamespace ns = "http://www.ideasgroup.org/xsd";
+            Location location;
+            List<string> errors_list = new List<string>();
+            Dictionary<string, List<Thing>> tuple_types_dic1;
+            Dictionary<string, List<Thing>> tuple_types_dic2;
+
+            // regular Things
+
+            foreach (string[] current_lookup in Element_Lookup)
+            {
+                if (current_lookup[5] != "default")
+                    continue;
+                //if (current_lookup[0] == "ArchitecturalDescription")
+                //{
+                //    results =
+                //      from result in root.Elements("Class").Elements("SADiagram").Elements("SASymbol").Elements("SAPicture")
+                //      where (string)result.Parent.Attribute("SAObjMinorTypeName") == "Picture"
+                //      where (from diagram in result.Parent.Parent.Parent.Elements("SADefinition")
+                //             where (string)diagram.Attribute("SAObjId") == (string)result.Parent.Attribute("SASymIdDef")
+                //             select diagram
+                //         ).Any()
+                //      select new Thing
+                //      {
+                //          type = "ArchitecturalDescription",
+                //          id = (string)result.Parent.Attribute("SASymIdDef"),
+                //          name = (string)result.Parent.Attribute("SAObjName"),
+                //          value = (string)result.Attribute("SAPictureData"),
+                //          place1 = "$none$",
+                //          place2 = "$none$",
+                //          foundation = "IndividualType",
+                //          value_type = "exemplarText"
+                //      };
+
+                //    //if (results.Count() > 0)
+                //        //representation_scheme = true;
+                //}
+                //else
+                //{
+
+                results =
+                    from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+                    where (string)result.Parent.Name.ToString() == current_lookup[0]
+                    select new Thing
+                        {
+                            type = current_lookup[0],
+                            id = ((string)result.Parent.Attribute("id")).Substring(2),
+                            name = (string)result.Attribute("exemplarText"),
+                            value = current_lookup[1],
+                            place1 = "$none$",
+                            place2 = "$none$",
+                            foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
+                            value_type = "SAObjMinorTypeName"
+                        };
+
+                results_dic =
+                    (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+                     where (string)result.Parent.Name.ToString() == current_lookup[0]
+                     select new
+                     {
+                         key = ((string)result.Parent.Attribute("id")).Substring(2),
+                         value = new Thing
+                         {
+                             type = current_lookup[0],
+                             id = ((string)result.Parent.Attribute("id")).Substring(2),
+                             name = (string)result.Attribute("exemplarText"),
+                             value = current_lookup[1],
+                             place1 = "$none$",
+                             place2 = "$none$",
+                             foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
+                             value_type = "SAObjMinorTypeName"
+                         }
+                     }).ToDictionary(a => a.key, a => a.value);
+                //}
+
+                if (results_dic.Count() > 0)
+                    MergeDictionaries(things, results_dic);
+            }
+
+            //  diagramming
+
+            results =
+                     from result in root.Elements("IdeasData").Elements("SpatialMeasure").Elements(ns + "Name")
+                     select new Thing
+                         {
+                             id = ((string)result.Parent.Attribute("id")).Substring(2, ((string)result.Parent.Attribute("id")).Length - 5),
+                             name = (string)result.Attribute("exemplarText"),
+                             value = (string)result.Parent.Attribute("numericValue"),
+                             place1 = "$none$",
+                             place2 = "$none$",
+                             foundation = "$none$",
+                             value_type = "diagramming"
+                         };
+
+            sorted_results = results.GroupBy(x => x.id).Select(group => group.OrderBy(x => x.name).ToList()).ToList();
+
+            foreach (List<Thing> coords in sorted_results)
+            {
+                location_dic.Add(coords.First().id,
+                    new Location
+                    {
+                        id = coords.First().id,
+                        bottom_right_x = (string)coords[0].value,
+                        bottom_right_y = (string)coords[1].value,
+                        bottom_right_z = "0",
+                        top_left_x = (string)coords[3].value,
+                        top_left_y = (string)coords[4].value,
+                        top_left_z = "0",
+                    });
+            }
+
+            // doc block
+
+            results =
+                    from result in root.Elements("IdeasData").Elements("Information")
+                    from result2 in root.Elements("IdeasData").Elements("describedBy")
+                    where ((string)result2.Attribute("tuplePlace2")).Substring(2) == ((string)result.Attribute("id")).Substring(2)
+                    select new Thing
+                    {
+                        type = "Information",
+                        id = ((string)result.Attribute("id")).Substring(2),
+                        name = (string)result.Attribute("exemplarText"),
+                        value = "$none$",
+                        place1 = "$none$",
+                        place2 = "$none$",
+                        foundation = "IndividualType",
+                        value_type = "$none$"
+                    };
+            if (results.Count() > 0)
+            {
+                foreach (Thing thing in results)
+                {
+                    things.Remove(thing.id);
+                }
+            }
+
+            doc_block_views =
+                   (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+                    where (string)result.Attribute("exemplarText") == "Doc Block Comment"
+                    from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+                    where (string)result2.Parent.Parent.Name.ToString() != "AV-2"
+                    where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+                    select new
+                    {
+                        key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
+                        value = new Thing
+                        {
+                            type = "$none$",
+                            id = ((string)result.Parent.Attribute("id")).Substring(2),
+                            name = (string)result.Attribute("exemplarText"),
+                            value = ((string)result.Parent.Attribute("exemplarText")),
+                            place1 = "$none$",
+                            place2 = "$none$",
+                            foundation = "$none$",
+                            value_type = "Comment"
+                        }
+                    }).ToDictionary(a => a.key, a => a.value);
+
+            ////Support
+
+            //results =
+            //         from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+            //         where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
+            //         where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
+            //         from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
+            //         where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Attribute("place1Type")).Substring(2)
+            //         from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
+            //         where ((string)result2.Attribute("exemplarText") == "Support")
+            //         where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
+            //         from result6 in root.Elements("IdeasData").Elements("Resource")
+            //         where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+            //         from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
+            //         where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
+            //         from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
+            //         where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
+
+            //         select new Thing
+            //        {
+            //            type = "SupportedBy",
+            //            id = ((string)result.Attribute("place1Type")).Substring(2) + ((string)result4.Attribute("place1Type")).Substring(2),
+            //            name = "$none$",
+            //            value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
+            //            place1 = ((string)result.Attribute("place1Type")).Substring(2),
+            //            place2 = ((string)result4.Attribute("place1Type")).Substring(2),
+            //            foundation = "$none$",
+            //            value_type = "View ID"
+            //        };
+
+            //support_views = results.GroupBy(x => (string)x.value)
+            //                 .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+
+            //if (results.Count() > 0)
+            //{
+            //    foreach (Thing thing in results)
+            //    {
+            //        things.Remove(thing.place1 + "_2");
+            //        things.Remove(thing.place2 + "_2");
+            //        things.Remove(thing.place1 + "_3");
+            //        things.Remove(thing.place2 + "_3");
+            //    }
+            //}
+
+            //// Needlines and System Resource Flow
+
+            //results =
+            //         from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+            //         where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
+            //         where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
+            //         from result in root.Elements("IdeasData").Elements("activityPerformedByPerformer").Elements(ns + "Name")
+            //         where ((string)result5.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("place1Type")).Substring(2)
+            //         from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
+            //         where ((string)result2.Attribute("exemplarText") == "Needline") || ((string)result2.Attribute("exemplarText") == "SF")
+            //         where ((string)result.Parent.Attribute("place2Type")).Substring(2) == ((string)result2.Parent.Attribute("place2Type")).Substring(2)
+            //         from result6 in root.Elements("IdeasData").Elements("Resource")
+            //         where ((string)result6.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+            //         from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
+            //         where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
+            //         from result4 in root.Elements("IdeasData").Elements("activityPerformedByPerformer")
+            //         where ((string)result3.Attribute("place1Type")).Substring(2) == ((string)result4.Attribute("place2Type")).Substring(2)
+
+            //         select new Thing
+            //         {
+            //             type =
+            //             Resource_Flow_Type(
+            //             (string)result2.Attribute("exemplarText"), (string)result5.Parent.Parent.Name.ToString(), ((string)result.Parent.Attribute("place1Type")).Substring(2), ((string)result4.Attribute("place1Type")).Substring(2), things
+            //             ),
+            //             id = ((string)result2.Attribute("id")).Substring(1, ((string)result2.Attribute("id")).Length - 3),
+            //             name = ((string)result.Attribute("exemplarText")),
+            //             value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
+            //             place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
+            //             place2 = ((string)result4.Attribute("place1Type")).Substring(2),
+            //             foundation = "$none$",
+            //             value_type = "View ID"
+            //         };
+
+            //needline_views = results.GroupBy(x => (string)x.value)
+            //                 .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+
+            //if (results.Count() > 0)
+            //{
+            //    foreach (Thing thing in needline_views.First().Value)
+            //    {
+            //        things.Remove(thing.id + "_1");
+            //        things.Remove(thing.id + "_2");
+            //        things.Remove(thing.id + "_4");
+            //        things.Add(thing.id, thing);
+            //    }
+            //}
+
+            //// Capability Dependency
+
+            //results =
+            //       from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+            //       where (string)result2.Name.ToString() == "CV-4_BeforeAfterType"
+            //       from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+            //       where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+            //       select new Thing
+            //           {
+            //               type = "Capability Dependency (DM2rx)",
+            //               id = ((string)result.Parent.Attribute("id")).Substring(2),
+            //               name = (string)result.Attribute("exemplarText"),
+            //               value = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
+            //               place1 = ((string)result.Parent.Attribute("place1Type")).Substring(2),
+            //               place2 = ((string)result.Parent.Attribute("place2Type")).Substring(2),
+            //               foundation = "$none$",
+            //               value_type = "View ID"
+            //           };
+
+            //CV4_CD_views = results.GroupBy(x => (string)x.value)
+            //                 .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+
+            //if (CV4_CD_views.Count() > 0)
+            //{
+            //    foreach (Thing thing in CV4_CD_views.First().Value)
+            //    {
+            //        things.Remove(thing.id);
+            //    }
+            //}
+
+            ////ARO
+
+            //results =
+            //       from result5 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+            //       where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_1"
+            //       where ((string)result5.Parent.Parent.Attribute("id")).Substring(2) != "_2"
+            //       from result2 in root.Elements("IdeasData").Elements("activityConsumesResource").Elements(ns + "Name")
+            //       where ((string)result2.Attribute("exemplarText") == "ARO")
+            //       where ((string)result5.Attribute("ref")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+            //       from result6 in root.Elements("IdeasData").Elements("Resource").Elements(ns + "Name")
+            //       where ((string)result6.Parent.Attribute("id")).Substring(2) == ((string)result2.Parent.Attribute("place1Type")).Substring(2)
+            //       from result3 in root.Elements("IdeasData").Elements("activityProducesResource")
+            //       where ((string)result2.Parent.Attribute("place1Type")).Substring(2) == ((string)result3.Attribute("place2Type")).Substring(2)
+            //       select new Thing
+            //       {
+            //           type = "ActivityResourceOverlap (DM2r)",
+            //           id = ((string)result3.Attribute("id")).Substring(2, ((string)result3.Attribute("id")).Length - 4),
+            //           name = ((string)result6.Attribute("exemplarText")),
+            //           value = ((string)result5.Parent.Parent.Attribute("id")).Substring(2),
+            //           place1 = ((string)result3.Attribute("place1Type")).Substring(2),
+            //           place2 = ((string)result2.Parent.Attribute("place2Type")).Substring(2),
+            //           foundation = "$none$",
+            //           value_type = "View ID"
+            //       };
+
+            //ARO_views = results.GroupBy(x => (string)x.value)
+            //                 .ToDictionary(gdc => gdc.Key, gdc => gdc.ToList());
+
+            //if (ARO_views.Count() > 0)
+            //{
+            //    foreach (Thing thing in ARO_views.First().Value)
+            //    {
+            //        things.Remove(thing.id + "_1");
+            //        things.Remove(thing.id + "_2");
+            //        things.Remove(thing.id + "_3");
+            //    }
+            //}
+
+            // OV-1 Pic
+
+            //OV1_pic_views =
+            //       (
+            //        from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+            //        where (string)result2.Name.ToString() == "OV-1_ArchitecturalDescription"
+            //        from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
+            //        where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+            //        from result3 in root.Elements("IdeasData").Elements("representationSchemeInstance")
+            //        //where (string)result.Parent.Name.ToString() == "ArchitecturalDescription"
+            //        where ((string)result3.Attribute("tuplePlace2")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
+            //        select new
+            //        {
+            //            key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
+            //            value = new Thing
+            //            {
+            //                type = "ArchitecturalDescription",
+            //                id = ((string)result.Parent.Attribute("id")).Substring(2),
+            //                name = (string)result.Attribute("exemplarText"),
+            //                value = ((string)result.Parent.Attribute("exemplarText")),
+            //                place1 = "$none$",
+            //                place2 = "$none$",
+            //                foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
+            //                value_type = "Picture"
+            //            }
+            //        }).ToDictionary(a => a.key, a => a.value);
+
+            //if (OV1_pic_views.Count() > 0)
+            //{
+            //    foreach (Thing thing in OV1_pic_views.Values.ToList())
+            //    {
+            //        things.Remove(thing.id);
+            //    }
+            //}
+
+            //// regular tuples
+
+            //foreach (string[] current_lookup in Tuple_Lookup)
+            //{
+            //    if (current_lookup[3] != "1" && current_lookup[3] != "5")
+            //        continue;
+
+            //    results =
+            //        from result in root.Elements("IdeasData").Descendants()
+            //        where (string)result.Name.ToString() == current_lookup[0]
+            //        from result2 in root.Elements("IdeasData").Descendants()
+            //        where ((string)result.Attribute("tuplePlace1")) == ((string)result2.Attribute("id"))
+            //        where (string)result2.Name.ToString() == current_lookup[5]
+            //        select new Thing
+            //        {
+            //            type = current_lookup[0],
+            //            id = ((string)result.Attribute("id")).Substring(2),
+            //            name = "$none$",
+            //            value = (string)result2.Name.ToString(),
+            //            place1 = ((string)result.Attribute("tuplePlace1")).Substring(2),
+            //            place2 = ((string)result.Attribute("tuplePlace2")).Substring(2),
+            //            foundation = current_lookup[2],
+            //            value_type = "element type"
+            //        };
+
+            //    tuples = tuples.Concat(results.ToList());
+            //}
+
+            // regular tuple types
+
+            foreach (string[] current_lookup in Tuple_Type_Lookup)
+            {
+
+                if (current_lookup[3] != "1" && current_lookup[3] != "5")
+                    continue;
+
+                results =
+                    from result in root.Elements("IdeasData").Descendants()
+                    where (string)result.Name.ToString() == current_lookup[0]
+                    from result2 in root.Elements("IdeasData").Descendants()
+                    where ((string)result.Attribute("place1Type")) == ((string)result2.Attribute("id"))
+                    where (string)result2.Name.ToString() == current_lookup[5]
+
+                    select new Thing
+                    {
+                        type = current_lookup[0],
+                        id = ((string)result.Attribute("id")).Substring(2),
+                        name = "$none$",
+                        value = (string)result2.Name.ToString(),
+                        place1 = ((string)result.Attribute("place1Type")).Substring(2),
+                        place2 = ((string)result.Attribute("place2Type")).Substring(2),
+                        foundation = current_lookup[2],
+                        value_type = "element type"
+                    };
+
+                tuple_types = tuple_types.Concat(results.ToList());
+            }
+
+            tuple_types_dic1 = tuple_types.Where(x => x.type == "WholePartType").GroupBy(x => x.place1).ToDictionary(x => x.Key, x => x.ToList());
+            tuple_types_dic2 = tuple_types.Where(x => x.type == "WholePartType").GroupBy(x => x.place2).ToDictionary(x => x.Key, x => x.ToList());
+
+            // views
+
+            foreach (string[] current_lookup in View_Lookup)
+            {
+                if (current_lookup[3] != "default")
+                    continue;
+                results =
+                    from result in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
+                    where (string)result.Parent.Parent.Name.ToString() == current_lookup[0]
+                    select new Thing
+                    {
+                        type = current_lookup[0],
+                        id = ((string)result.Parent.Parent.Attribute("id")).Substring(2) + ((string)result.Attribute("ref")).Substring(2),
+                        name = ((string)result.Parent.Parent.Attribute("name")).Replace("&", " And "),
+                        place1 = ((string)result.Parent.Parent.Attribute("id")).Substring(2),
+                        place2 = ((string)result.Attribute("ref")).Substring(2),
+                        value = (things.TryGetValue(((string)result.Attribute("ref")).Substring(2), out value)) ? value : new Thing { type = "$none$" },
+                        foundation = "$none$",
+                        value_type = "Thing"
+                    };
+
+
+                sorted_results = results.GroupBy(x => x.name).Select(group => group.Distinct().ToList()).ToList();
+                //sorted_results = Add_Tuples(sorted_results, tuples);
+                //sorted_results = Add_Tuples(sorted_results, tuple_types);
+
+                foreach (List<Thing> view in sorted_results)
+                {
+                    List<Thing> mandatory_list = new List<Thing>();
+                    List<Thing> optional_list = new List<Thing>();
+
+                    foreach (Thing thing in view)
+                    {
+
+                        temp = Find_Mandatory_Optional((string)((Thing)thing.value).type, view.First().name, thing.type, thing.place1, ref errors_list);
+                        if (temp == "Mandatory")
+                        {
+                            mandatory_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
+                        }
+                        if (temp == "Optional")
+                        {
+                            optional_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
+                        }
+                    }
+
+                    mandatory_list = mandatory_list.OrderBy(x => x.type).ToList();
+                    optional_list = optional_list.OrderBy(x => x.type).ToList();
+
+                    //if (needline_views.TryGetValue(view.First().place1, out values))
+                    //    optional_list.AddRange(values);
+
+                    //if (CV4_CD_views.TryGetValue(view.First().place1, out values))
+                    //    optional_list.AddRange(values);
+
+                    //if (ARO_views.TryGetValue(view.First().place1, out values))
+                    //    optional_list.AddRange(values);
+
+                    //if (Proper_View(mandatory_list, view.First().type))
+                    views.Add(new View { type = current_lookup[1], id = view.First().place1, name = view.First().name, mandatory = mandatory_list, optional = optional_list });
+                }
+            }
+
+            // output
+
+            foreach (string thing in things.Keys)
+            {
+                thing_GUID = Guid.NewGuid();
+                thing_GUIDs.Add(thing, thing_GUID);
+            }
+
+            using (var sw = new Utf8StringWriter())
+            {
+                using (var writer = XmlWriter.Create(sw))
+                {
+
+                    writer.WriteRaw(@"<Classes>");
+
+                    foreach (View view in views)
+                    {
+                        count2 = 0;
+                        count++;
+                        view_GUID = Guid.NewGuid();
+                        minor_type = Find_View_SA_Minor_Type(view.type);
+
+                        writer.WriteRaw("<Class><SADiagram SAObjId=\"" + view.id + "\" SAObjName=\"" + view.name + "\" SAObjMinorTypeName=\"" + view.type
+                            + "\" SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"1\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\""
+                            + date + "\" SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"" + view.name + "\" "
+                            + "SADgmCLevelNumber=\"\" SADgmSnapGridEnt=\"0\" SADgmSnapGridLin=\"0\" SADgmPGridNumEnt=\"4 4\" SADgmPGridNumLin=\"10 10\""
+                            + " SADgmPGridSizeEnt=\"25 25\" SADgmPGridSizeLin=\"10 10\" SADgmGridUnit100=\"100 100\" SADgmBPresentationMenu=\"0\""
+                            + " SADgmBShowPages=\"0\" SADgmBShowRuler=\"0\" SADgmBShowGrid=\"-1\" SADgmBShowScroll=\"-1\" SADgmBShowNodeShadow=\"-1\""
+                            + " SADgmBShowLineShadow=\"0\" SADgmBShowTextShadow=\"0\" SADgmPShadowDelta=\"5 5\" SADgmRGBShadowColor=\"0x00c0c0c0\""
+                            + " SADgmRMargin=\"50 50 50 50\" SADgmBBorder=\"0\" SADgmBorderOffset=\"-13\" SADgmWBorderPenStyle=\"0x0010\" SADgmBDgmBorder=\"0\""
+                            + " SADgmIDgmForm=\"0\" SADgmWOrientation=\"0x0003\" SADgmBDgmPDefault=\"1\" SADgmBIsHierarchy=\"0\" SADgmBBackgroundColorOn=\"0\""
+                            + " SADgmRGBBackgroundColor=\"0x00ffffff\" SADgmWLinePenStyle=\"0x0103\">");
+
+                        writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"1\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                            + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                            + "<SAProperty SAPrpName=\"Use Automatic Gradient Fills\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+                            + "<SAProperty SAPrpName=\"DGX File Name\" SAPrpValue=\"D" + count.ToString("D7") + ".DGX\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                            //+ ((minor_type == "283") ? "" : "<SAProperty SAPrpName=\"Hierarchical Numbering\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>") 
+                            + "<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+                            + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+                            + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
+                            + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + view_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
+                            // + "<SAProperty SAPrpName=\"Description\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
+                            //+ "<SAProperty SAPrpName=\"Vertical Pools and Lanes\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+                            //+ "<SAProperty SAPrpName=\"Check Connections\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+                            //+ "<SAProperty SAPrpName=\"Auto-create/update 1380\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+                            //+ "<SAProperty SAPrpName=\"Auto-populate Where of APBP\" SAPrpValue=\"T\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+                            //+ "<SAProperty SAPrpName=\"Peers\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Diagram\"" 
+                            //+ " SAPrpEditDefMinorType=\"" + view.type + "\"/>"
+                            //+ "<SAProperty SAPrpName=\"Architecture Type\" SAPrpValue=\"\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"
+                            //+ "<SAProperty SAPrpName=\"Related Architecture Description\" SAPrpValue=\"\" SAPrpEditType=\"14\" SAPrpLength=\"1200\""
+                            //+ " SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"ArchitecturalDescription (DM2)\"/>"
+                            //+ "<SAProperty SAPrpName=\"OSLCLink\" SAPrpValue=\"\" SAPrpEditType=\"8\" SAPrpLength=\"4074\" SAPrpEditDefMajorType=\"Definition\""
+                            //+ " SAPrpEditDefMinorType=\"OSLC Link\"/>"
+                            //+ "<SAProperty SAPrpName=\"Reference Documents\" SAPrpValue=\"\" SAPrpEditType=\"18\" SAPrpLength=\"1024\"/>"
+                            + "<SAProperty SAPrpName=\"SA VISIO Last Modified By\" SAPrpValue=\"SA\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                            + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + DateTime.Now.ToString("yyyyMMdd") + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+                            + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + DateTime.Now.ToString("HHmmss") + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+                            + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>");
+
+                        List<Thing> thing_list = new List<Thing>(view.mandatory);
+                        thing_list.AddRange(view.optional);
+
+                        foreach (Thing thing in thing_list)
+                        {
+                            if (view.type == "DIV-02 Logical Data Model (Entity Relation) (DM2)")
+                                thing.type = Find_DIV2_Type(thing, ref tuple_types_dic1, ref tuple_types_dic2);
+
+                            if (view.type == "SV-08 Systems Evolution Description (DM2)" && thing.type == "Activity (DM2)")
+                                thing.type = "System Milestone (DM2x)";
+
+                            if (view.type == "PV-02 Project Timelines (DM2)")
+                                thing.type = "Project Milestone (DM2x)";
+
+
+                            if (thing_GUIDs.TryGetValue(thing.id, out thing_GUID) == false)
+                            {
+                                thing_GUID = Guid.NewGuid();
+                                thing_GUIDs.Add(thing.id, thing_GUID);
+                            }
+
+                            if (location_dic.TryGetValue(view.id + thing.id, out location) == true)
+                            {
+                                loc_x = location.top_left_x;
+                                loc_y = location.top_left_y;
+                                size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
+                                size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
+                            }
+                            else
+                            {
+                                loc_x = "574";
+                                loc_y = "203";
+                                size_x = "125";
+                                size_y = "55";
+                            }
+
+                            if (view.type == "SV-08 Systems Evolution Description (DM2)" && thing.type == "System Milestone (DM2x)")
+                                minor_type_name = "Milestone";
+                            else
+                                minor_type_name = thing.type;
+
+                            minor_type = Find_Symbol_Element_SA_Minor_Type(ref minor_type_name, view.type);
+
+                            if (view.type == "DIV-02 Logical Data Model (Entity Relation) (DM2)" && thing.type != "Entity")
+                                continue;
+
+                            writer.WriteRaw("<SASymbol SAObjId=\"" + thing.id + view.id.Substring(1) + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + minor_type_name + "\""
+                                + " SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\""
+                                + " SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;.&quot;" + thing.name + "&quot;\" SASymIdDgm=\"" + view.id + "\" SASymIdDef=\"" + thing.id + "\""
+                                //other
+                                + " SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"" + count2 + "\""
+                                + " SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\""
+                                + " SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\""
+                                + " SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x082a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\""
+                                + " SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\""
+                                + " SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0007\" SASymSeqNum=\"0\""
+                                + " SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\""
+                                + " SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\""
+                                + " SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\""
+                                + " SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"1\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\""
+                                + " SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"572\""
+                                + " SASymNameLocY=\"168\" SASymNameSizeX=\"121\" SASymNameSizeY=\"18\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\""
+                                + " SASymDescSizeY=\"0\">");
+
+                            writer.WriteRaw("<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                                + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                                + "<SAProperty SAPrpName=\"Object Class Number\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                                + "<SAProperty SAPrpName=\"Object Type Number\" SAPrpValue=\"" + Find_Definition_Element_SA_Minor_Type(thing.type) + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                                + "<SAProperty SAPrpName=\"Symbol Represents\" SAPrpValue=\"" + thing.type + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/>"
+                                + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                                //+ "<SARelation SARelId=\"_1982\" SARelTypeNum=\"6\" SARelTypeName=\"connects\"/>"
+                                //+ "<SARelation SARelId=\"_1980\" SARelTypeNum=\"8\" SARelTypeName=\"connects\"/>"
+                                //+ "<SARelation SARelId=\"_1979\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
+                                //+ "<SARelation SARelId=\"_1991\" SARelTypeNum=\"28\" SARelTypeName=\"embeds\"/>"
+                                + "</SASymbol>");
+
+                            count2++;
+                        }
+
+                        //if (OV1_pic_views.TryGetValue(view.id, out value))
+                        //{
+
+                        //    if (location_dic.TryGetValue(view.id + value.id, out location) == true)
+                        //    {
+                        //        loc_x = location.top_left_x;
+                        //        loc_y = location.top_left_y;
+                        //        size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
+                        //        size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
+                        //    }
+                        //    else
+                        //    {
+                        //        loc_x = "574";
+                        //        loc_y = "203";
+                        //        size_x = "125";
+                        //        size_y = "55";
+                        //    }
+
+                        //    writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"" + value.name + "\" SAObjMinorTypeName=\"Picture\" SAObjMinorTypeNum=\"11\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"ir\""
+                        //        + " SAObjUpdateDate=\"2/5/2015\" SAObjUpdateTime=\"10:00:16 AM\" SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\""
+                        //        + " SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"1\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"65535\" SASymXPSubordinate=\"65535\""
+                        //        + " SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\""
+                        //        + " SASymFlags3=\"0x0000\" SASymTextFlags=\"0x003a\" SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\""
+                        //        + " SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\" SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\""
+                        //        + " SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\" SASymCLevelNumber=\"0\""
+                        //        + " SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\""
+                        //        + " SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\" SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\""
+                        //        + " SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"-150\" SASymNameLocY=\"-100\" SASymNameSizeX=\"0\" SASymNameSizeY=\"0\" SASymDescLocX=\"0\" SASymDescLocY=\"0\" SASymDescSizeX=\"0\" SASymDescSizeY=\"0\""
+                        //        + " SASymZPPicFile=\"P" + count.ToString("D7") + ".BMP\" SASymZPPicType=\"0x0101\">");
+
+                        //    writer.WriteRaw("<SAPicture SAPictureEncodingMethod=\"Hex\" SAPictureEncodingVersion=\"1.0\" SAOriginalFile=\"P" + count.ToString("D7") + ".BMP\" SAOriginalFileLength=\"152054\" SAPictureData=\"" + value.value + "\"/>"
+                        //        + " <SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"~T~\" SAPrpValue=\"11\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/></SASymbol>");
+                        //}
+
+                        if (doc_block_views.TryGetValue(view.id, out value))
+                        {
+                            if (location_dic.TryGetValue(view.id, out location) == true)
+                            {
+                                loc_x = location.top_left_x;
+                                loc_y = location.top_left_y;
+                                size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
+                                size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
+                            }
+                            else
+                            {
+                                loc_x = "574";
+                                loc_y = "203";
+                                size_x = "125";
+                                size_y = "55";
+                            }
+
+                            writer.WriteRaw("<SASymbol SAObjId=\"" + value.id + "\" SAObjName=\"\" SAObjMinorTypeName=\"Doc Block\" SAObjMinorTypeNum=\"4\" SAObjMajorTypeNum=\"2\" SAObjAuditId=\"SAS\" SAObjUpdateDate=\"1/29/2015\" SAObjUpdateTime=\"3:01:32 PM\""
+                            + " SAObjFQName=\"&quot;&quot;\" SASymIdDgm=\"" + view.id + "\" SASymArrangement=\"0\" SASymOtherSymbology=\"0\" SASymProperties=\"0x0000\" SASymOrder=\"0\" SASymXPEntity=\"3\" SASymXPLink=\"65535\" SASymXPGroup=\"65535\" SASymXPSibling=\"0\""
+                            + " SASymXPSubordinate=\"65535\" SASymPenStyle=\"0x0010\" SASymFontName=\"\" SASymFontHeight=\"0x0000\" SASymFontFlags=\"0x0000\" SASymLineStyle=\"0x0103\" SASymFlags=\"0x0002\" SASymFlags2=\"0x0000\" SASymFlags3=\"0x0000\" SASymTextFlags=\"0x000a\""
+                            + " SASymStyle=\"0\" SASymAuxStyle=\"0x0000\" SASymOccurs=\"0x01\" SASymOccOffset=\"0x00\" SASymBGColor=\"0x00\" SASymFGColor=\"0x00\" SASymPrompt=\"0x00\" SASymFrExArcChar=\"0x00\" SASymToExArcChar=\"0x00\" SASymUncleCount=\"0x00\""
+                            + " SASymStyleFlags=\"0x0003\" SASymSeqNum=\"0\" SASymRotation=\"0\" SASymError1=\"0x00\" SASymError2=\"0x00\" SASymHideProgeny=\"0\" SASymHidden=\"0\" SASymOtherForm=\"0\" SASymHasDspMode=\"0\" SASymDspMode=\"0x0000\" SASymDspModeExt=\"0x00000000\""
+                            + " SASymCLevelNumber=\"0\" SASymPenColorOn=\"1\" SASymPenColorRed=\"0\" SASymPenColorGreen=\"130\" SASymPenColorBlue=\"236\" SASymFillColorOn=\"1\" SASymFillColorRed=\"176\" SASymFillColorGreen=\"213\" SASymFillColorBlue=\"255\" SASymFontColorOn=\"0\""
+                            + " SASymFontColorRed=\"0\" SASymFontColorGreen=\"0\" SASymFontColorBlue=\"0\" SASymLocX=\"" + loc_x + "\" SASymLocY=\"" + loc_y + "\" SASymSizeX=\"" + size_x + "\" SASymSizeY=\"" + size_y + "\" SASymNameLocX=\"569\" SASymNameLocY=\"166\" SASymNameSizeX=\"393\" SASymNameSizeY=\"51\""
+                            + " SASymDescLocX=\"620\" SASymDescLocY=\"367\" SASymDescSizeX=\"273\" SASymDescSizeY=\"17\" SASymZPDesc=\"" + value.value + "\"><SAProperty SAPrpName=\"~C~\" SAPrpValue=\"2\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                            + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"4\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/><SAProperty SAPrpName=\"Description\" SAPrpValue=\"" + value.value + "\" SAPrpEditType=\"1\" SAPrpLength=\"4074\"/></SASymbol>");
+                        }
+
+                        writer.WriteRaw(@"</SADiagram>");
+
+                        foreach (Thing thing in thing_list)
+                        {
+                            if (!SA_Def_elements.Contains(thing.id))
+                            {
+                                SA_Def_elements.Add(thing.id);
+                                thing_GUID = thing_GUIDs[thing.id];
+
+                                minor_type = Find_Definition_Element_SA_Minor_Type(thing.type);
+
+                                writer.WriteRaw("<SADefinition SAObjId=\"" + thing.id + "\" SAObjName=\"" + thing.name + "\" SAObjMinorTypeName=\"" + thing.type + "\" "
+                                    + "SAObjMinorTypeNum=\"" + minor_type + "\" SAObjMajorTypeNum=\"3\" SAObjAuditId=\"NEAR\" SAObjUpdateDate=\"" + date + "\" "
+                                    + "SAObjUpdateTime=\"" + time + "\" SAObjFQName=\"&quot;" + thing_GUID + "&quot;." + thing.name + "\">"
+                                    + "<SAProperty SAPrpName=\"~C~\" SAPrpValue=\"3\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                                    + "<SAProperty SAPrpName=\"~T~\" SAPrpValue=\"" + minor_type + "\" SAPrpEditType=\"0\" SAPrpLength=\"0\"/>"
+                                    + "<SAProperty SAPrpName=\"GUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"64\"/>"
+                                    + "<SAProperty SAPrpName=\"KeyGUID\" SAPrpValue=\"" + thing_GUID + "\" SAPrpEditType=\"1\" SAPrpLength=\"80\"/>"
+                                    + "<SAProperty SAPrpName=\"Is Instance\" SAPrpValue=\"F\" SAPrpEditType=\"4\" SAPrpLength=\"1\"/>"
+                                    + ((minor_type == "1327") ? "" : "<SAProperty SAPrpName=\"To Line End\" SAPrpValue=\"LineEnd1\" SAPrpEditType=\"1\" SAPrpLength=\"1200\"/>"));
+
+                                //
+
+                                //<SAProperty SAPrpName="Parent Of Capability" SAPrpValue="Definition:&quot;Capability (DM2)&quot;:&quot;99be13e4-03b9-43f1-bf82-0d508bea5cc3&quot;.&quot;(JCA 1.0) Force Support&quot;
+                                //    Definition:&quot;Capability (DM2)&quot;:a697273a-8c0e-4f84-b18e-7c6876dd0742.&quot;(JCA 2.0) Battlespace Awareness&quot;
+                                //    Definition:&quot;Capability (DM2)&quot;:&quot;3f98f92e-fe73-43e6-b506-7e4e86f861db&quot;.&quot;(JCA 3.0) Force Application&quot;
+                                //    Definition:&quot;Capability (DM2)&quot;:cd8cef3b-87a6-402f-9205-70e0794766c8.&quot;(JCA 4.0) Logistics&quot;
+                                //    Definition:&quot;Capability (DM2)&quot;:c5376ccf-5b8f-4a10-9d94-ef39ae03b453.&quot;(JCA 5.0) Command and Control&quot;
+                                //    Definition:&quot;Capability (DM2)&quot;:&quot;0f6cfd54-7aca-4c75-98b2-c7a785ad9fb6&quot;.&quot;(JCA 6.0) Net-Centric&quot;" SAPrpEditType="14" SAPrpLength="1200" SAPrpEditDefMajorType="Definition" SAPrpEditDefMinorType="Capability (DM2)">
+                                //    <SALink SALinkName="&quot;(JCA 1.0) Force Support&quot;" SALinkIdentity="_15647"/>
+                                //    <SALink SALinkName="&quot;(JCA 2.0) Battlespace Awareness&quot;" SALinkIdentity="_15639"/>
+                                //    <SALink SALinkName="&quot;(JCA 3.0) Force Application&quot;" SALinkIdentity="_15644"/>
+                                //    <SALink SALinkName="&quot;(JCA 4.0) Logistics&quot;" SALinkIdentity="_15648"/>
+                                //    <SALink SALinkName="&quot;(JCA 5.0) Command and Control&quot;" SALinkIdentity="_15643"/>
+                                //    <SALink SALinkName="&quot;(JCA 6.0) Net-Centric&quot;" SALinkIdentity="_15642"/>
+                                //</SAProperty>
+
+                                //
+
+                                sorted_results = Get_Tuples_place1(thing, tuples);
+                                sorted_results.AddRange(Get_Tuples_place1(thing, tuple_types));
+                                sorted_results.AddRange(Get_Tuples_place2(thing, tuples));
+                                sorted_results.AddRange(Get_Tuples_place2(thing, tuple_types));
+                                //values = new List<Thing>();
+                                //if (support_views.TryGetValue(view.id, out values))
+                                //    sorted_results.AddRange(Get_Tuples_place1(thing, values));
+                                //values = new List<Thing>();
+                                //if (needline_views.TryGetValue(view.id, out values))
+                                //    sorted_results.AddRange(Get_Tuples_id(thing, values));
+
+
+                                if (sorted_results.Count() > 0)
+                                {
+                                    foreach (List<Thing> list in sorted_results)
+                                    {
+                                        count2 = 0;
+
+                                        foreach (Thing rela in list)
+                                        {
+
+                                            if (thing_GUIDs.TryGetValue(rela.place2, out temp_GUID))
+                                            {
+                                                if (count2 == 0)
+                                                {
+                                                    temp = "<SAProperty SAPrpName=\"" + list.First().type + "\" SAPrpValue=\"";
+                                                    temp3 = "";
+                                                    temp2 = "";
+                                                    count2++;
+                                                }
+
+                                                if (things.TryGetValue(rela.place2, out value))
+                                                {
+                                                    temp = temp + "Definition:&quot;" + value.value + "&quot;:&quot;" + temp_GUID + ".&quot;" + value.name + "&quot;";
+                                                    temp2 = "\" SAPrpEditType=\"14\" SAPrpLength=\"1200\" SAPrpEditDefMajorType=\"Definition\" SAPrpEditDefMinorType=\"" + value.value + "\">";
+                                                    temp3 = temp3 + "<SALink SALinkName=\"&quot;" + value.name + "&quot;\" SALinkIdentity=\"" + value.id + "\"/>";
+                                                }
+                                            }
+                                        }
+
+                                        if (count2 > 0)
+                                            writer.WriteRaw(temp + temp2 + temp3 + "</SAProperty>");
+                                    }
+                                }
+
+                                //
+
+                                writer.WriteRaw("<SAProperty SAPrpName=\"Initial Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+                               + "<SAProperty SAPrpName=\"Initial Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+                               + "<SAProperty SAPrpName=\"Initial Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
+                               + "<SAProperty SAPrpName=\"Last Change Date\" SAPrpValue=\"" + prop_date + "\" SAPrpEditType=\"2\" SAPrpLength=\"10\"/>"
+                               + "<SAProperty SAPrpName=\"Last Change Time\" SAPrpValue=\"" + prop_time + "\" SAPrpEditType=\"7\" SAPrpLength=\"11\"/>"
+                               + "<SAProperty SAPrpName=\"Last Change Audit\" SAPrpValue=\"NEAR\" SAPrpEditType=\"1\" SAPrpLength=\"8\"/>"
+                               + "</SADefinition>");
+                            }
+                        }
+                        //writer.WriteRaw(@"<MandatoryElements>");
+
+                        //foreach (Thing thing in view.mandatory)
+                        //{
+                        //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
+                        //}
+
+                        //writer.WriteRaw(@"</MandatoryElements>");
+                        //writer.WriteRaw(@"<OptionalElements>");
+
+                        //foreach (Thing thing in view.optional)
+                        //{
+                        //    writer.WriteRaw("<" + view.type + "_" + thing.type + " ref=\"id" + thing.id + "\"/>");
+                        //}
+
+                        //writer.WriteRaw(@"</OptionalElements>");
+                        //writer.WriteRaw("</" + view.type + ">");
+                        writer.WriteRaw(@"</Class>");
+                    }
+
+                    //foreach (Thing thing in things)
+                    //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id + "\" "
+                    //        + (((string)thing.value == "$none$") ? "" : thing.value_type + "=\"" + (string)thing.value + "\"") + ">" + "<ideas:Name exemplarText=\"" + thing.name
+                    //        + "\" namingScheme=\"ns1\" id=\"n" + thing.id + "\"/></" + thing.type + ">");
+
+                    //foreach (Thing thing in tuple_types)
+                    //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
+                    //    + "\" place1Type=\"id" + thing.place1 + "\" place2Type=\"id" + thing.place2 + "\"/>");
+
+                    //foreach (Thing thing in tuples)
+                    //    writer.WriteRaw("<" + thing.type + " ideas:FoundationCategory=\"" + thing.foundation + "\" id=\"id" + thing.id
+                    //    + "\" tuplePlace1=\"id" + thing.place1 + "\" tuplePlace2=\"id" + thing.place2 + "\"/>");
+
+                    //writer.WriteRaw(@"</IdeasData>");
+
+                    //writer.WriteRaw(@"<IdeasViews frameworkVersion=""DM2.02_Chg_1"" framework=""DoDAF"">");
+
+                    writer.WriteRaw(@"</Classes>");
+
+                    writer.Flush();
+                }
+
+                output = sw.ToString();
+                errors = string.Join("", errors_list.Distinct().ToArray());
+
+                if (errors.Count() > 0)
+                    test = false;
+
+                return test;
+            }
         }
-
-//        ////////////////////
-//        ////////////////////
-
-//        public static string PES2RSA(byte[] input)
-//        {
-//            Dictionary<string, Thing> things = new Dictionary<string, Thing>();
-//            Dictionary<string, Thing> results_dic;
-//            Dictionary<string, Thing> OV1_pic_views = new Dictionary<string, Thing>();
-//            IEnumerable<Thing> tuple_types = new List<Thing>();
-//            IEnumerable<Thing> tuples = new List<Thing>();
-//            IEnumerable<Thing> results;
-//            List<View> views = new List<View>();
-//            string temp="";
-//            string temp2="";
-//            string temp3="";
-//            string date = DateTime.Now.ToString("d");
-//            string time = DateTime.Now.ToString("T");
-//            string prop_date = DateTime.Now.ToString("yyyyMMdd");
-//            string prop_time = DateTime.Now.ToString("HHmmss");
-//            string minor_type;
-//            Guid view_GUID;
-//            string thing_GUID;
-//            string thing_GUID_1;
-//            string thing_GUID_2;
-//            string thing_GUID_3;
-//            Dictionary<string, string> thing_GUIDs = new Dictionary<string, string>();
-//            List<string> SA_Def_elements = new List<string>();
-//            XElement root = XElement.Load(new MemoryStream(input));
-//            List<List<Thing>> sorted_results;
-//            //bool representation_scheme = false;
-//            int count = 0;
-//            int count2 = 0;
-//            Thing value;
-//            //List<Thing> values;
-//            XNamespace ns = "http://www.ideasgroup.org/xsd";
-//            Dictionary<string, Location> location_dic = new Dictionary<string, Location>();
-//            string loc_x, loc_y, size_x, size_y;
-//            Location location;
-//            List<string> errors_list = new List<string>();
-
-//            foreach (string[] current_lookup in RSA_Element_Lookup)
-//            {
-//                results_dic =
-//                    (from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-//                        where (string)result.Parent.Name.ToString() == current_lookup[0]
-//                        select new
-//                        {
-//                            key = ((string)result.Parent.Attribute("id")).Substring(2),
-//                            value = new Thing
-//                            {
-//                                type = current_lookup[0],
-//                                id = ((string)result.Parent.Attribute("id")).Substring(2),
-//                                name = (string)result.Attribute("exemplarText"),
-//                                value = current_lookup[1],
-//                                place1 = "$none$",
-//                                place2 = "$none$",
-//                                foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-//                                value_type = "SAObjMinorTypeName"
-//                            }
-//                        }).ToDictionary(a => a.key, a => a.value);
-
-
-//                if (results_dic.Count() > 0)
-//                    MergeDictionaries(things, results_dic);
-//            }
-
-//            // OV-1 Pic
-
-//            OV1_pic_views =
-//                   (
-//                    from result2 in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-//                    where (string)result2.Name.ToString() == "OV-1_ArchitecturalDescription"
-//                    from result in root.Elements("IdeasData").Descendants().Elements(ns + "Name")
-//                    where ((string)result2.Attribute("ref")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-//                    from result3 in root.Elements("IdeasData").Elements("representationSchemeInstance")
-//                    //where (string)result.Parent.Name.ToString() == "ArchitecturalDescription"
-//                    where ((string)result3.Attribute("tuplePlace2")).Substring(2) == ((string)result.Parent.Attribute("id")).Substring(2)
-//                    select new
-//                    {
-//                        key = ((string)result2.Parent.Parent.Attribute("id")).Substring(2),
-//                        value = new Thing
-//                        {
-//                            type = "ArchitecturalDescription",
-//                            id = ((string)result.Parent.Attribute("id")).Substring(2),
-//                            name = (string)result.Attribute("exemplarText"),
-//                            value = ((string)result.Parent.Attribute("exemplar")),
-//                            place1 = "$none$",
-//                            place2 = "$none$",
-//                            foundation = (string)result.Parent.Attribute(ns + "FoundationCategory"),
-//                            value_type = "Picture"
-//                        }
-//                    }).ToDictionary(a => a.key, a => a.value);
-
-//            if (OV1_pic_views.Count() > 0)
-//            {
-//                foreach (Thing thing in OV1_pic_views.Values.ToList())
-//                {
-//                    things.Remove(thing.id);
-//                }
-//            }
-
-//            //  diagramming
-
-//            results =
-//                     from result in root.Elements("IdeasData").Elements("SpatialMeasure").Elements(ns + "Name")
-//                     select new Thing
-//                     {
-//                         id = ((string)result.Parent.Attribute("id")).Substring(2, ((string)result.Parent.Attribute("id")).Length - 5),
-//                         name = (string)result.Attribute("exemplarText"),
-//                         value = (string)result.Parent.Attribute("numericValue"),
-//                         place1 = "$none$",
-//                         place2 = "$none$",
-//                         foundation = "$none$",
-//                         value_type = "diagramming"
-//                     };
-
-//            sorted_results = results.GroupBy(x => x.id).Select(group => group.OrderBy(x => x.name).ToList()).ToList();
-
-//            foreach (List<Thing> coords in sorted_results)
-//            {
-//                location_dic.Add(coords.First().id,
-//                    new Location
-//                    {
-//                        id = coords.First().id,
-//                        bottom_right_x = (string)coords[0].value,
-//                        bottom_right_y = (string)coords[1].value,
-//                        bottom_right_z = "0",
-//                        top_left_x = (string)coords[3].value,
-//                        top_left_y = (string)coords[4].value,
-//                        top_left_z = "0",
-//                    });
-//            }
-
-//            // regular tuples
-
-//            foreach (string[] current_lookup in Tuple_Lookup)
-//            {
-//                if (current_lookup[3] != "1" && current_lookup[3] != "5")
-//                    continue;
-
-//                results =
-//                    from result in root.Elements("IdeasData").Descendants()
-//                    where (string)result.Name.ToString() == current_lookup[0]
-//                    from result2 in root.Elements("IdeasData").Descendants()
-//                    where ((string)result.Attribute("tuplePlace1")) == ((string)result2.Attribute("id"))
-//                    where (string)result2.Name.ToString() == current_lookup[5]
-//                    select new Thing
-//                    {
-//                        type = current_lookup[0],
-//                        id = ((string)result.Attribute("id")).Substring(2),
-//                        name = "$none$",
-//                        value = (string)result2.Name.ToString(),
-//                        place1 = ((string)result.Attribute("tuplePlace1")).Substring(2),
-//                        place2 = ((string)result.Attribute("tuplePlace2")).Substring(2),
-//                        foundation = current_lookup[2],
-//                        value_type = "element type"
-//                    };
-
-//                tuples = tuples.Concat(results.ToList());
-//            }
-
-//            // regular tuple types
-
-//            foreach (string[] current_lookup in Tuple_Type_Lookup)
-//            {
-
-//                if (current_lookup[3] != "1" && current_lookup[3] != "5")
-//                    continue;
-
-//                results =
-//                    from result in root.Elements("IdeasData").Descendants()
-//                    where (string)result.Name.ToString() == current_lookup[0]
-//                    from result2 in root.Elements("IdeasData").Descendants()
-//                    where ((string)result.Attribute("place1Type")) == ((string)result2.Attribute("id"))
-//                    where (string)result2.Name.ToString() == current_lookup[5]
-
-//                    select new Thing
-//                    {
-//                        type = current_lookup[0],
-//                        id = ((string)result.Attribute("id")).Substring(2),
-//                        name = "$none$",
-//                        value = (string)result2.Name.ToString(),
-//                        place1 = ((string)result.Attribute("place1Type")).Substring(2),
-//                        place2 = ((string)result.Attribute("place2Type")).Substring(2),
-//                        foundation = current_lookup[2],
-//                        value_type = "element type"
-//                    };
-
-//                tuple_types = tuple_types.Concat(results.ToList());
-//            }
-
-//            // views
-
-//            foreach (string[] current_lookup in View_Lookup)
-//            {
-//                if (current_lookup[3] != "default")
-//                    continue;
-//                results =
-//                    from result in root.Elements("IdeasViews").Descendants().Descendants().Descendants()
-//                    where (string)result.Parent.Parent.Name.ToString() == current_lookup[0]
-//                    select new Thing
-//                    {
-//                        type = current_lookup[0],
-//                        id = ((string)result.Parent.Parent.Attribute("id")).Substring(2) + ((string)result.Attribute("ref")).Substring(2),
-//                        name = ((string)result.Parent.Parent.Attribute("name")).Replace("&", " And "),
-//                        place1 = ((string)result.Parent.Parent.Attribute("id")).Substring(2),
-//                        place2 = ((string)result.Attribute("ref")).Substring(2),
-//                        value = (things.TryGetValue(((string)result.Attribute("ref")).Substring(2), out value)) ? value : new Thing { type = "$none$" },
-//                        foundation = "$none$",
-//                        value_type = "Thing"
-//                    };
-
-
-//                sorted_results = results.GroupBy(x => x.name).Select(group => group.Distinct().ToList()).ToList();
-//                //sorted_results = Add_Tuples(sorted_results, tuples);
-//                //sorted_results = Add_Tuples(sorted_results, tuple_types);
-
-//                foreach (List<Thing> view in sorted_results)
-//                {
-//                    List<Thing> mandatory_list = new List<Thing>();
-//                    List<Thing> optional_list = new List<Thing>();
-
-//                    foreach (Thing thing in view)
-//                    {
-
-//                        temp = Find_Mandatory_Optional((string)((Thing)thing.value).type, view.First().name, thing.type, thing.place1, ref errors_list);
-//                        if (temp == "Mandatory")
-//                        {
-//                            mandatory_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
-//                        }
-//                        if (temp == "Optional")
-//                        {
-//                            optional_list.Add(new Thing { id = thing.place2, name = (string)((Thing)thing.value).name, type = (string)((Thing)thing.value).value });
-//                        }
-//                    }
-
-//                    mandatory_list = mandatory_list.OrderBy(x => x.type).ToList();
-//                    optional_list = optional_list.OrderBy(x => x.type).ToList();
-
-//                    //if (needline_views.TryGetValue(view.First().place1, out values))
-//                    //    optional_list.AddRange(values);
-
-//                    //if (Proper_View(mandatory_list, view.First().type))
-//                    views.Add(new View { type = current_lookup[1], id = view.First().place1, name = view.First().name, mandatory = mandatory_list, optional = optional_list });
-//                }
-//            }
-
-//            foreach (string thing in things.Keys)
-//            {
-//                thing_GUID = "_" + Guid.NewGuid().ToString("N").Substring(10);
-                
-//                thing_GUID_3 = thing_GUID.Substring(7, 16);
-
-//                thing_GUIDs.Add(thing, thing_GUID_3);
-//            }
-
-//            //  output
-
-//            using (var sw = new Utf8StringWriter())
-//            {
-//                using (var writer = XmlWriter.Create(sw))
-//                {
-
-//                    writer.WriteRaw(@"<xmi:XMI xmi:version=""2.0"" xmlns:xmi=""http://www.omg.org/XMI"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:SoaML=""http:///schemas/SoaML/_LLF3UPc5EeGmUaPBBKwKBw/136"" xmlns:UPIA=""http:///schemas/UPIA/_7hv4kEc6Ed-f1uPQXF_0HA/563"" xmlns:ecore=""http://www.eclipse.org/emf/2002/Ecore"" xmlns:notation=""http://www.eclipse.org/gmf/runtime/1.0.2/notation"" xmlns:uml=""http://www.eclipse.org/uml2/3.0.0/UML"" xmlns:umlnotation=""http://www.ibm.com/xtools/1.5.3/Umlnotation"" xsi:schemaLocation=""http:///schemas/SoaML/_LLF3UPc5EeGmUaPBBKwKBw/136 pathmap://SOAML/SoaML.epx#_LLGeYPc5EeGmUaPBBKwKBw?SoaML/SoaML? http:///schemas/UPIA/_7hv4kEc6Ed-f1uPQXF_0HA/563 pathmap://UPIA_HOME/UPIA.epx#_7im0MEc6Ed-f1uPQXF_0HA?UPIA/UPIA?"">
-//                        <uml:Model xmi:id=""_9R-2X9PyEeSa1bJT-ij9YA"" name=""UPIA Model"" viewpoint="""">
-//                        <eAnnotations xmi:id=""_9R-2YNPyEeSa1bJT-ij9YA"" source=""uml2.diagrams""/>
-//                        <eAnnotations xmi:id=""_9R-2YdPyEeSa1bJT-ij9YA"" source=""com.ibm.xtools.common.ui.reduction.editingCapabilities"">
-//                          <details xmi:id=""_9R-2YtPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBFragment"" value=""1""/>
-//                          <details xmi:id=""_9R-2Y9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBArtifact"" value=""1""/>
-//                          <details xmi:id=""_9R-2ZNPyEeSa1bJT-ij9YA"" key=""updm.project.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2ZdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBFunction"" value=""1""/>
-//                          <details xmi:id=""_9R-2ZtPyEeSa1bJT-ij9YA"" key=""updm.standard.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2Z9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStructureDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2aNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBSubsystem"" value=""1""/>
-//                          <details xmi:id=""_9R-2adPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBClass"" value=""1""/>
-//                          <details xmi:id=""_9R-2atPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBRelationship1"" value=""1""/>
-//                          <details xmi:id=""_9R-2a9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBRelationship2"" value=""1""/>
-//                          <details xmi:id=""_9R-2bNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStateMachine1"" value=""1""/>
-//                          <details xmi:id=""_9R-2bdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStateMachine2"" value=""1""/>
-//                          <details xmi:id=""_9R-2btPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBComponent"" value=""1""/>
-//                          <details xmi:id=""_9R-2b9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBDeploymentSpecification"" value=""1""/>
-//                          <details xmi:id=""_9R-2cNPyEeSa1bJT-ij9YA"" key=""updm.strategic.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2cdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBAbstractionRelation"" value=""1""/>
-//                          <details xmi:id=""_9R-2ctPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBActivity1"" value=""1""/>
-//                          <details xmi:id=""_9R-2c9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBActivity2"" value=""1""/>
-//                          <details xmi:id=""_9R-2dNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBAction"" value=""1""/>
-//                          <details xmi:id=""_9R-2ddPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBActivityDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2dtPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBActivity3"" value=""1""/>
-//                          <details xmi:id=""_9R-2d9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBPackage"" value=""1""/>
-//                          <details xmi:id=""_9R-2eNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBSequence1"" value=""1""/>
-//                          <details xmi:id=""_9R-2edPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBSequence2"" value=""1""/>
-//                          <details xmi:id=""_9R-2etPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBSequenceDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2e9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBDependancy"" value=""1""/>
-//                          <details xmi:id=""_9R-2fNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBLifeLine"" value=""1""/>
-//                          <details xmi:id=""_9R-2fdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBUsage"" value=""1""/>
-//                          <details xmi:id=""_9R-2ftPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBFreeFormDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2f9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBInstance"" value=""1""/>
-//                          <details xmi:id=""_9R-2gNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBComponentDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2gdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBEvent1"" value=""1""/>
-//                          <details xmi:id=""_9R-2gtPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBEvent2"" value=""1""/>
-//                          <details xmi:id=""_9R-2g9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBTypes2"" value=""1""/>
-//                          <details xmi:id=""_9R-2hNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBTypes4"" value=""1""/>
-//                          <details xmi:id=""_9R-2hdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBCommunicationDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2htPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBConstraint"" value=""1""/>
-//                          <details xmi:id=""_9R-2h9PyEeSa1bJT-ij9YA"" key=""updm.organizational.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2iNPyEeSa1bJT-ij9YA"" key=""updm.performance.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2idPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBInterface"" value=""1""/>
-//                          <details xmi:id=""_9R-2itPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBInformationFlow"" value=""1""/>
-//                          <details xmi:id=""_9R-2i9PyEeSa1bJT-ij9YA"" key=""updm.system.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2jNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBComment1"" value=""1""/>
-//                          <details xmi:id=""_9R-2jdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBComment2"" value=""1""/>
-//                          <details xmi:id=""_9R-2jtPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBCompositeStructure1"" value=""1""/>
-//                          <details xmi:id=""_9R-2j9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBCollaboration"" value=""1""/>
-//                          <details xmi:id=""_9R-2kNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBRealization"" value=""1""/>
-//                          <details xmi:id=""_9R-2kdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBCompositeStructure2"" value=""1""/>
-//                          <details xmi:id=""_9R-2ktPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStateChartDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2k9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBUseCase1"" value=""1""/>
-//                          <details xmi:id=""_9R-2lNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBClassDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2ldPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBUseCase2"" value=""1""/>
-//                          <details xmi:id=""_9R-2ltPyEeSa1bJT-ij9YA"" key=""updm.enterprise.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2l9PyEeSa1bJT-ij9YA"" key=""updm.service.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2mNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBUseCaseDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2mdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBDeployment1"" value=""1""/>
-//                          <details xmi:id=""_9R-2mtPyEeSa1bJT-ij9YA"" key=""updm.operational.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2m9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBDeployment2"" value=""1""/>
-//                          <details xmi:id=""_9R-2nNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBDeploymentDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2ndPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBInteraction"" value=""1""/>
-//                          <details xmi:id=""_9R-2ntPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBCommunication"" value=""1""/>
-//                          <details xmi:id=""_9R-2n9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.mq"" value=""1""/>
-//                          <details xmi:id=""_9R-2oNPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.ldap"" value=""1""/>
-//                          <details xmi:id=""_9R-2odPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.j2ee"" value=""1""/>
-//                          <details xmi:id=""_9R-2otPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBPrimitiveTypeTemplateParameter"" value=""1""/>
-//                          <details xmi:id=""_9R-2o9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.analysisAndDesign.zephyrUML"" value=""1""/>
-//                          <details xmi:id=""_9R-2pNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBElementImport1"" value=""1""/>
-//                          <details xmi:id=""_9R-2pdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBElementImport2"" value=""1""/>
-//                          <details xmi:id=""_9R-2ptPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.db2"" value=""1""/>
-//                          <details xmi:id=""_9R-2p9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.mq"" value=""1""/>
-//                          <details xmi:id=""_9R-2qNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBInterfaceTemplateParameter"" value=""1""/>
-//                          <details xmi:id=""_9R-2qdPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.was"" value=""1""/>
-//                          <details xmi:id=""_9R-2qtPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.ldap"" value=""1""/>
-//                          <details xmi:id=""_9R-2q9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.dotnet"" value=""1""/>
-//                          <details xmi:id=""_9R-2rNPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.j2ee"" value=""1""/>
-//                          <details xmi:id=""_9R-2rdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBProfile"" value=""1""/>
-//                          <details xmi:id=""_9R-2rtPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.storage"" value=""1""/>
-//                          <details xmi:id=""_9R-2r9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.waswebplugin"" value=""1""/>
-//                          <details xmi:id=""_9R-2sNPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.dotnet"" value=""1""/>
-//                          <details xmi:id=""_9R-2sdPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.portlet"" value=""1""/>
-//                          <details xmi:id=""_9R-2stPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBSignal"" value=""1""/>
-//                          <details xmi:id=""_9R-2s9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.waswebplugin"" value=""1""/>
-//                          <details xmi:id=""_9R-2tNPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.messaging"" value=""1""/>
-//                          <details xmi:id=""_9R-2tdPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.jms"" value=""1""/>
-//                          <details xmi:id=""_9R-2ttPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.sqlserver"" value=""1""/>
-//                          <details xmi:id=""_9R-2t9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBActivity4"" value=""1""/>
-//                          <details xmi:id=""_9R-2uNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBClassTemplateParameter"" value=""1""/>
-//                          <details xmi:id=""_9R-2udPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBTemplate"" value=""1""/>
-//                          <details xmi:id=""_9R-2utPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.net"" value=""1""/>
-//                          <details xmi:id=""_9R-2u9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.messagebroker"" value=""1""/>
-//                          <details xmi:id=""_9R-2vNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBSpecificInstanceType1"" value=""1""/>
-//                          <details xmi:id=""_9R-2vdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.viz.webservice.capabilty"" value=""1""/>
-//                          <details xmi:id=""_9R-2vtPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBSpecificInstanceType2"" value=""1""/>
-//                          <details xmi:id=""_9R-2v9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBObjectDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-2wNPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.os"" value=""1""/>
-//                          <details xmi:id=""_9R-2wdPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.systemp"" value=""1""/>
-//                          <details xmi:id=""_9R-2wtPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.derby"" value=""1""/>
-//                          <details xmi:id=""_9R-2w9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.os"" value=""1""/>
-//                          <details xmi:id=""_9R-2xNPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStereotypedArtifact"" value=""1""/>
-//                          <details xmi:id=""_9R-2xdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBTypes1"" value=""1""/>
-//                          <details xmi:id=""_9R-2xtPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.systemz"" value=""1""/>
-//                          <details xmi:id=""_9R-2x9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBTypes3"" value=""1""/>
-//                          <details xmi:id=""_9R-2yNPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.virtualization"" value=""1""/>
-//                          <details xmi:id=""_9R-2ydPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.ihs"" value=""1""/>
-//                          <details xmi:id=""_9R-2ytPyEeSa1bJT-ij9YA"" key=""com.ibm.ccl.soa.deploy.core.ui.activity.core"" value=""1""/>
-//                          <details xmi:id=""_9R-2y9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBPackageTemplateParameter"" value=""1""/>
-//                          <details xmi:id=""_9R-2zNPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.virtualization"" value=""1""/>
-//                          <details xmi:id=""_9R-2zdPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBComment3"" value=""1""/>
-//                          <details xmi:id=""_9R-2ztPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.modeling.enterprise.services.uireduction.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-2z9PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.iis"" value=""1""/>
-//                          <details xmi:id=""_9R-20NPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBFunctionTemplateParameter"" value=""1""/>
-//                          <details xmi:id=""_9R-20dPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.was"" value=""1""/>
-//                          <details xmi:id=""_9R-20tPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.rest.ui.uireduction.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-209PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.operation"" value=""1""/>
-//                          <details xmi:id=""_9R-21NPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.portlet"" value=""1""/>
-//                          <details xmi:id=""_9R-21dPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBInteractionOverview"" value=""1""/>
-//                          <details xmi:id=""_9R-21tPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.db2"" value=""1""/>
-//                          <details xmi:id=""_9R-219PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.messaging"" value=""1""/>
-//                          <details xmi:id=""_9R-22NPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.storage"" value=""1""/>
-//                          <details xmi:id=""_9R-22dPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.server"" value=""1""/>
-//                          <details xmi:id=""_9R-22tPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBInteractionOverviewDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-229PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.tomcat"" value=""1""/>
-//                          <details xmi:id=""_9R-23NPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBRelationship3"" value=""1""/>
-//                          <details xmi:id=""_9R-23dPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.server"" value=""1""/>
-//                          <details xmi:id=""_9R-23tPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.tomcat"" value=""1""/>
-//                          <details xmi:id=""_9R-239PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.javaVisualizerActivity"" value=""1""/>
-//                          <details xmi:id=""_9R-24NPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStereotypedDeployment1"" value=""1""/>
-//                          <details xmi:id=""_9R-24dPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.transform.uml2.xsd.profile.uireduction.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-24tPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.modeling.soa.ml.uireduction.activity"" value=""1""/>
-//                          <details xmi:id=""_9R-249PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.jms"" value=""1""/>
-//                          <details xmi:id=""_9R-25NPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.sqlserver"" value=""1""/>
-//                          <details xmi:id=""_9R-25dPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.http.activity.id"" value=""1""/>
-//                          <details xmi:id=""_9R-25tPyEeSa1bJT-ij9YA"" key=""com.ibm.ccl.soa.deploy.core.ui.activity.generic"" value=""1""/>
-//                          <details xmi:id=""_9R-259PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.systemp"" value=""1""/>
-//                          <details xmi:id=""_9R-26NPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBCollaborationUse"" value=""1""/>
-//                          <details xmi:id=""_9R-26dPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.derby"" value=""1""/>
-//                          <details xmi:id=""_9R-26tPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBTiming"" value=""1""/>
-//                          <details xmi:id=""_9R-269PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.net"" value=""1""/>
-//                          <details xmi:id=""_9R-27NPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.systemz"" value=""1""/>
-//                          <details xmi:id=""_9R-27dPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.messagebroker"" value=""1""/>
-//                          <details xmi:id=""_9R-27tPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.portal"" value=""1""/>
-//                          <details xmi:id=""_9R-279PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBComponentTemplateParameter"" value=""1""/>
-//                          <details xmi:id=""_9R-28NPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.ihs"" value=""1""/>
-//                          <details xmi:id=""_9R-28dPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBTimingDiagram"" value=""1""/>
-//                          <details xmi:id=""_9R-28tPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.portal"" value=""1""/>
-//                          <details xmi:id=""_9R-289PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.oracle"" value=""1""/>
-//                          <details xmi:id=""_9R-29NPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStereotypedClass"" value=""1""/>
-//                          <details xmi:id=""_9R-29dPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBProfileApplication"" value=""1""/>
-//                          <details xmi:id=""_9R-29tPyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.umlBBStereotypedComponent"" value=""1""/>
-//                          <details xmi:id=""_9R-299PyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.db2z"" value=""1""/>
-//                          <details xmi:id=""_9R-2-NPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.database"" value=""1""/>
-//                          <details xmi:id=""_9R-2-dPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.infrastructure.http"" value=""1""/>
-//                          <details xmi:id=""_9R-2-tPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.oracle"" value=""1""/>
-//                          <details xmi:id=""_9R-2-9PyEeSa1bJT-ij9YA"" key=""com.ibm.xtools.activities.analysisAndDesign.zephyrAnalysis"" value=""1""/>
-//                          <details xmi:id=""_9R-2_NPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.iis"" value=""1""/>
-//                          <details xmi:id=""_9R-2_dPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.db2z"" value=""1""/>
-//                          <details xmi:id=""_9R-2_tPyEeSa1bJT-ij9YA"" key=""com.ibm.rational.deployment.activity.physical.http"" value=""1""/>
-//                        </eAnnotations>
-//                        <eAnnotations xmi:id=""_9R-2_9PyEeSa1bJT-ij9YA"" source=""com.ibm.xtools.updm.migration.marker"">
-//                          <details xmi:id=""_9R-3ANPyEeSa1bJT-ij9YA"" key=""SourceVersion"" value=""UPIA v1.2""/>
-//                          <details xmi:id=""_9R-3AdPyEeSa1bJT-ij9YA"" key=""TargetVersion"" value=""UPIA v1.3""/>
-//                          <details xmi:id=""_9R-3AtPyEeSa1bJT-ij9YA"" key=""UserNotified"" value=""1""/>
-//                        </eAnnotations>
-//                        <eAnnotations xmi:id=""_9R-3A9PyEeSa1bJT-ij9YA"" source=""com.ibm.xtools.upia.soaml.integration"">
-//                          <details xmi:id=""_9R-3BNPyEeSa1bJT-ij9YA"" key=""state"" value=""SoaMLApplied""/>
-//                        </eAnnotations>
-//                        <packageImport xmi:id=""_9R-3BdPyEeSa1bJT-ij9YA"">
-//                          <importedPackage xmi:type=""uml:Model"" href=""pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0""/>
-//                        </packageImport>
-//                        <packageImport xmi:id=""_9R-3BtPyEeSa1bJT-ij9YA"">
-//                          <importedPackage xmi:type=""uml:Model"" href=""pathmap://UPIA_HOME/UPIAModelLibrary.emx#_1ayqoFrNEduq4eXjMcjG2g?UPIAModelLibrary?""/>
-//                        </packageImport>
-//                        <packagedElement xmi:type=""uml:Package"" xmi:id=""_9R-3B9PyEeSa1bJT-ij9YA"" name=""UPIA Model Architecture Description"">
-//                          <eAnnotations xmi:id=""_9R-3CNPyEeSa1bJT-ij9YA"" source=""uml2.diagrams""/>
-//                        </packagedElement>
-//                        <packagedElement xmi:type=""uml:Package"" xmi:id=""_GJaJsNPzEeSa1bJT-ij9YA"" name=""PES Data"">
-//                        <eAnnotations xmi:id=""_GSyIINPzEeSa1bJT-ij9YA"" source=""uml2.diagrams"" references=""_GSyIIdPzEeSa1bJT-ij9YA"">");
-
-//                    foreach (View view in views)
-//                    {
-//                        List<Thing> thing_list = new List<Thing>(view.mandatory);
-//                        thing_list.AddRange(view.optional);
-
-//                        writer.WriteRaw("<contents xmi:type=\"umlnotation:UMLDiagram\" xmi:id=\"" + view.id + "\" type=\"Freeform\" name=\"" + view.name + "\">");
-
-//                        if (OV1_pic_views.TryGetValue(view.id, out value))
-//                        {
-//                            thing_GUID = "_" + Guid.NewGuid().ToString("N").Substring(10);
-
-//                            thing_GUID_1 = "_02";
-
-//                            thing_GUID_3 = thing_GUID.Substring(7, 16);
-
-//                            writer.WriteRaw("<children xmi:id=\"" + thing_GUID_1 + "1111" + thing_GUID_3 + "\" type=\"skpicture\">");
-//                            writer.WriteRaw("<children xmi:id=\"" + thing_GUID_1 + "2222" + thing_GUID_3 + "\" type=\"skshapes\">");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:DrawerStyle\" xmi:id=\"" + thing_GUID_1 + "3333" + thing_GUID_3 + "\"/>");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:TitleStyle\" xmi:id=\"" + thing_GUID_1 + "4444" + thing_GUID_3 + "\"/>");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:DrawerStyle\" xmi:id=\"" + thing_GUID_1 + "5555" + thing_GUID_3 + "\"/>");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:TitleStyle\" xmi:id=\"" + thing_GUID_1 + "6666" + thing_GUID_3 + "\"/>");
-//                            writer.WriteRaw("<element xsi:nil=\"true\"/>");
-//                            writer.WriteRaw("</children>");
-//                            writer.WriteRaw("<children xmi:id=\"" + thing_GUID_1 + "7777" + thing_GUID_3 + "\" type=\"skdescription\">");
-//                            writer.WriteRaw("<element xsi:nil=\"true\"/>");
-//                            writer.WriteRaw("</children>");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:ShapeStyle\" xmi:id=\"" + thing_GUID_1 + "8888" + thing_GUID_3 + "\" description=\"picture\" transparency=\"0\" lineWidth=\"3\" roundedBendpointsRadius=\"12\"/>");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:LineTypeStyle\" xmi:id=\"" + thing_GUID_1 + "9999" + thing_GUID_3 + "\"/>");
-//                            writer.WriteRaw("<styles xmi:type=\"SketchNotation:SketchStyle\" xmi:id=\"" + thing_GUID_1 + "aaaa" + thing_GUID_3 + "\" figureOverride=\"1\" figureImageURI=\"" + value.name + "\"/>");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:RoundedCornersStyle\" xmi:id=\"" + thing_GUID_1 + "bbbb" + thing_GUID_3 + "\"/>");
-//                            writer.WriteRaw("<styles xmi:type=\"notation:TextStyle\" xmi:id=\"" + thing_GUID_1 + "cccc" + thing_GUID_3 + "\" textAlignment=\"Center\"/>");
-//                            writer.WriteRaw("<element xsi:nil=\"true\"/>");
-//                            writer.WriteRaw("<layoutConstraint xmi:type=\"notation:Bounds\" xmi:id=\"" + thing_GUID_1 + "dddd" + thing_GUID_3 + "\" x=\"5706\" y=\"3804\"/>");
-//                            writer.WriteRaw("</children>");
-//                        }
-
-//                        foreach (Thing thing in thing_list)
-//                        {
-
-//                            thing_GUID_1 = "_00";
-
-//                            thing_GUID_3 = thing_GUIDs[thing.id];
-
-//                            if (location_dic.TryGetValue(thing.id, out location) == true)
-//                            {
-//                                loc_x = location.top_left_x;
-//                                loc_y = location.top_left_y;
-//                                size_x = (Convert.ToInt32(location.bottom_right_x) - Convert.ToInt32(location.top_left_x)).ToString();
-//                                size_y = (Convert.ToInt32(location.top_left_y) - Convert.ToInt32(location.bottom_right_y)).ToString();
-//                            }
-//                            else
-//                            {
-//                                loc_x = "$none$";
-//                                loc_y = "$none$";
-//                                size_x = "$none$";
-//                                size_y = "$none$";
-//                            }
-
-//                            writer.WriteRaw("<children xmi:type=\"umlnotation:UMLShape\" xmi:id=\"" + thing_GUID_1 + "1111" + thing_GUID_3 + "\" element=\"" + "_AAZZZZ" + thing_GUID_3 + "\" fontHeight=\"8\" transparency=\"0\" lineColor=\"14263149\" lineWidth=\"1\" showStereotype=\"Label\">");
-//                            writer.WriteRaw("<children xmi:type=\"notation:DecorationNode\" xmi:id=\"" + thing_GUID_1 + "2222" + thing_GUID_3 + "\" type=\"ImageCompartment\">");
-//                            writer.WriteRaw("<layoutConstraint xmi:type=\"notation:Size\" xmi:id=\"" + thing_GUID_1 + "3333" + thing_GUID_3 + "\" width=\"1320\" height=\"1320\"/></children>");
-//                            writer.WriteRaw("<children xmi:type=\"notation:BasicDecorationNode\" xmi:id=\"" + thing_GUID_1 + "4444" + thing_GUID_3 + "\" type=\"Stereotype\"/>");
-//                            writer.WriteRaw("<children xmi:type=\"notation:BasicDecorationNode\" xmi:id=\"" + thing_GUID_1 + "5555" + thing_GUID_3 + "\" type=\"Name\"/>");
-//                            writer.WriteRaw("<children xmi:type=\"notation:BasicDecorationNode\" xmi:id=\"" + thing_GUID_1 + "6666" + thing_GUID_3 + "\" type=\"Parent\"/>");
-//                            writer.WriteRaw("<children xmi:type=\"notation:SemanticListCompartment\" xmi:id=\"" + thing_GUID_1 + "7777" + thing_GUID_3 + "\" type=\"AttributeCompartment\"/>");
-//                            writer.WriteRaw("<children xmi:type=\"notation:SemanticListCompartment\" xmi:id=\"" + thing_GUID_1 + "8888" + thing_GUID_3 + "\" type=\"OperationCompartment\"/>");
-//                            writer.WriteRaw("<children xmi:type=\"notation:SemanticListCompartment\" xmi:id=\"" + thing_GUID_1 + "9999" + thing_GUID_3 + "\" visible=\"false\" type=\"SignalCompartment\"/>");
-//                            writer.WriteRaw("<children xmi:type=\"umlnotation:UMLShapeCompartment\" xmi:id=\"" + thing_GUID_1 + "aaaa" + thing_GUID_3 + "\" visible=\"false\" type=\"StructureCompartment\"/>");
-//                            writer.WriteRaw("<layoutConstraint xmi:type=\"notation:Bounds\" xmi:id=\"" + thing_GUID_1 + "bbbb" + thing_GUID_3 + "\""
-//                            + ((loc_x == "$none$") ? "" : " x=\"" + loc_x + "\"")
-//                            + ((loc_y == "$none$") ? "" : " y=\"" + loc_y + "\"")
-//                            + ((size_x == "$none$") ? "" : " width=\"" + size_x + "\"")
-//                            + ((size_y == "$none$") ? "" : " height=\"" + size_y + "\"")
-//                            + "/></children>");
-//                        }
-
-//                        writer.WriteRaw(@"<element xsi:nil=""true""/>");
-
-//                        foreach (Thing thing in thing_list)
-//                        {
-
-//                            thing_GUID_1 = "_00";
-
-//                            sorted_results = Get_Tuples_place1(thing, tuples);
-
-//                            foreach (List<Thing> values in sorted_results)
-//                            {
-//                                thing_GUID_2 = thing_GUIDs[values[0].place1];
-//                                thing_GUID_3 = thing_GUIDs[values[0].place2];
-
-//                                writer.WriteRaw("<edges xmi:type=\"umlnotation:UMLConnector\" xmi:id=\"" + thing_GUID_1 + "cccc" + thing_GUID_2 + "\" element=\"" + thing_GUID_1 + "dddd" + thing_GUID_2 + "\" source=\"" + thing_GUID_1 + "1111" + thing_GUID_2 + "\" target=\"" + thing_GUID_1 + "1111" + thing_GUID_3 + "\" fontHeight=\"8\" roundedBendpointsRadius=\"4\" routing=\"Rectilinear\" lineColor=\"8421504\" lineWidth=\"1\" showStereotype=\"Text\">");
-//                                writer.WriteRaw("<children xmi:type=\"notation:DecorationNode\" xmi:id=\"" + thing_GUID_1 + "eeee" + thing_GUID_2 + "\" type=\"NameLabel\">");
-//                                writer.WriteRaw("<children xmi:type=\"notation:BasicDecorationNode\" xmi:id=\"" + thing_GUID_1 + "ffff" + thing_GUID_2 + "\" type=\"Stereotype\"/>");
-//                                writer.WriteRaw("<children xmi:type=\"notation:BasicDecorationNode\" xmi:id=\"" + thing_GUID_1 + "gggg" + thing_GUID_2 + "\" type=\"Name\"/>");
-//                                writer.WriteRaw("<layoutConstraint xmi:type=\"notation:Bounds\" xmi:id=\"" + thing_GUID_1 + "hhhh" + thing_GUID_2 + "\" y=\"-186\"/>");
-//                                writer.WriteRaw("</children>");
-//                                writer.WriteRaw("<bendpoints xmi:type=\"notation:RelativeBendpoints\" xmi:id=\"" + thing_GUID_1 + "iiii" + thing_GUID_2 + "\" points=\"[6, 42, 32, -157]$[29, 168, 55, -31]\"/>");
-//                                writer.WriteRaw("</edges>");
-//                            }
-//                        }
-
-//                        writer.WriteRaw(@"</contents>
-//                                    </eAnnotations>");
-//                    }
-
-//                    foreach (KeyValuePair<string, Thing> thing in things)
-//                    {
-
-//                        //if (thing_GUIDs.TryGetValue(thing.Value.id, out thing_GUID) == false)
-//                        //{
-
-//                        //    thing_GUID = "_" + Guid.NewGuid().ToString("N").Substring(10);
-//                        //    thing_GUID_1 = thing_GUID.Substring(0, 3);
-//                        //    thing_GUID_3 = thing_GUID.Substring(7, 16);
-
-//                        //    thing_GUIDs.Add(thing.Value.id, thing_GUID_3);
-
-//                        //}
-
-//                         sorted_results = Get_Tuples_place1(thing.Value, tuples);
-//                         count = sorted_results.Count();
-//                         sorted_results.AddRange(Get_Tuples_place1(thing.Value, tuple_types));
-//                         count2 = sorted_results.Count();
-
-//                         if (count != 0)
-//                             foreach (List<Thing> values in sorted_results)
-//                             {
-//                                 thing_GUID_2 = thing_GUIDs[values[0].place1];
-//                                 thing_GUID_3 = thing_GUIDs[values[0].place2];
-
-//                                 writer.WriteRaw("<packagedElement xmi:type=\"uml:Class\" xmi:id=\"" + "_AAZZZZ" + thing_GUID_2 + "\" name=\"" + thing.Value.name + "\">");
-//                                 writer.WriteRaw("<generalization xmi:id=\"_VF0JMPAvEeSRVK9XlySZNA\" general=\"_I86dsPAvEeSRVK9XlySZNA\"/>");
-//                                 writer.WriteRaw("</packagedElement>");
-//                             }
-//                         else if (count2 == 1 + count)
-//                             foreach (List<Thing> values in sorted_results)
-//                             {
-//                                 thing_GUID_2 = thing_GUIDs[values[0].place1];
-//                                 thing_GUID_3 = thing_GUIDs[values[0].place2];
-
-//                                 writer.WriteRaw("<packagedElement xmi:type=\"uml:Class\" xmi:id=\"" + "_AAZZZZ" + thing_GUID_2 + "\" name=\"" + thing.Value.name + "\">");
-//                                 writer.WriteRaw("<ownedAttribute xmi:id=\"_cui1IPAvEeSRVK9XlySZNA\" name=\"activity 2\" visibility=\"private\" type=\"_I86dsPAvEeSRVK9XlySZNA\" aggregation=\"composite\" association=\"_cuZEIPAvEeSRVK9XlySZNA\">");
-//                                 writer.WriteRaw("<upperValue xmi:type=\"uml:LiteralUnlimitedNatural\" xmi:id=\"_cui1IvAvEeSRVK9XlySZNA\" value=\"*\"/>");
-//                                 writer.WriteRaw("<lowerValue xmi:type=\"uml:LiteralInteger\" xmi:id=\"_cui1IfAvEeSRVK9XlySZNA\"/>");
-//                                 writer.WriteRaw("</ownedAttribute>");
-//                                 writer.WriteRaw("</packagedElement>");
-//                             }
-//                         else
-//                         {
-//                             thing_GUID = thing_GUIDs[thing.Value.id];
-
-//                             writer.WriteRaw("<packagedElement xmi:type=\"uml:Class\" xmi:id=\"" + "_AAZZZZ" + thing_GUID + "\" name=\"" + thing.Value.name + "\"/>");
-//                         }
-//                    }
-
-//                    writer.WriteRaw(@"</packagedElement><profileApplication xmi:id=""_9R-3CdPyEeSa1bJT-ij9YA"">
-//                          <eAnnotations xmi:id=""_9R-3CtPyEeSa1bJT-ij9YA"" source=""http://www.eclipse.org/uml2/2.0.0/UML"">
-//                            <references xmi:type=""ecore:EPackage"" href=""pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w""/>
-//                          </eAnnotations>
-//                          <appliedProfile href=""pathmap://UML_PROFILES/Standard.profile.uml#_0""/>
-//                        </profileApplication>
-//                        <profileApplication xmi:id=""_9R-3C9PyEeSa1bJT-ij9YA"">
-//                          <eAnnotations xmi:id=""_9R-3DNPyEeSa1bJT-ij9YA"" source=""http://www.eclipse.org/uml2/2.0.0/UML"">
-//                            <references xmi:type=""ecore:EPackage"" href=""pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?""/>
-//                          </eAnnotations>
-//                          <appliedProfile href=""pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?""/>
-//                        </profileApplication>
-//                        <profileApplication xmi:id=""_9R-3DdPyEeSa1bJT-ij9YA"">
-//                          <eAnnotations xmi:id=""_9R-3DtPyEeSa1bJT-ij9YA"" source=""http://www.eclipse.org/uml2/2.0.0/UML"">
-//                            <references xmi:type=""ecore:EPackage"" href=""pathmap://UML2_MSL_PROFILES/Deployment.epx#_IrdAUMmBEdqBcN1R6EvWUw?Deployment/Deployment?""/>
-//                          </eAnnotations>
-//                          <appliedProfile href=""pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?""/>
-//                        </profileApplication>
-//                        <profileApplication xmi:id=""_9R-3D9PyEeSa1bJT-ij9YA"">
-//                          <eAnnotations xmi:id=""_9R-3ENPyEeSa1bJT-ij9YA"" source=""http://www.eclipse.org/uml2/2.0.0/UML"">
-//                            <references xmi:type=""ecore:EPackage"" href=""pathmap://UPIA_HOME/UPIA.epx#_7im0MEc6Ed-f1uPQXF_0HA?UPIA/UPIA?""/>
-//                          </eAnnotations>
-//                          <appliedProfile href=""pathmap://UPIA_HOME/UPIA.epx#_c2-k4GUFEduIxJjDZy3KpA?UPIA?""/>
-//                        </profileApplication>
-//                        <profileApplication xmi:id=""_9R-3EdPyEeSa1bJT-ij9YA"">
-//                          <eAnnotations xmi:id=""_9R-3EtPyEeSa1bJT-ij9YA"" source=""http://www.eclipse.org/uml2/2.0.0/UML"">
-//                            <references xmi:type=""ecore:EPackage"" href=""pathmap://SOAML/SoaML.epx#_LLGeYPc5EeGmUaPBBKwKBw?SoaML/SoaML?""/>
-//                          </eAnnotations>
-//                          <appliedProfile href=""pathmap://SOAML/SoaML.epx#_ut1IIGfDEdy6JoIZoRRqYw?SoaML?""/>
-//                        </profileApplication>
-//                      </uml:Model>
-//                      <UPIA:EnterpriseModel xmi:id=""_9R-3E9PyEeSa1bJT-ij9YA"" base_Package=""_9R-2X9PyEeSa1bJT-ij9YA""/>
-//                      <UPIA:ArchitectureDescription xmi:id=""_9R-3FNPyEeSa1bJT-ij9YA"" base_Package=""_9R-3B9PyEeSa1bJT-ij9YA""/>
-//                      <UPIA:View xmi:id=""_GSChQNPzEeSa1bJT-ij9YA"" base_Package=""_GJaJsNPzEeSa1bJT-ij9YA""/>");
-
-//                    foreach (KeyValuePair<string, Thing> thing in things)
-//                    {
-
-//                        thing_GUID = thing_GUIDs[thing.Value.id];
-
-//                        writer.WriteRaw("<UPIA:System xmi:id=\"" + "_BBZZZZ" + thing_GUID + "\" base_Class=\"" + "_AAZZZZ" + thing_GUID + "\"/>");
-//                    }
-
-//                    writer.WriteRaw(@"</xmi:XMI>");
-
-//                    writer.Flush();
-//                }
-//                return sw.ToString();
-//            }
-//        }
     }
-
 }

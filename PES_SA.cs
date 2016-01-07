@@ -368,7 +368,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"superSubtype", "OV-1"}, 
                             new string[] {"WholePartType", "OV-1"},
                             new string[] {"representationSchemeInstance", "OV-1"},
-                            new string[] {"OverlapType", "OV-1"},
+                            //new string[] {"OverlapType", "OV-1"},
                             new string[] {"Condition", "OV-2"},
                             new string[] {"Information", "OV-2"},
                             new string[] {"Location", "OV-2"},
@@ -379,7 +379,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "OV-2"}, 
                             new string[] {"superSubtype", "OV-2"}, 
                             new string[] {"WholePartType", "OV-2"},
-                            new string[] {"OverlapType", "OV-1"},
+                            new string[] {"OverlapType", "OV-2"},
                             new string[] {"Condition", "OV-3"},
                             new string[] {"Information", "OV-3"},
                             new string[] {"Location", "OV-3"},
@@ -409,7 +409,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "OV-4"}, 
                             new string[] {"superSubtype", "OV-4"}, 
                             new string[] {"WholePartType", "OV-4"},
-                            new string[] {"OverlapType", "OV-4"},
+                            //new string[] {"OverlapType", "OV-4"},
                             new string[] {"Condition", "OV-5a"},
                             new string[] {"Information", "OV-5a"},
                             new string[] {"Location", "OV-5a"},
@@ -618,7 +618,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Rule", "DIV-2"}, 
                             new string[] {"superSubtype", "DIV-2"}, 
                             new string[] {"WholePartType", "DIV-2"},
-                            new string[] {"OverlapType", "DIV-2"},
+                            //new string[] {"OverlapType", "DIV-2"},
                             new string[] {"Condition", "DIV-3"},
                             new string[] {"Information", "DIV-3"},
                             new string[] {"Location", "DIV-3"},
@@ -629,7 +629,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"superSubtype", "DIV-3"}, 
                             new string[] {"WholePartType", "DIV-3"},
                             new string[] {"typeInstance", "DIV-3"},
-                            new string[] {"OverlapType", "DIV-3"},
+                            //new string[] {"OverlapType", "DIV-3"},
                             new string[] {"Condition", "PV-1"},
                             new string[] {"Information", "PV-1"},
                             new string[] {"Location", "PV-1"},
@@ -649,6 +649,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"superSubtype", "PV-2"}, 
                             new string[] {"WholePartType", "PV-2"}, 
                             new string[] {"activityPerformedByPerformer", "PV-2"},
+                            new string[] {"OrganizationType", "PV-2"},
                             new string[] {"Activity", "AV-2"},
                             new string[] {"ArchitecturalDescription", "AV-2"},
                             new string[] {"Capability", "AV-2"},
@@ -2366,6 +2367,34 @@ namespace EAWS.Core.SilverBullet
 
                 //MergeDictionaries(OV6c_aro_optional_views, results_dic);
                 //MergeDictionaries(OV5b_aro_mandatory_views, results_dic);
+            }
+
+            foreach (KeyValuePair<string, List<Thing>> dicItems in OV5b_aro_mandatory_views)
+            {
+                values = dicItems.Value;
+                values2 = values.Where(x => x.type == "activityProducesResource").ToList();
+                values3 = values.Where(x => x.type == "activityConsumesResource").ToList();
+
+                if (values2.Count == 1 && values3.Count == 1)
+                {
+                    value = values2.First();
+                    value2 = values3.First();
+
+                    tuple_types = tuple_types.Concat(new List<Thing>()
+                                            {
+                                                new Thing
+                                                {
+                                                    type = "OverlapType",
+                                                    id = value.value+"_ARO1",
+                                                    name = value.name,
+                                                    value = value.value,
+                                                    place1 = value.place1,
+                                                    place2 = value2.place2,
+                                                    foundation = "CoupleType",
+                                                    value_type = "$id$"
+                                                }
+                                            });
+                }
             }
 
             //activityChangesResource
@@ -5349,30 +5378,30 @@ namespace EAWS.Core.SilverBullet
 
             //AV-2
 
-            sorted_results = new List<List<Thing>>();
-            optional_list = new List<Thing>();
-            values = new List<Thing>();
+            //sorted_results = new List<List<Thing>>();
+            //optional_list = new List<Thing>();
+            //values = new List<Thing>();
 
-            foreach (Thing thing in things_dic.Select(kvp => kvp.Value).ToList().OrderBy(x => x.type).ToList())
-            {
-                optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
-                values.Add(new Thing { id = "_1", type = "AV-2", place2 = thing.id, value = thing.type, place1 = "_1" });
-            }
+            //foreach (Thing thing in things_dic.Select(kvp => kvp.Value).ToList().OrderBy(x => x.type).ToList())
+            //{
+            //    optional_list.Add(new Thing { id = thing.id, type = thing.type, value = "$none$", value_type = "$none$" });
+            //    values.Add(new Thing { id = "_1", type = "AV-2", place2 = thing.id, value = thing.type, place1 = "_1" });
+            //}
 
-            sorted_results.Add(values);
+            //sorted_results.Add(values);
 
-            sorted_results_new = new List<List<Thing>>();
-            Add_Tuples(ref sorted_results, ref sorted_results_new, values3, ref errors_list);
-            Add_Tuples(ref sorted_results, ref sorted_results_new, values4, ref errors_list);
-            sorted_results = sorted_results_new;
+            //sorted_results_new = new List<List<Thing>>();
+            //Add_Tuples(ref sorted_results, ref sorted_results_new, values3, ref errors_list);
+            //Add_Tuples(ref sorted_results, ref sorted_results_new, values4, ref errors_list);
+            //sorted_results = sorted_results_new;
 
-            foreach (Thing thing in sorted_results.First())
-            {
-                if ((string)thing.value == "superSubtype" || (string)thing.value == "WholePartType")
-                    optional_list.Add(new Thing { id = thing.place2, type = (string)thing.value, value = "$none$", value_type = "$none$" });
-            }
+            //foreach (Thing thing in sorted_results.First())
+            //{
+            //    if ((string)thing.value == "superSubtype" || (string)thing.value == "WholePartType")
+            //        optional_list.Add(new Thing { id = thing.place2, type = (string)thing.value, value = "$none$", value_type = "$none$" });
+            //}
 
-            views.Add(new View { type = "AV-2", id = "_1", name = "NEAR AV-2", optional = optional_list, mandatory = new List<Thing>() });
+            //views.Add(new View { type = "AV-2", id = "_1", name = "NEAR AV-2", optional = optional_list, mandatory = new List<Thing>() });
 
             ////OV-3
 

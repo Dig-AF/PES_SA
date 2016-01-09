@@ -419,6 +419,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"superSubtype", "OV-5a"}, 
                             new string[] {"WholePartType", "OV-5a"}, 
                             new string[] {"Condition", "OV-5b"},
+                            new string[] {"Data", "OV-5b"},
                             new string[] {"Information", "OV-5b"},
                             new string[] {"Location", "OV-5b"},
                             new string[] {"OrganizationType", "OV-5b"},
@@ -488,7 +489,8 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Performer", "SV-1"},
                             new string[] {"PersonRole", "SV-1"},
                             new string[] {"Resource", "SV-1"},
-                            new string[] {"Rule", "SV-1"}, 
+                            new string[] {"Rule", "SV-1"},
+                            new string[] {"Data", "SV-1"},
                             new string[] {"superSubtype", "SV-1"}, 
                             new string[] {"WholePartType", "SV-1"},
                             new string[] {"OverlapType", "SV-1"},
@@ -521,11 +523,13 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"PersonRole", "SV-2"},
                             new string[] {"Resource", "SV-2"},
                             new string[] {"Rule", "SV-2"}, 
+                            new string[] {"Data", "SV-2"}, 
                             new string[] {"superSubtype", "SV-2"}, 
                             new string[] {"WholePartType", "SV-2"},
                             new string[] {"OverlapType", "SV-2"},
                             new string[] {"Condition", "SvcV-1"},
                             new string[] {"Information", "SvcV-1"},
+                            new string[] {"Data", "SvcV-1"},
                             new string[] {"Location", "SvcV-1"},
                             new string[] {"OrganizationType", "SvcV-1"},
                             new string[] {"Performer", "SvcV-1"},
@@ -568,6 +572,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"Resource", "SV-4"},
                             new string[] {"Rule", "SV-4"}, 
                             new string[] {"superSubtype", "SV-4"}, 
+                            new string[] {"Data", "SV-4"}, 
                             new string[] {"WholePartType", "SV-4"},
                             new string[] {"OverlapType", "SV-4"},
                             new string[] {"Activity", "SV-8"},
@@ -586,6 +591,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"HappensInType", "SV-8"},
                             new string[] {"PeriodType", "SV-8"},
                             new string[] {"Condition", "SvcV-4"},
+                            new string[] {"Data", "SvcV-4"},
                             new string[] {"Information", "SvcV-4"},
                             new string[] {"Location", "SvcV-4"},
                             new string[] {"OrganizationType", "SvcV-4"},
@@ -608,6 +614,7 @@ namespace EAWS.Core.SilverBullet
                             new string[] {"System", "SvcV-2"}, 
                             new string[] {"superSubtype", "SvcV-2"}, 
                             new string[] {"WholePartType", "SvcV-2"},
+                            new string[] {"Data", "SvcV-2"},
                             new string[] {"OverlapType", "SvcV-2"},
                             new string[] {"Condition", "DIV-2"},
                             new string[] {"Information", "DIV-2"},
@@ -3480,308 +3487,308 @@ namespace EAWS.Core.SilverBullet
                     //MergeDictionaries(needline_mandatory_views, results_dic);
                 }
             }
-            //Supports
+            ////Supports
 
-            results =
-                    from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                    from result2 in root.Elements("Class").Elements("SADefinition")
-                    where (string)result.Parent.Attribute("SAPrpName") == "SupportedBy"
-                    where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
-                    select new Thing
-                    {
-                        type = "activityPerformedByPerformer",
-                        id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity"),
-                        name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
-                        value = "$none$",
-                        place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                        place2 = (string)result.Attribute("SALinkIdentity"),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    };
+            //results =
+            //        from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+            //        from result2 in root.Elements("Class").Elements("SADefinition")
+            //        where (string)result.Parent.Attribute("SAPrpName") == "SupportedBy"
+            //        where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
+            //        select new Thing
+            //        {
+            //            type = "activityPerformedByPerformer",
+            //            id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity"),
+            //            name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
+            //            value = "$none$",
+            //            place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
+            //            place2 = (string)result.Attribute("SALinkIdentity"),
+            //            foundation = "CoupleType",
+            //            value_type = "$none$"
+            //        };
 
-            foreach (Thing thing in results.ToList())
-            {
-                values = new List<Thing>();
+            //foreach (Thing thing in results.ToList())
+            //{
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "Activity",
-                    id = thing.id + "_2",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "Activity",
+            //        id = thing.id + "_2",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "Resource",
-                    id = thing.id + "_3",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "Resource",
+            //        id = thing.id + "_3",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
 
-                things = things.Concat(values);
+            //    things = things.Concat(values);
 
-                values = new List<Thing>();
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "activityPerformedByPerformer",
-                    id = thing.id + "_1",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = thing.id,
-                    place2 = thing.id + "_2",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityPerformedByPerformer",
+            //        id = thing.id + "_1",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = thing.id,
+            //        place2 = thing.id + "_2",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "activityConsumesResource",
-                    id = thing.id + "_4",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = thing.id + "_3",
-                    place2 = thing.id + "_2",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityConsumesResource",
+            //        id = thing.id + "_4",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = thing.id + "_3",
+            //        place2 = thing.id + "_2",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                tuple_types = tuple_types.Concat(values);
+            //    tuple_types = tuple_types.Concat(values);
 
-                values = new List<Thing>();
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "Resource",
-                    id = thing.id + "_3",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
-                if (!OV2_support_optional_views.ContainsKey(thing.id))
-                    OV2_support_optional_views.Add(thing.id, values);
+            //    values.Add(new Thing
+            //    {
+            //        type = "Resource",
+            //        id = thing.id + "_3",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
+            //    if (!OV2_support_optional_views.ContainsKey(thing.id))
+            //        OV2_support_optional_views.Add(thing.id, values);
 
-                values = new List<Thing>();
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "activityPerformedByPerformer",
-                    id = thing.id + "_1",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = thing.id,
-                    place2 = thing.id + "_2",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityPerformedByPerformer",
+            //        id = thing.id + "_1",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = thing.id,
+            //        place2 = thing.id + "_2",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "activityConsumesResource",
-                    id = thing.id + "_4",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = thing.id + "_3",
-                    place2 = thing.id + "_2",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityConsumesResource",
+            //        id = thing.id + "_4",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = thing.id + "_3",
+            //        place2 = thing.id + "_2",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "Activity",
-                    id = thing.id + "_2",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
-                if (!OV2_support_mandatory_views.ContainsKey(thing.id))
-                    OV2_support_mandatory_views.Add(thing.id, values);
+            //    values.Add(new Thing
+            //    {
+            //        type = "Activity",
+            //        id = thing.id + "_2",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
+            //    if (!OV2_support_mandatory_views.ContainsKey(thing.id))
+            //        OV2_support_mandatory_views.Add(thing.id, values);
 
-                values = new List<Thing>();
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "activityPerformedByPerformer",
-                    id = thing.id + "_1",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = thing.id,
-                    place2 = thing.id + "_2",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityPerformedByPerformer",
+            //        id = thing.id + "_1",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = thing.id,
+            //        place2 = thing.id + "_2",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "activityConsumesResource",
-                    id = thing.id + "_4",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = thing.id + "_3",
-                    place2 = thing.id + "_2",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityConsumesResource",
+            //        id = thing.id + "_4",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = thing.id + "_3",
+            //        place2 = thing.id + "_2",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "Activity",
-                    id = thing.id + "_2",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "Activity",
+            //        id = thing.id + "_2",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "Resource",
-                    id = thing.id + "_3",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
-                if (!OV4_support_optional_views.ContainsKey(thing.id))
-                    OV4_support_optional_views.Add(thing.id, values);
-            }
+            //    values.Add(new Thing
+            //    {
+            //        type = "Resource",
+            //        id = thing.id + "_3",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
+            //    if (!OV4_support_optional_views.ContainsKey(thing.id))
+            //        OV4_support_optional_views.Add(thing.id, values);
+            //}
 
-            results =
-                    from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
-                    from result2 in root.Elements("Class").Elements("SADefinition")
-                    where (string)result.Parent.Attribute("SAPrpName") == "Supports"
-                    where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
-                    select new Thing
-                    {
-                        type = "activityPerformedByPerformer",
-                        id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity"),
-                        name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
-                        value = "$none$",
-                        place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
-                        place2 = (string)result.Attribute("SALinkIdentity"),
-                        foundation = "CoupleType",
-                        value_type = "$none$"
-                    };
+            //results =
+            //        from result in root.Elements("Class").Elements("SADefinition").Elements("SAProperty").Elements("SALink")
+            //        from result2 in root.Elements("Class").Elements("SADefinition")
+            //        where (string)result.Parent.Attribute("SAPrpName") == "Supports"
+            //        where (string)result.Attribute("SALinkIdentity") == (string)result2.Attribute("SAObjId")
+            //        select new Thing
+            //        {
+            //            type = "activityPerformedByPerformer",
+            //            id = (string)result.Parent.Parent.Attribute("SAObjId") + (string)result.Attribute("SALinkIdentity"),
+            //            name = ((string)result.Parent.Parent.Attribute("SAObjName")).Replace("&", " And "),
+            //            value = "$none$",
+            //            place1 = (string)result.Parent.Parent.Attribute("SAObjId"),
+            //            place2 = (string)result.Attribute("SALinkIdentity"),
+            //            foundation = "CoupleType",
+            //            value_type = "$none$"
+            //        };
 
-            foreach (Thing thing in results.ToList())
-            {
-                values = new List<Thing>();
+            //foreach (Thing thing in results.ToList())
+            //{
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "Activity",
-                    id = thing.id + "_5",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "Activity",
+            //        id = thing.id + "_5",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
 
-                things = things.Concat(values);
+            //    things = things.Concat(values);
 
-                values = new List<Thing>();
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "activityProducesResource",
-                    id = thing.id + "_6",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = thing.id + "_5",
-                    place2 = thing.place2 + thing.place1 + "_3",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityProducesResource",
+            //        id = thing.id + "_6",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = thing.id + "_5",
+            //        place2 = thing.place2 + thing.place1 + "_3",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "activityPerformedByPerformer",
-                    id = thing.id + "_1",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = thing.id,
-                    place2 = thing.id + "_5",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityPerformedByPerformer",
+            //        id = thing.id + "_1",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = thing.id,
+            //        place2 = thing.id + "_5",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                tuple_types = tuple_types.Concat(values);
+            //    tuple_types = tuple_types.Concat(values);
 
-                values = new List<Thing>();
+            //    values = new List<Thing>();
 
-                values.Add(new Thing
-                {
-                    type = "activityProducesResource",
-                    id = thing.id + "_6",
-                    name = "Support",
-                    value = "$none$",
-                    place1 = thing.id + "_5",
-                    place2 = thing.place2 + thing.place1 + "_3",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityProducesResource",
+            //        id = thing.id + "_6",
+            //        name = "Support",
+            //        value = "$none$",
+            //        place1 = thing.id + "_5",
+            //        place2 = thing.place2 + thing.place1 + "_3",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "Activity",
-                    id = thing.id + "_5",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = "$none$",
-                    place2 = "$none$",
-                    foundation = "IndividualType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "Activity",
+            //        id = thing.id + "_5",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = "$none$",
+            //        place2 = "$none$",
+            //        foundation = "IndividualType",
+            //        value_type = "$none$"
+            //    });
 
-                values.Add(new Thing
-                {
-                    type = "activityPerformedByPerformer",
-                    id = thing.id + "_1",
-                    name = thing.name,
-                    value = "$none$",
-                    place1 = thing.id,
-                    place2 = thing.id + "_5",
-                    foundation = "CoupleType",
-                    value_type = "$none$"
-                });
+            //    values.Add(new Thing
+            //    {
+            //        type = "activityPerformedByPerformer",
+            //        id = thing.id + "_1",
+            //        name = thing.name,
+            //        value = "$none$",
+            //        place1 = thing.id,
+            //        place2 = thing.id + "_5",
+            //        foundation = "CoupleType",
+            //        value_type = "$none$"
+            //    });
 
-                if (!OV4_support_optional_views_2.ContainsKey(thing.id))
-                    OV4_support_optional_views_2.Add(thing.id, values);
+            //    if (!OV4_support_optional_views_2.ContainsKey(thing.id))
+            //        OV4_support_optional_views_2.Add(thing.id, values);
 
-                if (!OV2_support_mandatory_views_2.ContainsKey(thing.id))
-                    OV2_support_mandatory_views_2.Add(thing.id, values);
+            //    if (!OV2_support_mandatory_views_2.ContainsKey(thing.id))
+            //        OV2_support_mandatory_views_2.Add(thing.id, values);
 
-            }
+            //}
 
-            MergeDictionaries(OV4_support_optional_views, OV4_support_optional_views_2);
+            //MergeDictionaries(OV4_support_optional_views, OV4_support_optional_views_2);
 
-            MergeDictionaries(OV2_support_mandatory_views, OV2_support_mandatory_views_2);
+            //MergeDictionaries(OV2_support_mandatory_views, OV2_support_mandatory_views_2);
 
-            tuple_types = tuple_types.Distinct();
+            //tuple_types = tuple_types.Distinct();
 
-            things = things.Distinct();
+            //things = things.Distinct();
 
             //Constraint
 

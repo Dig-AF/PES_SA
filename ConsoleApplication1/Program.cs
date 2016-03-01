@@ -17,11 +17,11 @@ namespace ConsoleApplication
             string errors = "";
             bool test;
 
-            //input = @"C:\GitHub\test\SBXX v7.xml";
-            //test = EAWS.Core.SilverBullet.PES_SA.SA2PES(File.ReadAllBytes(input), ref output, ref errors);
+            input = @"C:\GitHub\test\SBXX v7.xml";
+            test = EAWS.Core.SilverBullet.PES_SA.SA2PES(File.ReadAllBytes(input), ref output, ref errors, true);
 
-            input = @"C:\GitHub\test\SA_out.xml";
-            test = EAWS.Core.SilverBullet.PES_SA.PES2SA(File.ReadAllBytes(input), ref output, ref errors);
+            //input = @"C:\GitHub\test\SA_out.xml";
+            //test = EAWS.Core.SilverBullet.PES_SA.PES2SA(File.ReadAllBytes(input), ref output, ref errors);
 
             if (!test)
                 System.IO.File.WriteAllText(@"C:\GitHub\test\error.csv", errors);

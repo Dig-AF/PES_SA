@@ -32,6 +32,5 @@ C:\GitHub\PES_SA\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
 C:\GitHub\PES_SA\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
 C:\GitHub\PES_SA\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
 C:\GitHub\PES_SA\ConsoleApplication1\bin\Debug\PES_SA.dll
-C:\GitHub\PES_SA\ConsoleApplication1\bin\Debug\ClassLibrary1.pdb
 C:\GitHub\PES_SA\ConsoleApplication1\bin\Debug\PES_SA.pdb
 C:\GitHub\PES_SA\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
